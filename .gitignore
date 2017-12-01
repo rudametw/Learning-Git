@@ -222,3 +222,4 @@ TSWLatexianTemp*
 #Avoid generated images
 #images/*.pdf
 test/
+common-images/
