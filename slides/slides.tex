@@ -9,6 +9,17 @@
 \usepackage{CM-preamble}
 \usepackage{gitdags}
 \usepackage{subcaption}
+
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\definecolor{red}{rgb}{1,0,0}
+\definecolor{green}{rgb}{0,1,0}
+\definecolor{blue}{rgb}{0,0,1}
+\definecolor{cyan}{rgb}{0.4,1,1}
+\definecolor{orange}{rgb}{1,0.7,0}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{purple}{rgb}{0.58,0,0.82}
+\definecolor{mintedbackground}{rgb}{0.95,0.95,0.95}
  
 \title{\LARGE Gestion de versions}
 \subtitle{avec \texttt{git}}
@@ -54,7 +65,7 @@
 	\end{block}
 	\vspace{-2em}
 	\begin{block}{}<2->
-    \begin{adjustwidth}{-0.5cm}{}
+    \begin{adjustwidth}{-0.5cm}{-0.5cm}{}
 		\begin{center}	
 		{\includegraphics[scale=0.5]{images/file_versions.pdf}}
 		\end{center}
@@ -68,7 +79,7 @@
 	\frametitle{Comment collaborer sur un fichier ? }
 	\vspace{-1em}
 	\begin{block}{}
-    \begin{adjustwidth}{-0.5cm}{}
+    \begin{adjustwidth}{-0.5cm}{-0.5cm}{}
 		\begin{center}
 		{\includegraphics[scale=0.38]{images/file_share.pdf}}
 		\end{center}
@@ -81,7 +92,7 @@
 	\frametitle{Comment collaborer sur plusieurs fichiers ? }
 %	\vspace{-4em}
 	\begin{block}{}
-    \begin{adjustwidth}{-0.5cm}{}
+    \begin{adjustwidth}{-0.5cm}{-0.5cm}{}
 		\begin{center}
 		{\includegraphics[scale=0.38]{images/file_share_many.pdf}}
 		\end{center}
@@ -94,7 +105,7 @@
 	\frametitle{D'autres solutions ? }
 	\vspace{-4em}
 	\begin{block}{}
-    \begin{adjustwidth}{-0.5cm}{}
+    \begin{adjustwidth}{-0.5cm}{-0.5cm}{}
 		\begin{center}
 		{\includegraphics[scale=0.43]{images/services.pdf}}
 		\end{center}
@@ -123,13 +134,13 @@
 	\frametitle{Gestion de versions}
 	\vspace{-2em}
 	\begin{block}{}
-    \begin{adjustwidth}{-5.5cm}{}
+    \begin{adjustwidth}{-5.5cm}{-0.5cm}{}
 		\begin{center}
 		{\includegraphics[scale=0.58]{images/gestion_versions.pdf}}
 		\end{center}
 	\end{adjustwidth}
 	\vspace{-4em}
-    \begin{adjustwidth}{5.0cm}{}
+    \begin{adjustwidth}{5.0cm}{-1.5cm}{}
 	\tiny Par Revision\_controlled\_project\_visualization.svg: *Subversion\_project\_visualization.svg: Traced by User:Stannered, original by en:User:Sami Keroladerivative work: Moxfyre (talk)derivative work: Echion2 (talk) — Revision\_controlled\_project\_visualization.svg, CC BY-SA 3.0, \url{https://commons.wikimedia.org/w/index.php?curid=9562807}
 	\end{adjustwidth}
 	\end{block}
@@ -138,7 +149,7 @@
 \begin{frame}
 	\frametitle{Avantages de la gestion de versions}
 	\begin{block}{}
-    \begin{adjustwidth}{-0.9cm}{}
+    \begin{adjustwidth}{-0.3cm}{-1.4cm}{}
 		\begin{itemize}
 			\item Sauvegarde / Restauration
 			\item Synchronisation du travail (partage, collaboration)
@@ -147,13 +158,6 @@
 			\item \textit{Sandboxing} (espace confiné, environnement de test, isolation)
 			\item \textit{Branching and merging}
 			\item Passage à l'échelle (10, 100, 1.000, 10.000 développeurs)
-		\end{itemize}
-	\end{adjustwidth}
-	\end{block}
-	\begin{block}{}
-    \begin{adjustwidth}{-0.9cm}{}
-		\begin{itemize}
-%			\item Et pour les sauvegardes ? (\small\textit{pas vraiment})
 		\end{itemize}
 	\end{adjustwidth}
 	\end{block}
@@ -271,7 +275,7 @@
 \frametitle{C'est quoi un commit ?}
 	\vspace{-1em}
 	\begin{block}{}
-	\begin{adjustwidth}{-0.5cm}{}
+	\begin{adjustwidth}{-0.5cm}{-0.5cm}{}
 		\begin{center}	
 			{\includegraphics[scale=0.6]{images/git_commit.png}}
 		\end{center}
@@ -780,7 +784,7 @@ git merge master
 \begin{frame}
 \frametitle{Merge 1 : Vue dans la console}
 %\begin{block}{Représentation par pointeurs}%Parcours postfixé ou \texttt{GRD}}
-\begin{adjustwidth}{-0.8cm}{}
+\begin{adjustwidth}{-1cm}{-0.8cm}{}
 	\begin{center}
 		{\includegraphics[scale=0.3]{images/git_log_merge.png}}
 	\end{center}
@@ -919,6 +923,286 @@ This should describe how the "distributed" part of Git Works.
 %	echo "pommes" |>{}>| fruits.txt
 %\end{minted}
 \end{frame}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{\texttt{diff} entre \texttt{kaki} et \texttt{ananas} avant de merger}
+%\begin{block}{Représentation par pointeurs}%Parcours postfixé ou \texttt{GRD}}
+
+%\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Git distribué : Gestion Centralisée}
+\begin{adjustwidth}{-0.8cm}{-0.8cm}{}
+	%	\vspace{-0.6em}
+	\begin{columns}[T] % align columns
+		\begin{column}{.5\textwidth}
+			\color{darkgreen}%\rule{\linewidth}{4pt}
+			Création du dépôt centrale
+			\color{black}
+			\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,linenos,breaklines,
+				numbersep=5pt,
+				]{bash}
+pomme
+			\end{minted}
+			%		\hspace{-2.7cm}
+		\end{column}%
+		%\hfill%
+%		\color{darkgreen}\rule{\linewidth}{4pt}
+		\begin{column}{.5\textwidth}
+			\color{blue}\rule{\linewidth}{4pt}
+			Workflow \textit{(édité à la main)}
+			\color{black}
+			\begin{adjustwidth}{-0.8cm}{-0.8cm}{}
+				\begin{figure}
+					\centering
+					\includegraphics[scale=0.2]{images/centralized_workflow.png}
+				\end{figure}
+			\end{adjustwidth}
+		\end{column}%
+	\end{columns}
+	\color{darkgray}\rule{\linewidth}{2pt}
+	\begin{columns}[T] % align columns
+	\begin{column}{.5\textwidth}
+		\color{darkgreen}%\rule{\linewidth}{4pt}
+		Développeur N
+		\color{black}
+		\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,linenos,breaklines,
+		numbersep=5pt,
+		]{bash}
+		pomme
+		\end{minted}
+		%		\hspace{-2.7cm}
+	\end{column}%
+	%\hfill%
+	%		\color{darkgreen}\rule{\linewidth}{4pt}
+	\begin{column}{.5\textwidth}
+		\color{darkgreen}%\rule{\linewidth}{4pt}
+		Développeur N
+		\color{black}
+		\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,linenos,breaklines,numbersep=5pt,
+]{bash}
+pomme
+		\end{minted}
+	\end{column}%
+\end{columns}
+
+
+	\end{adjustwidth}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+\frametitle{Provoquer un conflit dans \texttt{fruits.txt}}
+\begin{adjustwidth}{-0.3cm}{-0.3cm}{}
+\vspace{-0.2em}
+\begin{columns}[T] % align columns
+	\begin{column}{.52\textwidth}
+%		\vspace{0.5em}
+		\color{darkgreen}
+%		{\rule{\linewidth}{3pt}}
+		Branche \texttt{ananas}
+%		\vspace{+0.4em}
+		\color{black}
+\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,breaklines]{bash}
+git checkout master
+git branch ananas
+git checkout ananas
+awk 'NR==3\{print "ananas"\}1' fruits.txt > fruits.txt
+git add fruits.txt
+git commit -m "+ananas"
+\end{minted}
+	\end{column}%
+	\hfill%
+	\begin{column}{.52\textwidth}
+		\vspace{-0.2em}
+		\color{blue}%\rule{\linewidth}{4pt}
+%		+ \texttt{kaki} et - \texttt{orange}
+		Branche \texttt{kaki}
+		\color{black}
+		\vspace{-0.3em}
+\begin{minted}[tabsize=4,fontsize=\footnotesize,linenos,breaklines, numbersep=30pt,]{bash}
+git checkout master
+git branch kaki
+git checkout kaki
+awk 'NR==3\{print kaki\}1' fruits.txt | grep -v orange > fruits.txt
+git add fruits.txt
+git commit -m "+kaki -orange"
+\end{minted}
+\end{column}%
+\end{columns}
+\end{adjustwidth}
+
+\color{gray}\rule{\linewidth}{3pt}
+\color{black}
+\vspace{-0.82em}
+
+\begin{adjustwidth}{0.4cm}{-1cm}{}
+	\vspace{-0.48em}
+	\begin{columns}[T] % align columns
+		\begin{column}{.45\textwidth}
+\color{darkgreen}%\rule{\linewidth}{4pt}
+Les merges
+\color{black}
+\begin{minted}[tabsize=4,fontsize=\footnotesize,linenos,breaklines,
+numbersep=5pt,
+]{bash}
+git branch merge_fruits
+git checkout merge_fruits
+git merge ananas
+\end{minted}
+\end{column}%
+\hfill%
+\begin{column}{.6\textwidth}
+
+\color{darkgreen}%\rule{\linewidth}{4pt}
+Sorties console
+\color{black}
+\vspace{-1em}
+\begin{minted}[tabsize=4,fontsize=\footnotesize,breaklines,
+bgcolor=mintedbackground,
+]{bash}
+Updating 760cf0e..1711864
+Fast-forward
+fruits.txt | 1 +
+1 file changed, 1 insertion(+)
+\end{minted}
+\end{column}%
+\end{columns}
+
+%\vspace{-em}
+%	\hspace{0.6cm}
+\begin{columns}[T] % align columns
+	\hspace{0.3cm}
+	\begin{column}{.3\textwidth}
+		\color{darkgreen}%\rule{\linewidth}{4pt}
+%		Deuxième merge
+		\color{black}
+		\begin{minted}[tabsize=4,fontsize=\footnotesize,linenos,breaklines,firstnumber=4,
+		numbersep=5pt,
+		]{text}
+git merge kaki
+		\end{minted}
+		
+	\end{column}%
+%	\hfill%
+	\hspace{-0.4cm}
+	\begin{column}{.9\textwidth}
+		
+	\color{darkgreen}%\rule{\linewidth}{4pt}
+%		\textit{Sortie console des merges}
+	\color{black}
+	\vspace{-0.2em}
+	\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,breaklines,
+	bgcolor=mintedbackground,
+	]{bash}
+Auto-merging fruits.txt
+CONFLICT (content): Merge conflict in fruits.txt
+Automatic merge failed; fix conflicts and then commit the result.
+		\end{minted}
+	\end{column}%
+\end{columns}
+\end{adjustwidth}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{\texttt{diff} entre \texttt{kaki} et \texttt{ananas} avant de merger}
+%\begin{block}{Représentation par pointeurs}%Parcours postfixé ou \texttt{GRD}}
+\begin{adjustwidth}{-0.8cm}{-0.8cm}{}
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.35]{images/git_diff_conflict.png}
+		{Différences entre les \textit{commits} réalisés sur les branches \texttt{kaki} et \texttt{ananas} pour produire le conflit. En {\color{red}rouge}, les lignes qui éxistent sur la branche \texttt{ananas} et pas \texttt{kaki}. En {\color{green}vert} les lignes qui éxistent sur la branche \texttt{kaki} et pas \texttt{ananans}.}
+		\label{figure:example}
+	\end{figure}
+\end{adjustwidth}
+%\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+\frametitle{Résoudre un conflit dans \texttt{fruits.txt}\\
+\small immédiatement après la commande \texttt{git merge kaki}}
+\begin{adjustwidth}{0cm}{-0.8cm}{}
+%	\vspace{-0.6em}
+	\begin{columns}[T] % align columns
+		\begin{column}{.55\textwidth}
+			\color{darkgreen}%\rule{\linewidth}{4pt}
+			Conflit dans \texttt{fruits.txt}
+			\color{black}
+			\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,linenos,breaklines,
+			numbersep=5pt,
+			]{bash}
+pomme
+banane
+*<{}<{}<{}<{}<{}<{}<* HEAD
+ananas
+orange
+||||||| merged common ancestors
+orange
+=======
+kaki
+*>{}>{}>{}>{}>{}>{}>*
+poire
+		\end{minted}
+%		\hspace{-2.7cm}
+		\end{column}%
+%		\hfill%
+		\begin{column}{.5\textwidth}
+			\color{darkgreen}%\rule{\linewidth}{4pt}
+			Solution \textit{(édité à la main)}
+			\color{black}
+%			\vspace{-1em}
+			\begin{minted}[tabsize=4,fontsize=\footnotesize,breaklines,linenos,
+%			bgcolor=mintedbackground,
+			]{bash}
+pomme
+banane
+ananas
+kaki
+poire
+			\end{minted}
+\color{gray}\rule{\linewidth}{3pt}
+\color{darkgreen}%\rule{\linewidth}{4pt}
+Résolution du conflit
+\color{black}
+%\vspace{-1.2em}			
+			\begin{minted}[tabsize=4,fontsize=\footnotesize,breaklines,linenos,
+%			bgcolor=mintedbackground,
+			]{bash}
+git add fruits.txt
+git status
+git commit -m "Merge branch 'kaki' into merge_fruits"
+git pull
+git push
+			\end{minted}
+		\end{column}%
+	\end{columns}
+\end{adjustwidth}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % END

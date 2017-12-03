@@ -1,0 +1,105 @@
+#Ajout ANANAS
+git checkout master
+git branch ananas
+git checkout ananas
+awk 'NR==3{print "ananas"}1' fruits.txt > fruits.txt-ananas
+git add fruits.txt
+git commit -m "Ajouté ananas à fruits.txt"
+
+#Ajout KAKIS et enlever ORANGE
+git checkout master
+git branch kaki
+git checkout kaki
+git status
+awk 'NR==3{print kaki}1' fruits.txt | grep -v orange > fruits.txt-kaki
+git add fruits.txt
+git commit
+
+#Branche pour merger
+git branch merge_fruits
+git checkout merge_fruits
+git merge ananas
+
+Updating 760cf0e..1711864
+Fast-forward
+fruits.txt | 1 +
+1 file changed, 1 insertion(+)
+
+git merge kaki
+Auto-merging fruits.txt
+CONFLICT (content): Merge conflict in fruits.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+----------------------------------------------
+diff fruits.txt-ananas fruits.txt-kaki 
+3,4c3
+< ananas
+< orange
+---
+> kaki
+----------------------------------------------
+pomme
+banane
+<<<<<<< HEAD
+ananas
+=======
+kaki
+>>>>>>> kaki                                                                                                                        
+orange
+poire
+----------------------------------------------
+pomme
+banane
+ananas
+kaki
+poire
+-----------------------------------------------
+awk 'NR==3{print "ananas"}1' fruits.txt > fruits.txt-ananas
+awk 'NR==3{print kaki}1' fruits.txt | grep -v orange > fruits.txt-kaki
+
+history | tail -n 400 | awk '{for(i=1;i<2;i++) $i="";print}'
+
+
+
+Auto-merging fruits.txt
+CONFLICT (content): Merge conflict in fruits.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+cat fruits.txt 
+--------------------------------------------------------------
+pomme
+banane
+<<<<<<< HEAD
+kaki
+||||||| merged common ancestors
+=======
+ananas
+>>>>>>> ananas
+orange
+poire                                                                                                                                                                                                                                                                      
+
+
+===============================
+
+Merge branch 'kaki' into merge_fruits
+
+# Conflicts:
+#	fruits.txt
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch merge_fruits
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   fruits.txt
+#
+
+
