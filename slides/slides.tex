@@ -50,12 +50,13 @@
 			et surtout des recommandations
 			\item n'hésitez pas à poser des questions
 		\end{itemize}
+		\item Je ne suis pas un expert
 	\end{itemize}
 \end{frame}
 
 
 \begin{frame}
-	\frametitle{Comment gérez-vous vos fichiers ? }
+	\frametitle{Comment gérez-vous vos fichiers ?}
 	\vspace{-1em}
 	\begin{block}{}<1->
 	\begin{itemize}
@@ -192,6 +193,35 @@
 	\end{adjustwidth}
 	\end{block}
 \end{frame}
+
+\begin{frame}
+\frametitle{Why the \texttt{git} ?}
+\begin{block}{C'est \textit{Ze Standard}}
+	%    \begin{adjustwidth}{-0.9cm}{}
+	\begin{itemize}
+		\item \textit{git - the stupid content tracker}
+		\item Outil professionnel
+		\item Rapide, multi-plateforme, flexible
+	\end{itemize}
+%	\end{adjustwidth}
+\end{block}
+\begin{block}{\textit{To Share or Not to Share}}
+	%    \begin{adjustwidth}{-0.9cm}{}
+	\begin{itemize}
+		\item Enrichissez vos CV
+		\begin{itemize}
+			\item \url{https://github.com/}
+		\end{itemize}
+		\item Choisir sa licence
+		\begin{itemize}
+			\item Code --- GPL, Apache, BSD, MIT, Propriétaire \url{https://choosealicense.com/}
+			\item Documents/Rapports --- Creative commons \url{https://creativecommons.org/}
+		\end{itemize}
+	\end{itemize}
+	%	\end{adjustwidth}
+\end{block}
+\end{frame}
+
 
 
 %\begin{frame}
@@ -930,82 +960,156 @@ This should describe how the "distributed" part of Git Works.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{\texttt{diff} entre \texttt{kaki} et \texttt{ananas} avant de merger}
-%\begin{block}{Représentation par pointeurs}%Parcours postfixé ou \texttt{GRD}}
+\frametitle{Git distribué : Développements distribués}
 
-%\end{block}
-\end{frame}
+\begin{figure}
+%	\hfill
+	\centering
+	\includegraphics[scale=0.3]{images/centralized_workflow-trim.png}\\
+	\small Centralized
+\end{figure}
 
+\vspace{-1em}
+\color{gray}\rule{\linewidth}{2pt}
 
-\begin{frame}[fragile]
-\frametitle{Git distribué : Gestion Centralisée}
-\begin{adjustwidth}{-0.8cm}{-0.8cm}{}
-	%	\vspace{-0.6em}
+\begin{adjustwidth}{-2cm}{-1cm}{}
 	\begin{columns}[T] % align columns
 		\begin{column}{.5\textwidth}
-			\color{darkgreen}%\rule{\linewidth}{4pt}
-			Création du dépôt centrale
-			\color{black}
-			\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,linenos,breaklines,
-				numbersep=5pt,
-				]{bash}
-pomme
-			\end{minted}
-			%		\hspace{-2.7cm}
+			\begin{figure}
+%				\hfill
+				\includegraphics[scale=0.22]{images/integration-manager-trim.png}
+				\small {Integration manager}
+			\end{figure}
+		\end{column}%
+%		\hfill%
+		\begin{column}{.6\textwidth}
+			\vspace{-0.35em}
+			\begin{figure}
+				\hfill%
+				\includegraphics[scale=0.23]{images/benevolent-dictator-trim.png}
+				Benevolent Dictator
+			\end{figure}
+		\end{column}%
+	\end{columns}
+\end{adjustwidth}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Git distribué : Gestion Centralisée}
+\begin{adjustwidth}{-2em}{0cm}{}
+\color{darkgreen}%\rule{\linewidth}{4pt}
+\noindent
+Premier commit \\ \small(dépôt centrale doit être créé et vide)
+\color{black}
+\end{adjustwidth}
+\begin{adjustwidth}{-1em}{0cm}{}
+\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,linenos,breaklines,
+numbersep=5pt,
+]{bash}
+git init .
+git add .
+git commit -m "first commit"
+
+git remote add origin git@github.com:rudametw/Learning-Git-Test-Repo.git
+git push -u origin master
+\end{minted}
+\end{adjustwidth}
+
+\begin{adjustwidth}{-0cm}{0cm}{}
+	\begin{columns}[T] % align columns
+		\begin{column}{.6\textwidth}
 		\end{column}%
 		%\hfill%
 %		\color{darkgreen}\rule{\linewidth}{4pt}
-		\begin{column}{.5\textwidth}
-			\color{blue}\rule{\linewidth}{4pt}
-			Workflow \textit{(édité à la main)}
+		\begin{column}{.3\textwidth}
+%			\color{blue}\rule{\linewidth}{4pt}
+%			Workflow \textit{(édité à la main)}
 			\color{black}
-			\begin{adjustwidth}{-0.8cm}{-0.8cm}{}
+			\vspace{-11em}
+			\begin{adjustwidth}{-0cm}{-3cm}{}
 				\begin{figure}
-					\centering
-					\includegraphics[scale=0.2]{images/centralized_workflow.png}
+					\hfill
+					\includegraphics[scale=0.22]{images/centralized_workflow.png}
 				\end{figure}
 			\end{adjustwidth}
 		\end{column}%
 	\end{columns}
+	\vspace{-1em}
+	\pause
 	\color{darkgray}\rule{\linewidth}{2pt}
-	\begin{columns}[T] % align columns
-	\begin{column}{.5\textwidth}
+%	\begin{columns}[T] % align columns
+%	\begin{column}{.5\textwidth}
+	
+	\begin{adjustwidth}{-0.5cm}{-3cm}{}
 		\color{darkgreen}%\rule{\linewidth}{4pt}
-		Développeur N
+		Chaque développeur \texttt{clone} une seule fois
 		\color{black}
-		\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,linenos,breaklines,
+		\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,linenos,
 		numbersep=5pt,
 		]{bash}
-		pomme
+git clone https://github.com/rudametw/Learning-Git-Test-Repo.git
+cd Learning-Git-Test-Repo/
+git remote -v //permet de vérifier les addresses
 		\end{minted}
-		%		\hspace{-2.7cm}
-	\end{column}%
-	%\hfill%
-	%		\color{darkgreen}\rule{\linewidth}{4pt}
-	\begin{column}{.5\textwidth}
-		\color{darkgreen}%\rule{\linewidth}{4pt}
-		Développeur N
-		\color{black}
-		\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,linenos,breaklines,numbersep=5pt,
-]{bash}
-pomme
-		\end{minted}
-	\end{column}%
-\end{columns}
-
-
+		\end{adjustwidth}
 	\end{adjustwidth}
 \end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%continue previous slide, broken into two
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+\frametitle{Git distribué : Gestion Centralisée}
+\begin{adjustwidth}{-1em}{0cm}{}
+\vspace{-2.3em}
+\color{darkgreen}%\rule{\linewidth}{4pt}
+Chacun travaille sur une branche et merge \texttt{master} dans sa branche régulièrement. Il faut tester régulièrement, et pour finir fini on merge sa branche vers \texttt{master} pour partager.\\
+\color{black}
+\vspace{-1em}
+\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,linenos,breaklines,
+numbersep=5pt,
+]{c}
+git pull ; git status //update & check work
+git branch fonctionalitéX
+git checkout fonctionalitéX
+//while (je travaille = vrai) {
+	git status
+	git add XXX
+	git commit XXX
+//}
+git pull
+git merge master
+//gérér conflits s'il y en a
+
+//tester que tout marche
+git checkout master
+git merge fonctionalitéX
+git pull ; git push
+\end{minted}
+\end{adjustwidth}
+
+\vspace{-12em}
+
+\begin{adjustwidth}{-0cm}{-1cm}{}
+	\begin{figure}
+		\hfill
+		\includegraphics[scale=0.22]{images/centralized_workflow.png}
+	\end{figure}
+\end{adjustwidth}
 
 
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
-
-
-
-
+\begin{frame}
+\frametitle{Résolution de conflits}
+\begin{block}{Des conflits vont se produire \ldots}
+\end{block}
+\begin{block}{\ldots comment faire pour les résoudre ?}
+\end{block}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1131,7 +1235,7 @@ Automatic merge failed; fix conflicts and then commit the result.
 	\begin{figure}
 		\centering
 		\includegraphics[scale=0.35]{images/git_diff_conflict.png}
-		{Différences entre les \textit{commits} réalisés sur les branches \texttt{kaki} et \texttt{ananas} pour produire le conflit. En {\color{red}rouge}, les lignes qui éxistent sur la branche \texttt{ananas} et pas \texttt{kaki}. En {\color{green}vert} les lignes qui éxistent sur la branche \texttt{kaki} et pas \texttt{ananans}.}
+		{Différences entre les \textit{commits} réalisés sur les branches \texttt{kaki} et \texttt{ananas} qui avaient pour objectif produire un conflit. En {\color{red}rouge}, les lignes qui éxistent sur la branche \texttt{ananas} et pas \texttt{kaki}. En {\color{green}vert} les lignes qui éxistent sur la branche \texttt{kaki} et pas \texttt{ananans}.}
 		\label{figure:example}
 	\end{figure}
 \end{adjustwidth}
@@ -1148,7 +1252,8 @@ Automatic merge failed; fix conflicts and then commit the result.
 	\begin{columns}[T] % align columns
 		\begin{column}{.55\textwidth}
 			\color{darkgreen}%\rule{\linewidth}{4pt}
-			Conflit dans \texttt{fruits.txt}
+			\noindent
+			Conflit dans \texttt{fruits.txt} \\ {\footnotesize\texttt{git} ajoute des guides pour s'y retrouver}
 			\color{black}
 			\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,linenos,breaklines,
 			numbersep=5pt,
@@ -1202,6 +1307,35 @@ git push
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+\begin{frame}
+\frametitle{Liens, aides et outils}
+\begin{itemize}
+	\item Où stocker vos projets
+	\begin{itemize}
+		\item \url{https://archives.plil.fr/}
+		\item \url{https://github.com/}
+		\item \url{https://bitbucket.org/}
+		\item Votre serveur perso
+	\end{itemize}
+	\item Tutoriels
+	\begin{itemize}
+		\item \url{http://www.cristal.univ-lille.fr/TPGIT/}
+		\item \url{https://crypto.stanford.edu/~blynn/gitmagic/intl/fr/book.pdf}
+		\item \url{https://learngitbranching.js.org/}
+		\item \url{https://try.github.io/}
+		\item \url{https://git-scm.com/book/fr/v2}
+	\end{itemize}
+	\item Vidéos
+	\begin{itemize}
+		\item \url{https://www.youtube.com/watch?v=OqmSzXDrJBk}
+		\item \url{https://www.youtube.com/watch?v=uR6G2v_WsRA}
+		\item \url{https://www.youtube.com/watch?v=3a2x1iJFJWc}
+		\item \url{https://www.youtube.com/watch?v=1ffBJ4sVUb4}
+		\item \url{https://www.youtube.com/watch?v=duqBHik7nRo}
+	\end{itemize}
+\end{itemize}
+\end{frame}
 
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % %
