@@ -639,7 +639,6 @@
 			
 			\end{tikzpicture}
 			\subcaption{Travaillons sur \texttt{master}}
-			\only<2>{$\Longrightarrow$ \texttt{legumes.txt} n'existe plus dans \textit{Working Directory})}
 		\end{subfigure}
 	\end{figure}
 }
@@ -670,7 +669,7 @@
 			
 			\end{tikzpicture}
 			\subcaption{Travaillons sur \texttt{master}}
-			\only<2>{$\Longrightarrow$ \texttt{legumes.txt} n'existe plus dans \textit{Working Directory})}
+			\only<2>{$\Rightarrow$ \texttt{legumes.txt} n'existe plus dans la Copie de Travail (\textit{Working Directory})}
 			\vspace{0.33em}
 		\end{subfigure}
 	\end{figure}
@@ -702,7 +701,6 @@
 			
 			\end{tikzpicture}
 			\subcaption{Après nouveau \textit{commit} sur \texttt{master}}
-			\only<2>{$\Longrightarrow$ \texttt{legumes.txt} n'existe plus dans \textit{Working Directory})}
 			\vspace{-3em}
 		\end{subfigure}
 	\end{figure}
@@ -1032,7 +1030,7 @@
 \begin{adjustwidth}{-2em}{0cm}{}
 \color{darkgreen}%\rule{\linewidth}{4pt}
 \noindent
-Premier commit \\ \small(dépôt centrale doit être créé et vide)
+Premier commit \\ \small(dépôt central doit être créé et vide)
 \color{black}
 \end{adjustwidth}
 \begin{adjustwidth}{-1em}{0cm}{}
@@ -1097,7 +1095,7 @@ git remote -v //permet de vérifier les addresses
 \begin{adjustwidth}{-1em}{0cm}{}
 \vspace{-2.3em}
 \color{darkgreen}%\rule{\linewidth}{4pt}
-Chacun travaille sur une branche et merge \texttt{master} dans sa branche régulièrement. Il faut tester régulièrement, et pour finir fini on merge sa branche vers \texttt{master} pour partager.\\
+Chacun travaille sur une branche et merge \texttt{master} dans sa branche régulièrement. Il faut tester régulièrement, et pour finir on merge sa branche vers \texttt{master} pour partager.\\
 \color{black}
 \vspace{-1em}
 \begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,linenos,breaklines,
@@ -1267,7 +1265,7 @@ Automatic merge failed; fix conflicts and then commit the result.
 	\begin{figure}
 		\centering
 		\includegraphics[scale=0.35]{images/git_diff_conflict.png}
-		{Différences entre les \textit{commits} réalisés sur les branches \texttt{kaki} et \texttt{ananas} qui avaient pour objectif produire un conflit. En {\color{red}rouge}, les lignes qui éxistent sur la branche \texttt{ananas} et pas \texttt{kaki}. En {\color{green}vert} les lignes qui éxistent sur la branche \texttt{kaki} et pas \texttt{ananans}.}
+		{Différences entre les \textit{commits} réalisés sur les branches \texttt{kaki} et \texttt{ananas} qui avaient pour objectif de produire un conflit. En {\color{red}rouge}, les lignes qui existent sur la branche \texttt{ananas} et pas \texttt{kaki}. En {\color{green}vert} les lignes qui éxistent sur la branche \texttt{kaki} et pas \texttt{ananas}.}
 		\label{figure:example}
 	\end{figure}
 \end{adjustwidth}
