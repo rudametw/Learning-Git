@@ -43,9 +43,13 @@ PDFs/%.pdf: %.pdf
 
 clean:
 	rm -fv images/*.pdf
-	rm -fv PDFs/*.pdf PDFs/*.log PDFs/*.aux
+	#rm -fv PDFs/*.pdf PDFs/*.log PDFs/*.aux
+	rm -fv PDFs/*.log PDFs/*.aux
 	rm -rfv CM*/*_minted-*
 	rm -fv slides/slides.pdf slides/*.log slides/*.aux slides/*.nav slides/*.snm slides/*.toc slides/*.vrb
+
+clean-all-pdfs: clean
+	rm -fv PDFs/*.pdf
 
 # Rules that do not represent a file
 .PHONY: base 1pp 4pp 6pp clean
