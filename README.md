@@ -11,7 +11,7 @@ inkscape
 
 ~~`lualatex -synctex=1 -interaction=nonstopmode -shell-escape slides.tex`~~
 
-`Make`
+`make`
 
 If you need to use pdflatex, it compiles fine, but you should uncomment `%\usepackage[utf8]{inputenc}` in `CM-preamble.sty`
 
