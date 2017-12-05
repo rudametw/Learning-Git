@@ -220,6 +220,6 @@ TSWLatexianTemp*
 *-tags.tex
 
 #Avoid generated images
-#images/*.pdf
+images/*.pdf
+slides/*.pdf
 test/
-common-images/
