@@ -13,9 +13,12 @@ inkscape
 
 `make`
 
+`make clean` removes all temporary files EXCEPT PDFs/*pdf, which is the actual course.
+
+`make clean-all-pdfs` cleans everything, including all generated pdfs.
+
 ## `pdflatex` vs `lualatex`
 
 The makefile uses `lualatex` but the document does compile with `pdflatex` also.
 
-If you need to use pdflatex, you should uncomment the line `%\usepackage[utf8]{inputenc}` in `CM-preamble.sty` which fixes issues with utf characters.
-
+If you need to use pdflatex, you should uncomment the line `%\usepackage[utf8]{inputenc}` in `CM-preamble.sty` which fixes issues with utf-8 characters.
