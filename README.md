@@ -13,5 +13,9 @@ inkscape
 
 `make`
 
-If you need to use pdflatex, it compiles fine, but you should uncomment `%\usepackage[utf8]{inputenc}` in `CM-preamble.sty`
+## `pdflatex` vs `lualatex`
+
+The makefile uses `lualatex` but the document does compile with `pdflatex` also.
+
+If you need to use pdflatex, you should uncomment the line `%\usepackage[utf8]{inputenc}` in `CM-preamble.sty` which fixes issues with utf characters.
 
