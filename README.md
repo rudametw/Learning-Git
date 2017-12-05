@@ -1,5 +1,5 @@
 # Why
-This is a course for using git, in French, giving at Polytech Lille, part of the University of Lille.
+This is an introductory course for using git, in French, given at Polytech Lille, part of the University of Lille.
 
 # Dependencies
 
