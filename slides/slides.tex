@@ -206,7 +206,6 @@
 %	\end{adjustwidth}
 \end{block}
 \begin{block}{\textit{To Share or Not to Share}}
-	%    \begin{adjustwidth}{-0.9cm}{}
 	\begin{itemize}
 		\item Enrichissez vos CV
 		\begin{itemize}
@@ -218,36 +217,29 @@
 			\item Documents/Rapports --- Creative commons \url{https://creativecommons.org/}
 		\end{itemize}
 	\end{itemize}
-	%	\end{adjustwidth}
 \end{block}
 \end{frame}
-
-
-
-%\begin{frame}
-%	\frametitle{TODO}
-%	\begin{block}{}
-%%    \begin{adjustwidth}{-0.9cm}{}
-%		\begin{itemize}
-%			\item Workflow from video
-%			\item Workflow from video for sharing
-%			\item Do the working directory, staging, repository image...
-%			Then a collaboration immage, showing multiple copies of the repository...
-%		\end{itemize}
-%%	\end{adjustwidth}
-%	\end{block}
-%\end{frame}
 
 \begin{frame}
-\frametitle{TODO: BREAK INTO MULTIPLE IMAGES TO EXPLAIN EACH COMMAND}
-\vspace{-2em}
-\begin{block}{}
-		\begin{center}
-%			{\includegraphics[scale=0.55]{images/MgaV9.png}}
-			{\includegraphics[scale=0.45]{images/MgaV9.png}}
-		\end{center}
-\end{block}
+\frametitle{Concepts et commandes \texttt{git}}
+\begin{adjustwidth}{-0.75cm}{0cm}{}
+\vspace{-1em}
+	\begin{center}
+		\only<1>{{\includegraphics[scale=0.44]{images/workflow1.pdf}}}
+		\only<2>{{\includegraphics[scale=0.44]{images/workflow2.pdf}}}
+		\only<3>{{\includegraphics[scale=0.44]{images/workflow3.pdf}}}
+		\only<4>{{\includegraphics[scale=0.44]{images/workflow4.pdf}}}
+		\only<5>{{\includegraphics[scale=0.44]{images/workflow5.pdf}}}
+		\only<6>{{\includegraphics[scale=0.44]{images/workflow6.pdf}}}
+		\only<7>{{\includegraphics[scale=0.44]{images/workflow7.pdf}}}
+		\only<8>{{\includegraphics[scale=0.44]{images/workflow8.pdf}}}
+%		\only<9>{{\includegraphics[scale=0.44]{images/workflow9.pdf}}}
+%		\only<10>{{\includegraphics[scale=0.44]{images/workflow10.pdf}}}
+		\only<9>{{\includegraphics[scale=0.44]{images/workflow_all.pdf}}}
+	\end{center}
+\end{adjustwidth}
 \end{frame}
+
 
 
 %%%%%%%%%% Begin Premier Commit
@@ -288,13 +280,13 @@
 	\vspace{-0.2cm}		
 	\begin{minted}[mathescape=true,escapeinside=||,tabsize=4
 	,fontsize=\footnotesize,
-	]{bash}
+	]{c}
 	mkdir mon_depot ; cd mon_depot
 	git init .
 	echo "pomme" |>{}>| fruits.txt
 	git add fruits.txt
 	git commit -m "Pomme ajouté à la liste de fruits"
-		===> ID = 27ff4
+	  |$\Rightarrow$| ID = 27ff4
 	\end{minted}
 	\end{block}
 	Faire \texttt{git status} et \texttt{git log} \underline{après chaque commande}!!!
@@ -374,10 +366,6 @@
 			\gitDAG[grow right sep = 2em]{
 				27ff4 -- 31490
 			};
-			% Tag reference
-			%	\gittag [v0p1] {v0.1} {above=of A} {A}
-			% Remote branch
-			% Branch
 			\gitbranch
 			{master}     % node name and text 
 			{above=of 31490} % node placement
@@ -399,13 +387,17 @@
 %	\vspace{-0.2cm}		
 	\begin{minted}[mathescape=true,escapeinside=||,tabsize=4
 	,fontsize=\footnotesize,
-	]{bash}
+	]{c}
 	echo banane |>{}>| fruits.txt
 	git add fruits.txt
 	git commit -m "Ajouté banane à fruits.txt"
-		===> ID = 31490
+	  |$\Rightarrow$| ID = 31490
 	\end{minted}
 \end{block}
+
+\only<2>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=3.4cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+\only<3>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=1.8cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+
 \end{frame}
 %%%%%%%%%%% End ANIMATION Commit 2
 
@@ -445,11 +437,11 @@
 %	\vspace{-0.2cm}
 	\vspace{0.4cm} \begin{center} \noindent\makebox[\linewidth]{\line(2,0){500}} \end{center} \vspace{-0.4cm} 		
 	\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,linenos,
-	]{bash}
+	]{c}
 	echo orange |>{}>| fruits.txt
 	git add fruits.txt
 	git commit -m "Ajouté orange à fruits.txt"
-		===> ID = ab5d1
+	  |$\Rightarrow$| ID = ab5d1
 	\end{minted}
 \end{block}
 \end{frame}
@@ -513,7 +505,10 @@
 
 		\end{tikzpicture}
 		\subcaption{Après branche}
-		\only<3>{==> une nouvelle \textit{étiquette} apparait}
+		\only<3>{
+		$\Longrightarrow$ une nouvelle \textit{étiquette} apparait
+		\vspace{-1.65em}
+		}
 	\end{subfigure}
 \end{figure}
 }
@@ -544,7 +539,6 @@
 			
 			\end{tikzpicture}
 			\subcaption{Après commit dans branche \texttt{legumes}}
-			\only<3>{==> une nouvelle \textit{étiquette} apparait}
 		\end{subfigure}
 	\end{figure}
 }
@@ -572,10 +566,8 @@
 			%			{right=of legumes} % node placement
 			{8a928}          % target
 			\gitbranch {legumes} {above=of 8a928} {8a928}
-			
 			\end{tikzpicture}
 			\subcaption{Après deuxième commit dans branche \texttt{legumes}}
-			\only<3>{==> une nouvelle \textit{étiquette} apparait}
 		\end{subfigure}
 	\end{figure}
 }
@@ -583,26 +575,34 @@
 %\vspace{-0.5cm}
 %\only<2-3>{
 %\begin{block}{Sur le terminal \ldots}
+
+\only<2>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=3.5cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+\only<3-4>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=2.9cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+\only<5-6>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=1.4cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+\only<7->{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=0.2cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+
+
 	\pause[2]
 	\vspace{0.4cm} \begin{center} \noindent\makebox[\linewidth]{\line(2,0){500}} \end{center} \vspace{-0.4cm}
-	\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{bash}
+	\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{c}
 	git branch legumes ; git checkout legumes
 	\end{minted}
+	
 	\pause[4]
-	\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{bash}
-	echo auvergine |>{}>| legumes.txt ; git add legumes.txt
-	git commit -m "Ajout auvergine à legumes"
-		===> ID = ffd5c
+	\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{c}
+	echo aubergine |>{}>| legumes.txt ; git add legumes.txt
+	git commit -m "Ajout aubergine à legumes"
+	  |$\Rightarrow$| ID = ffd5c
 	\end{minted}
 	\pause[6]
-	\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{bash}
+	\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{c}
 	echo courgette |>{}>| legumes.txt ; git add legumes.txt
 	git commit -m "Ajout courgette à legumes"
-		===> ID = 8a928
+	  |$\Rightarrow$| ID = 8a928
 	\end{minted}
 \end{frame}
 %%%%%%%%%%% End ANIMATION Branch 1
-%echo auvergine |>{}>| legumes.txt
+%echo aubergine |>{}>| legumes.txt
 %echo courgette |>{}>| legumes.txt
 %git add legumes.txt
 %git commit -m "Ajout de legumes"
@@ -671,6 +671,7 @@
 			\end{tikzpicture}
 			\subcaption{Travaillons sur \texttt{master}}
 			\only<2>{$\Longrightarrow$ \texttt{legumes.txt} n'existe plus dans \textit{Working Directory})}
+			\vspace{0.33em}
 		\end{subfigure}
 	\end{figure}
 }
@@ -702,6 +703,7 @@
 			\end{tikzpicture}
 			\subcaption{Après nouveau \textit{commit} sur \texttt{master}}
 			\only<2>{$\Longrightarrow$ \texttt{legumes.txt} n'existe plus dans \textit{Working Directory})}
+			\vspace{-3em}
 		\end{subfigure}
 	\end{figure}
 }
@@ -712,15 +714,20 @@
 %\pause[2]
 %\vspace{-0.2cm}
 \vspace{0.4cm} \begin{center} \noindent\makebox[\linewidth]{\line(2,0){500}} \end{center} \vspace{-0.4cm}
-\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{bash}
+\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{c}
 	git checkout master
 \end{minted}
+
+\only<1>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=2.6cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+\only<2>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=2cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
 \pause[3]
-\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{bash}
+\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{c}
 	echo poire |>{}>| fruits.txt ; git add fruits.txt
 	git commit -m "Ajouté poire à fruits.txt"
-		===> ID = 21721
+		|$\Rightarrow$| ID = 21721
 \end{minted}
+\only<3>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=1.9cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+\only<4->{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=0.6cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
 \end{frame}
 %%%%%%%%%%% End ANIMATION Branch 2
 
@@ -797,26 +804,36 @@
 %\pause[2]
 %\vspace{-0.2cm}
 \vspace{0.4cm} \begin{center} \noindent\makebox[\linewidth]{\line(2,0){500}} \end{center} \vspace{-0.4cm}
-\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{bash}
-git checkout legumes
+\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{c}
+	git checkout legumes
 \end{minted}
+
+\only<1>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=1.7cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+
 \pause[2]
-\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{bash}
-git diff master
+\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{c}
+	git diff master
 \end{minted}
+
+\only<2>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=1.1cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+
 \pause[3]
-\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{bash}
-git merge master
+\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{c}
+	git merge master
 \end{minted}
+\only<3>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=0.5cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
 \end{frame}
 %%%%%%%%%%% End ANIMATION Merge 1
 
-\begin{frame}
+\begin{frame}[fragile]
 \frametitle{Merge 1 : Vue dans la console}
 %\begin{block}{Représentation par pointeurs}%Parcours postfixé ou \texttt{GRD}}
 \begin{adjustwidth}{-1cm}{-0.8cm}{}
 	\begin{center}
 		{\includegraphics[scale=0.3]{images/git_log_merge.png}}
+		\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{c}
+			git log |-{}-|all |-{}-|graph |-{}-|oneline |-{}-|date=short
+		\end{minted}
 	\end{center}
 \end{adjustwidth}
 %\end{block}
@@ -921,39 +938,54 @@ git merge master
 }
 \vspace{0.4cm} \begin{center} \noindent\makebox[\linewidth]{\line(2,0){500}} \end{center} \vspace{-0.4cm}
 
-\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{bash}
-git checkout master
+\only<1>{\vspace{0.5em}}
+\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{c}
+	git checkout master
 \end{minted}
+
+\only<1>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=1.8cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+
 \pause[2]
-\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{bash}
-git diff legumes
-git merge legumes
+\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{c}
+	git diff legumes
+	git merge legumes
 \end{minted}
+\only<2>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=1.3cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
 \pause
-\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{bash}
-git branch -d legumes
+\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{c}
+	git branch -d legumes
 \end{minted}
+\only<3->{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=0.7cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
 \end{frame}
 %%%%%%%%%%% End ANIMATION Merge 2
 
 
 
-\begin{frame}{TODO: Origin}
+%\begin{frame}{TODO: Origin}
+%
+%All previous parts show how the graph is constructed locally.
+%
+%TODO: EXPLAIN HOW TO PUSH/PULL BETWEEN DIFFERENT REPOSITORIES.
+%MERGING, KEEPING UP TO DATE, ORIGIN/MASTER TAG.
+%
+%This should describe how the "distributed" part of Git Works.
+%
+%%\begin{minted}[mathescape=true,escapeinside=||,tabsize=4
+%%	%,fontsize=\footnotesize,
+%%	]{c}
+%%	echo "pommes" |>{}>| fruits.txt
+%%\end{minted}
+%\end{frame}
 
-All previous parts show how the graph is constructed locally.
 
-TODO: EXPLAIN HOW TO PUSH/PULL BETWEEN DIFFERENT REPOSITORIES.
-MERGING, KEEPING UP TO DATE, ORIGIN/MASTER TAG.
-
-This should describe how the "distributed" part of Git Works.
-
-%\begin{minted}[mathescape=true,escapeinside=||,tabsize=4
-%	%,fontsize=\footnotesize,
-%	]{bash}
-%	echo "pommes" |>{}>| fruits.txt
-%\end{minted}
+\begin{frame}{Partager : dépôts distants}
+\begin{adjustwidth}{-0.75cm}{0cm}{}
+\vspace{-1em}
+	\begin{center}
+		\only<1>{{\includegraphics[scale=0.44]{images/remote_origin.pdf}}}
+	\end{center}
+\end{adjustwidth}
 \end{frame}
-
 
 
 
@@ -971,7 +1003,7 @@ This should describe how the "distributed" part of Git Works.
 
 \vspace{-1em}
 \color{gray}\rule{\linewidth}{2pt}
-
+\pause
 \begin{adjustwidth}{-2cm}{-1cm}{}
 	\begin{columns}[T] % align columns
 		\begin{column}{.5\textwidth}
@@ -1006,7 +1038,7 @@ Premier commit \\ \small(dépôt centrale doit être créé et vide)
 \begin{adjustwidth}{-1em}{0cm}{}
 \begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,linenos,breaklines,
 numbersep=5pt,
-]{bash}
+]{c}
 git init .
 git add .
 git commit -m "first commit"
@@ -1047,7 +1079,7 @@ git push -u origin master
 		\color{black}
 		\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,linenos,
 		numbersep=5pt,
-		]{bash}
+		]{c}
 git clone https://github.com/rudametw/Learning-Git-Test-Repo.git
 cd Learning-Git-Test-Repo/
 git remote -v //permet de vérifier les addresses
@@ -1167,7 +1199,7 @@ Les merges
 \color{black}
 \begin{minted}[tabsize=4,fontsize=\footnotesize,linenos,breaklines,
 numbersep=5pt,
-]{bash}
+]{c}
 git branch merge_fruits
 git checkout merge_fruits
 git merge ananas
@@ -1182,7 +1214,7 @@ Sorties console
 \vspace{-1em}
 \begin{minted}[tabsize=4,fontsize=\footnotesize,breaklines,
 bgcolor=mintedbackground,
-]{bash}
+]{c}
 Updating 760cf0e..1711864
 Fast-forward
 fruits.txt | 1 +
@@ -1216,7 +1248,7 @@ git merge kaki
 	\vspace{-0.2em}
 	\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,breaklines,
 	bgcolor=mintedbackground,
-	]{bash}
+	]{c}
 Auto-merging fruits.txt
 CONFLICT (content): Merge conflict in fruits.txt
 Automatic merge failed; fix conflicts and then commit the result.
@@ -1229,7 +1261,7 @@ Automatic merge failed; fix conflicts and then commit the result.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{\texttt{diff} entre \texttt{kaki} et \texttt{ananas} avant de merger}
+\frametitle{\texttt{diff} entre \texttt{ananas} et \texttt{kaki} avant de merger}
 %\begin{block}{Représentation par pointeurs}%Parcours postfixé ou \texttt{GRD}}
 \begin{adjustwidth}{-0.8cm}{-0.8cm}{}
 	\begin{figure}
@@ -1257,7 +1289,7 @@ Automatic merge failed; fix conflicts and then commit the result.
 			\color{black}
 			\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,linenos,breaklines,
 			numbersep=5pt,
-			]{bash}
+			]{c}
 pomme
 banane
 *<{}<{}<{}<{}<{}<{}<* HEAD
@@ -1280,7 +1312,7 @@ poire
 %			\vspace{-1em}
 			\begin{minted}[tabsize=4,fontsize=\footnotesize,breaklines,linenos,
 %			bgcolor=mintedbackground,
-			]{bash}
+			]{c}
 pomme
 banane
 ananas
@@ -1294,7 +1326,7 @@ Résolution du conflit
 %\vspace{-1.2em}			
 			\begin{minted}[tabsize=4,fontsize=\footnotesize,breaklines,linenos,
 %			bgcolor=mintedbackground,
-			]{bash}
+			]{c}
 git add fruits.txt
 git status
 git commit -m "Merge branch 'kaki' into merge_fruits"

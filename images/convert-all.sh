@@ -3,3 +3,13 @@ inkscape -A file_share_many.pdf file_share_many.svg
 inkscape -A file_versions.pdf file_versions.svg
 inkscape -A services.pdf services.svg
 inkscape -A gestion_versions.pdf gestion_versions.svg
+inkscape -A workflow_all.pdf  workflow_all.svg
+inkscape -A workflow1.pdf  workflow1.svg
+inkscape -A workflow2.pdf  workflow2.svg
+inkscape -A workflow3.pdf  workflow3.svg
+inkscape -A workflow4.pdf  workflow4.svg
+inkscape -A workflow5.pdf  workflow5.svg
+inkscape -A workflow6.pdf  workflow6.svg
+inkscape -A workflow7.pdf  workflow7.svg
+inkscape -A workflow8.pdf  workflow8.svg
+inkscape -A remote_origin.pdf remote_origin.svg

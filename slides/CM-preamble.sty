@@ -40,51 +40,60 @@ Polytech Lille\\
 %Array image stuff and  lists!!!
 %https://tex.stackexchange.com/questions/86766/array-of-linked-lists-like-in-data-structure
 \usetikzlibrary{positioning}
-\tikzset{
-	node/.style = { 
-		draw, 
-		fill=orange!40, 
-		minimum height=6mm, 
-		minimum width=6mm,
-		node distance=8mm
-	},
-	bignode/.style = { 
-		draw, 
-		fill=orange!40, 
-		minimum height=8mm, 
-		minimum width=8mm,
-		node distance=12mm
-	},
-	link/.style = {
-		-stealth,
-		shorten >=1pt
-		,line width = 0.28mm
-	},
-	array element/.style = {
-		draw, fill=white,
-		minimum width = 8mm,
-		minimum height = 8mm
-	}
-}
-\def\ArrayList#1{%
-	\foreach \element in \list {
-		\node[node, right = of aux, name=\element] {\element};
-		\draw[link] (aux) -- (\element);
-		\coordinate (aux) at (\element.east);
-	} 
-}
-\def\LinkedList#1{%
-	\foreach \element in \list {
-		\node[bignode, right = of aux, name=\element] {\element};
-		\node[bignode, name=aux2, anchor=west] at ([xshift=-.4pt] \element.east) {};
-		\draw[link] (aux) -- (\element);
-		\coordinate (aux) at (aux2);
-	}
-%	\fill (aux) circle(2pt);
-%	\draw (aux) circle(1cm);
-	\draw[line width = 0.28mm] ($ (aux) + (0.4,0.4) $) -- ($ (aux) + (-0.4,-0.4) $);
-}
+%\tikzset{
+%	node/.style = { 
+%		draw, 
+%		fill=orange!40, 
+%		minimum height=6mm, 
+%		minimum width=6mm,
+%		node distance=8mm
+%	},
+%	bignode/.style = { 
+%		draw, 
+%		fill=orange!40, 
+%		minimum height=8mm, 
+%		minimum width=8mm,
+%		node distance=12mm
+%	},
+%	link/.style = {
+%		-stealth,
+%		shorten >=1pt
+%		,line width = 0.28mm
+%	},
+%	array element/.style = {
+%		draw, fill=white,
+%		minimum width = 8mm,
+%		minimum height = 8mm
+%	}
+%}
+%\def\ArrayList#1{%
+%	\foreach \element in \list {
+%		\node[node, right = of aux, name=\element] {\element};
+%		\draw[link] (aux) -- (\element);
+%		\coordinate (aux) at (\element.east);
+%	} 
+%}
+%\def\LinkedList#1{%
+%	\foreach \element in \list {
+%		\node[bignode, right = of aux, name=\element] {\element};
+%		\node[bignode, name=aux2, anchor=west] at ([xshift=-.4pt] \element.east) {};
+%		\draw[link] (aux) -- (\element);
+%		\coordinate (aux) at (aux2);
+%	}
+%%	\fill (aux) circle(2pt);
+%%	\draw (aux) circle(1cm);
+%	\draw[line width = 0.28mm] ($ (aux) + (0.4,0.4) $) -- ($ (aux) + (-0.4,-0.4) $);
+%}
+%
+%\newcommand{\floatarrow}[2]{
+%	\begin{tikzpicture}[remember picture,overlay]
+%	\node[xshift={#1}cm,yshift={#2}cm] at (current page.north east) {xxx};
+%	\end{tikzpicture}
+%%	This is the Wikibook about LaTeX
+%%	supported by {#1} and {#2}!
+%}
 
+%\newcommand{\add}[2]{\textit{#1} {`#2'}}
 
 \usepackage{mathabx}
 % Now paste your code from the preamble here
