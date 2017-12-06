@@ -14,8 +14,8 @@
    viewBox="0 0 233.99498 205.21349"
    version="1.1"
    id="svg4846"
-   sodipodi:docname="file_copies_colored.svg"
-   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+   sodipodi:docname="file_share.svg"
+   inkscape:version="0.91 r13725">
   <defs
      id="defs4840">
     <marker
@@ -242,17 +242,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35355339"
-     inkscape:cx="469.88533"
+     inkscape:zoom="0.50373353"
+     inkscape:cx="287.40179"
      inkscape:cy="536.09323"
      inkscape:document-units="mm"
      inkscape:current-layer="XMLID_1574_"
      showgrid="false"
-     inkscape:window-width="1280"
-     inkscape:window-height="998"
-     inkscape:window-x="634"
-     inkscape:window-y="0"
-     inkscape:window-maximized="0"
+     inkscape:window-width="1615"
+     inkscape:window-height="1026"
+     inkscape:window-x="65"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
@@ -271,7 +271,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -366,7 +366,7 @@
                y="277.43707"
                x="102.97566"
                id="tspan5679"
-               sodipodi:role="line"></tspan></text>
+               sodipodi:role="line" /></text>
           <text
              id="text5685"
              y="273.08176"
@@ -471,7 +471,7 @@
                  y="277.43707"
                  x="102.97566"
                  id="tspan5858"
-                 sodipodi:role="line"></tspan></text>
+                 sodipodi:role="line" /></text>
             <text
                id="text5866"
                y="273.08176"
@@ -572,7 +572,7 @@
                  id="tspan5892"
                  x="102.97566"
                  y="277.43707"
-                 style="fill:#4d4d4d;stroke-width:0.34582758px"></tspan></text>
+                 style="fill:#4d4d4d;stroke-width:0.34582758px" /></text>
             <text
                xml:space="preserve"
                style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:4.23333311px;font-family:Caladea;-inkscape-font-specification:Caladea;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-width:0.34582758px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -673,7 +673,7 @@
                  y="277.43707"
                  x="102.97566"
                  id="tspan5926"
-                 sodipodi:role="line"></tspan></text>
+                 sodipodi:role="line" /></text>
             <text
                id="text5934"
                y="273.08176"
@@ -779,7 +779,7 @@
                  id="tspan5960"
                  x="102.97566"
                  y="277.43707"
-                 style="fill:#4d4d4d;stroke-width:0.34582758px"></tspan></text>
+                 style="fill:#4d4d4d;stroke-width:0.34582758px" /></text>
             <text
                xml:space="preserve"
                style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:4.23333311px;font-family:Caladea;-inkscape-font-specification:Caladea;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-width:0.34582758px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -880,7 +880,7 @@
                  y="277.43707"
                  x="102.97566"
                  id="tspan5994"
-                 sodipodi:role="line"></tspan></text>
+                 sodipodi:role="line" /></text>
             <text
                id="text6002"
                y="273.08176"
@@ -981,7 +981,7 @@
                  id="tspan6028"
                  x="102.97566"
                  y="277.43707"
-                 style="fill:#4d4d4d;stroke-width:0.34582758px"></tspan></text>
+                 style="fill:#4d4d4d;stroke-width:0.34582758px" /></text>
             <text
                xml:space="preserve"
                style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:4.23333311px;font-family:Caladea;-inkscape-font-specification:Caladea;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-width:0.34582758px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -1083,7 +1083,7 @@
                id="tspan6270"
                x="102.97566"
                y="277.43707"
-               style="fill:#4d4d4d;stroke-width:0.34582758px"></tspan></text>
+               style="fill:#4d4d4d;stroke-width:0.34582758px" /></text>
           <text
              xml:space="preserve"
              style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:4.23333311px;font-family:Caladea;-inkscape-font-specification:Caladea;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-width:0.34582758px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -1112,12 +1112,12 @@
            x="1824.8668"
            y="-1840.8438"
            style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:99.41151428px;line-height:63.90740204px;font-family:'Droid Serif';-inkscape-font-specification:'Droid Serif';text-align:center;text-anchor:middle;fill:#4d4d4d;fill-opacity:1;stroke-width:3.4804635px"
-           id="tspan6276-9">Comment intèrer</tspan><tspan
+           id="tspan6276-9">Comment intègrer</tspan><tspan
            sodipodi:role="line"
            x="1824.8668"
-           y="-1773.3885"
+           y="-1776.9364"
            style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:99.41151428px;line-height:63.90740204px;font-family:'Droid Serif';-inkscape-font-specification:'Droid Serif';text-align:center;text-anchor:middle;fill:#4d4d4d;fill-opacity:1;stroke-width:3.4804635px"
-           id="tspan6307">toutes les changements ?</tspan></text>
+           id="tspan6307">tous les changements ?</tspan></text>
       <path
          style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:19.73176193;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutM)"
          d="m 898.69345,123.85072 c 0,-137.591885 0,-137.591885 0,-137.591885"
