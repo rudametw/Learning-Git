@@ -181,7 +181,7 @@
 	\end{adjustwidth}	
 	\end{block}
 	\PAUSE
-	\begin{block}{\color{red} À NE PAS METTRE}
+	\begin{block}{\color{red} À NE PAS mettre}
     \begin{adjustwidth}{-0.5cm}{}
 	\begin{itemize}
 		\item Les fichiers générés
@@ -228,6 +228,7 @@
 \vspace{-1em}
 	\begin{center}
 		\setcounter{numSlide}{1}
+%		\newcounter{xxccdSlide}
 		\ifANIMATE
 			\only<\value{numSlide}>{{\includegraphics[scale=0.44]{images/workflow1.pdf}}}\stepcounter{numSlide}
 			\only<\value{numSlide}>{{\includegraphics[scale=0.44]{images/workflow2.pdf}}}\stepcounter{numSlide}
@@ -461,7 +462,7 @@
 
 %%%%%%%%%%% ANIMATION Branch 1
 \begin{frame}[fragile]
-\frametitle{Le Graphe : Branche \texttt{legumes}}
+\frametitle{Le Graphe: Branches 1}
 
 \setcounter{numSlide}{0}
 
@@ -658,14 +659,8 @@
 
 %%%%%%%%%%% ANIMATION Branch 2
 \begin{frame}[fragile]
-\frametitle{Le Graphe : Branche \texttt{master}}
-
-\setcounter{numSlide}{0}
-
-\ifANIMATE
-	\stepcounter{numSlide}
-	\only<\value{numSlide}>{
-%	\only<1>{
+\frametitle{Le Graphe : Branches 2}
+\only<1>{
 	\begin{figure}
 		\begin{subfigure}[h]{\textwidth}
 			%\centering
@@ -693,16 +688,9 @@
 			\subcaption{Travaillons sur \texttt{master}}
 		\end{subfigure}
 	\end{figure}
-	}
-\fi
+}
 
-\stepcounter{numSlide}
-\only<\value{numSlide}%
-\ifANIMATE
-	-\the\numexpr\value{numSlide}+1
-\fi%
->{
-%\only<2-3>{
+\only<2-3>{
 	\begin{figure}
 		\begin{subfigure}[h]{\textwidth}
 			%\centering
@@ -728,24 +716,13 @@
 			
 			\end{tikzpicture}
 			\subcaption{Travaillons sur \texttt{master}}
-			%\only<2>{
-			\only<\the\numexpr\value{numSlide}>{$\Rightarrow$ \texttt{legumes.txt} n'existe plus dans la Copie de Travail (\textit{Working Directory})}
+			\only<2>{$\Rightarrow$ \texttt{legumes.txt} n'existe plus dans la Copie de Travail (\textit{Working Directory})}
 			\vspace{0.33em}
 		\end{subfigure}
 	\end{figure}
 }
 
-\stepcounter{numSlide}
-\ifANIMATE
-	\stepcounter{numSlide}
-\fi
-
-\only<\value{numSlide}
-%\ifANIMATE
-%	-\the\numexpr\value{numSlide}+1
-%\fi
->{
-%\only<4>{
+\only<4>{
 	\begin{figure}
 		\begin{subfigure}[h]{\textwidth}
 			%\centering
@@ -776,35 +753,34 @@
 	\end{figure}
 }
 
+%\vspace{-0.5cm}
+%\only<2-3>{
+%\begin{block}{Sur le terminal \ldots}
+%\pause[2]
+%\vspace{-0.2cm}
 \vspace{0.4cm} \begin{center} \noindent\makebox[\linewidth]{\line(2,0){500}} \end{center} \vspace{-0.4cm}
 \begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{c}
 	git checkout master
 \end{minted}
 
-\ifANIMATE
-	\only<1>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=2.6cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
-	\only<2>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=2cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
-\fi
-\pause
-\PAUSE
+\only<1>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=2.6cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+\only<2>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=2cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+\pause[3]
 \begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{c}
 	echo poire |>{}>| fruits.txt ; git add fruits.txt
 	git commit -m "Ajouté poire à fruits.txt"
 		|$\Rightarrow$| ID = 21721
 \end{minted}
-
-\ifANIMATE
-	\only<3>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=1.9cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
-	\only<4->{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=0.6cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
-\fi
+\only<3>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=1.9cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+\only<4->{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=0.6cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
 \end{frame}
 %%%%%%%%%%% End ANIMATION Branch 2
 
 
 %%%%%%%%%%% ANIMATION Merge 1
 \begin{frame}[fragile]
-\frametitle{Le Graphe : Merge \texttt{master}\Rightarrow\texttt{legumes}}
-\only<1>{
+\frametitle{Le Graphe : Merge 1}
+\only<1-2>{
 	\begin{figure}
 		\begin{subfigure}[h]{\textwidth}
 			%\centering
@@ -835,7 +811,7 @@
 	\end{figure}
 }
 
-\only<2>{
+\only<3>{
 	\begin{figure}
 		\begin{subfigure}[h]{\textwidth}
 			%\centering
@@ -866,7 +842,8 @@
 	\end{figure}
 }
 
-\vspace{-0.5cm}
+
+%\vspace{-0.5cm}
 %\only<2-3>{
 %\begin{block}{Sur le terminal \ldots}
 %\pause[2]
@@ -876,25 +853,25 @@
 	git checkout legumes
 \end{minted}
 
-%\only<1>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=1.7cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
-%\pause
+\only<1>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=1.7cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
 
+\pause[2]
 \begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{c}
 	git diff master
 \end{minted}
 
-\only<1>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=1.1cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+\only<2>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=1.1cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
 
-\pause
+\pause[3]
 \begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{c}
 	git merge master
 \end{minted}
-\only<2>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=0.5cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+\only<3>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=0.5cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
 \end{frame}
 %%%%%%%%%%% End ANIMATION Merge 1
 
 \begin{frame}[fragile]
-\frametitle{Merge : Vue dans la console}
+\frametitle{Merge 1 : Vue dans la console}
 %\begin{block}{Représentation par pointeurs}%Parcours postfixé ou \texttt{GRD}}
 \begin{adjustwidth}{-1cm}{-0.8cm}{}
 	\begin{center}
@@ -911,7 +888,7 @@
 
 %%%%%%%%%%% ANIMATION Merge 2
 \begin{frame}[fragile]
-\frametitle{Le Graphe : Merge \texttt{legumes}\Rightarrow \texttt{master}}
+\frametitle{Le Graphe : Merge 2}
 \only<1>{
 	\begin{figure}
 		\begin{subfigure}[h]{\textwidth}
@@ -1056,10 +1033,47 @@
 \end{frame}
 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Git distribué : Développements distribués}
+
+\begin{figure}
+%	\hfill
+	\centering
+	\includegraphics[scale=0.3]{images/centralized_workflow-trim.png}\\
+	\small Centralized
+\end{figure}
+
+\vspace{-1em}
+\color{gray}\rule{\linewidth}{2pt}
+\pause
+\begin{adjustwidth}{-2cm}{-1cm}{}
+	\begin{columns}[T] % align columns
+		\begin{column}{.5\textwidth}
+			\begin{figure}
+%				\hfill
+				\includegraphics[scale=0.22]{images/integration-manager-trim.png}
+				\small {Integration manager}
+			\end{figure}
+		\end{column}%
+%		\hfill%
+		\begin{column}{.6\textwidth}
+			\vspace{-0.35em}
+			\begin{figure}
+				\hfill%
+				\includegraphics[scale=0.23]{images/benevolent-dictator-trim.png}
+				Benevolent Dictator
+			\end{figure}
+		\end{column}%
+	\end{columns}
+\end{adjustwidth}
+\end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile]
-%\frametitle{Git distribué : Gestion Centralisée}
-\frametitle{Dépôt Centralisée : initialisation}
+\frametitle{Git distribué : Gestion Centralisée}
 \begin{adjustwidth}{-2em}{0cm}{}
 \color{darkgreen}%\rule{\linewidth}{4pt}
 \noindent
@@ -1069,7 +1083,7 @@ Premier commit \\ \small(dépôt central doit être créé et vide)
 \begin{adjustwidth}{-1em}{0cm}{}
 \begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,linenos,breaklines,
 numbersep=5pt,
-]{bash}
+]{c}
 git init .
 git add .
 git commit -m "first commit"
@@ -1099,7 +1113,7 @@ git push -u origin master
 		\end{column}%
 	\end{columns}
 	\vspace{-1em}
-	\PAUSE
+	\pause
 	\color{darkgray}\rule{\linewidth}{2pt}
 %	\begin{columns}[T] % align columns
 %	\begin{column}{.5\textwidth}
@@ -1110,7 +1124,7 @@ git push -u origin master
 		\color{black}
 		\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,linenos,
 		numbersep=5pt,
-		]{bash}
+		]{c}
 git clone https://github.com/rudametw/Learning-Git-Test-Repo.git
 cd Learning-Git-Test-Repo/
 git remote -v //permet de vérifier les addresses
@@ -1124,39 +1138,28 @@ git remote -v //permet de vérifier les addresses
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}[fragile]
-%\frametitle{Git distribué : Gestion Centralisée}
-\frametitle{Dépôt Centralisée : travail}
+\frametitle{Git distribué : Gestion Centralisée}
 \begin{adjustwidth}{-1em}{0cm}{}
 \vspace{-2.3em}
 \color{darkgreen}%\rule{\linewidth}{4pt}
-Chacun travaille sur une branche \texttt{fonctX}. Une fois la fonctionnalité fini, on merge \texttt{foncX} dans \texttt{master}.\\
+Chacun travaille sur une branche et merge \texttt{master} dans sa branche régulièrement. Il faut tester régulièrement, et pour finir on merge sa branche vers \texttt{master} pour partager.\\
 \color{black}
 \vspace{-1em}
-\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,breaklines,
+\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,linenos,breaklines,
 numbersep=5pt,
 ]{c}
 git pull ; git status //update & check work
 git branch fonctionalitéX
 git checkout fonctionalitéX
-\end{minted}
-
-\texttt{while (je travaille = vrai) $\{$}
-\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,breaklines,numbersep=5pt,]{c}
-	git status ; git diff ;
+//while (je travaille = vrai) {
+	git status
 	git add XXX
-	git commit XXX}
-\end{minted}
-\texttt{$\}$}
-\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,breaklines,
-numbersep=5pt,
-]{c}
-git pull --all
+	git commit XXX
+//}
+git pull
 git merge master
 //gérér conflits s'il y en a
-\end{minted}
-\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,breaklines,
-numbersep=5pt,
-]{c}
+
 //tester que tout marche
 git checkout master
 git merge fonctionalitéX
@@ -1232,8 +1235,6 @@ git commit -m "+kaki -orange"
 \color{black}
 \vspace{-0.82em}
 
-\PAUSE
-
 \begin{adjustwidth}{0.4cm}{-1cm}{}
 	\vspace{-0.48em}
 	\begin{columns}[T] % align columns
@@ -1244,7 +1245,8 @@ Les merges
 \begin{minted}[tabsize=4,fontsize=\footnotesize,linenos,breaklines,
 numbersep=5pt,
 ]{c}
-git checkout master
+git branch merge_fruits
+git checkout merge_fruits
 git merge ananas
 \end{minted}
 \end{column}%
@@ -1274,7 +1276,7 @@ fruits.txt | 1 +
 		\color{darkgreen}%\rule{\linewidth}{4pt}
 %		Deuxième merge
 		\color{black}
-		\begin{minted}[tabsize=4,fontsize=\footnotesize,linenos,breaklines,firstnumber=3,
+		\begin{minted}[tabsize=4,fontsize=\footnotesize,linenos,breaklines,firstnumber=4,
 		numbersep=5pt,
 		]{text}
 git merge kaki
@@ -1348,7 +1350,6 @@ poire
 %		\hspace{-2.7cm}
 		\end{column}%
 %		\hfill%
-\PAUSE
 		\begin{column}{.5\textwidth}
 			\color{darkgreen}%\rule{\linewidth}{4pt}
 			Solution \textit{(édité à la main)}
@@ -1363,8 +1364,6 @@ ananas
 kaki
 poire
 			\end{minted}
-\PAUSE
-
 \color{gray}\rule{\linewidth}{3pt}
 \color{darkgreen}%\rule{\linewidth}{4pt}
 Résolution du conflit
@@ -1375,7 +1374,7 @@ Résolution du conflit
 			]{c}
 git add fruits.txt
 git status
-git commit -m "Merge branch 'kaki' into master"
+git commit -m "Merge branch 'kaki' into merge_fruits"
 git pull
 git push
 			\end{minted}
@@ -1384,44 +1383,6 @@ git push
 \end{adjustwidth}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}
-\frametitle{Git distribué : Développements distribués}
-
-\begin{figure}
-%	\hfill
-	\centering
-	\includegraphics[scale=0.3]{images/centralized_workflow-trim.png}\\
-	\small Centralized
-\end{figure}
-
-\vspace{-1em}
-\color{gray}\rule{\linewidth}{2pt}
-\PAUSE
-\begin{adjustwidth}{-2cm}{-1cm}{}
-	\begin{columns}[T] % align columns
-		\begin{column}{.5\textwidth}
-			\begin{figure}
-%				\hfill
-				\includegraphics[scale=0.22]{images/integration-manager-trim.png}
-				\small {Integration manager}
-			\end{figure}
-		\end{column}%
-%		\hfill%
-		\begin{column}{.6\textwidth}
-			\vspace{-0.35em}
-			\begin{figure}
-				\hfill%
-				\includegraphics[scale=0.23]{images/benevolent-dictator-trim.png}
-				Benevolent Dictator
-			\end{figure}
-		\end{column}%
-	\end{columns}
-\end{adjustwidth}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 
 \begin{frame}
