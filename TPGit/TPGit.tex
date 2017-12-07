@@ -3,7 +3,8 @@
 %\documentclass[final, pdftex, a4paper, 12pt, openbib, ]{article}
 \documentclass[final, a4paper, openbib, ]{article}
 \usepackage[utf8]{inputenc}
-\usepackage[francais]{babel}
+\usepackage[french]{babel}
+%\usepackage{fontspec}
 %\usepackage{lmodern}
 \usepackage[T1]{fontenc}
 %\usepackage{graphicx}
@@ -21,7 +22,7 @@ final,                      % if you do    want to have clickable-colorful links
 pdfstartview = FitV,
 linktocpage  = false,       % ToC, LoF, LoT place hyperlink on page number, rather than entry text
 breaklinks   = true,        % so long urls are correctly broken across lines
-% pagebackref  = false,     % add page number in bibliography and link to position in document where cited
+pagebackref  = false,     % add page number in bibliography and link to position in document where cited
 ]{hyperref}
 \usepackage{mathtools}
 \geometry{a4paper, portrait, margin=2cm}
@@ -35,7 +36,7 @@ breaklinks   = true,        % so long urls are correctly broken across lines
 %\usepackage{eulervm} % only changes math fonts, i checked
 %\usepackage[ttdefault=true]{AnonymousPro} %Only changes tt fonts
 % WHICH ONE TO CHOOSE?
-\usepackage{pslatex}
+%\usepackage{pslatex}
 %\usepackage[ttdefault=true]{AnonymousPro} %Only changes tt fonts
 % \usepackage[varg, cmintegrals, cmbraces, ]{newtxtext,newtxmath} % libertine, uprightGreek (U.S.) or slantedGreek (ISO), 
 % \usepackage{tgtermes}
@@ -95,7 +96,7 @@ breaklinks   = true,        % so long urls are correctly broken across lines
 			>{\columncolor{warningbackground}}c
 			>{\columncolor{warningbackground}}X}
 		\raisebox{\dimexpr2\baselineskip-\height}
-		{\includegraphics[scale=0.8]{\images/information.pdf}}&
+		{\includegraphics[scale=0.8]{\images/Information.pdf}}&
 		\raisebox{\tabcolsep}{\strut}#1\raisebox{-\tabcolsep}{\strut}
 	\end{tabularx}
 }
@@ -108,12 +109,22 @@ breaklinks   = true,        % so long urls are correctly broken across lines
 %\definecolor{infoborder}{RGB}{188,232,241}
 
 \definecolor{infobackground}{RGB}{217,237,247}
-\definecolor{infoforeground}{RGB}{30,50,70}
+\definecolor{infofrancaisforeground}{RGB}{30,50,70}
 \definecolor{infoborder}{RGB}{30,50,70}
 
 \definecolor{infobackground}{RGB}{217,237,247}
 \definecolor{infoforeground}{RGB}{30, 80, 150}
 \definecolor{infoborder}{RGB}{47, 87, 232}
+
+% ORANGE
+\definecolor{infobackground2}{RGB}{255,210,180}
+\definecolor{infoforeground2}{RGB}{212, 50, 0}
+\definecolor{infoborder2}{RGB}{255, 90, 20}
+
+% GREEN
+\definecolor{infobackground3}{RGB}{223,251,223}
+\definecolor{infoforeground3}{RGB}{25, 150, 25}
+\definecolor{infoborder3}{RGB}{55, 220, 55}
 
 
 \usepackage{environ}
@@ -133,7 +144,7 @@ breaklinks   = true,        % so long urls are correctly broken across lines
 				\centering\tikz[scale=3]
 				\node[scale=1]
 				{
-					\includegraphics[scale=0.25]{\images/information.pdf}
+					\includegraphics[scale=0.25]{\images/Information.pdf}
 				};
 				\end{minipage}%
 				\begin{minipage}{.86\textwidth}
@@ -149,6 +160,65 @@ breaklinks   = true,        % so long urls are correctly broken across lines
 	\end{center}
 }
 
+
+\NewEnviron{alertinfo2}[1]
+{
+\begin{center}
+    \begin{tikzpicture}
+    \node[inner sep=0pt,
+          draw=infoborder2,
+          line width=1pt,
+          fill=infobackground2] (box) {\parbox[t]{0.99\textwidth}
+        {%
+            \begin{minipage}{.12\textwidth}
+                \centering\tikz[scale=3]
+                \node[scale=1]
+                {
+                    \includegraphics[scale=0.25]{\images/Information_orange.pdf}
+                };
+            \end{minipage}%
+           \begin{minipage}{.86\textwidth}
+                \vskip 10pt
+                \textbf{\textcolor{infoforeground2}{\large #1}}\par\smallskip
+                \textcolor{infoforeground2}{\large \BODY}
+                \par\smallskip
+                \par\smallskip
+            \end{minipage}\hfill
+        }%
+    };
+    \end{tikzpicture}
+\end{center}
+}
+
+
+\NewEnviron{alertinfo3}[1]
+{
+\begin{center}
+    \begin{tikzpicture}
+    \node[inner sep=0pt,
+          draw=infoborder3,
+          line width=1pt,
+          fill=infobackground3] (box) {\parbox[t]{0.99\textwidth}
+        {%
+            \begin{minipage}{.12\textwidth}
+                \centering\tikz[scale=3]
+                \node[scale=1]
+                {
+                    \includegraphics[scale=0.25]{\images/Information_green.pdf}
+                };
+            \end{minipage}%
+           \begin{minipage}{.86\textwidth}
+                \vskip 10pt
+                \textbf{\textcolor{infoforeground3}{\large #1}}\par\smallskip
+                \textcolor{infoforeground3}{\large \BODY}
+                \par\smallskip
+                \par\smallskip
+            \end{minipage}\hfill
+        }%
+    };
+    \end{tikzpicture}
+\end{center}
+}
 
 \usepackage{titling}
 
@@ -197,7 +267,7 @@ breaklinks   = true,        % so long urls are correctly broken across lines
 }
 \author{\huge \textbf{Introduction à} \\  \Huge\textbf{\texttt{git}}}
 \setlength{\parindent}{0pt}
-\pagestyle{empty}
+%\pagestyle{empty}
 \date{\Large \url{https://rudametw.github.io/teaching/} \\ Polytech Lille}
 
 %\author{Walter Rudametkin}
@@ -209,7 +279,7 @@ breaklinks   = true,        % so long urls are correctly broken across lines
 
 \begin{document}
 %\vspace{-15cm}
-\vspace{-3cm}
+\vspace{-4.5cm}
 \posttitle{\par\end{center}}
 \setlength{\droptitle}{-45pt}
 \maketitle
@@ -219,7 +289,7 @@ breaklinks   = true,        % so long urls are correctly broken across lines
 
 \begin{itemize}
 \item Apprendre à se servir d'un Logiciel de Gestion de Version.
-\item Matrisez le versionnement d'un projet logiciel.
+\item Maitrisez le versionnement d'un projet logiciel.
 \item Partager un projet et travailler en équipe.
 \end{itemize}
 
@@ -229,15 +299,32 @@ Il est fortement conseiller de travailler exclusivement sur terminal pour ce TP.
 %Nous vous proposerons régulièrement d'exécuter des commandes dans un terminal 
 \end{alertinfo}
 
-\paragraph{Contexte et préparation : } 
+%\paragraph{Contexte et préparation : } 
+\section{Contexte et préparation } 
+
+\subsection{Configuration de \texttt{bash}}
+
+\paragraph{\texttt{.bashrc} et \texttt{gitprompt.sh}}
+Pour commencer ce TP, nous vous fournissons une configuration plus avancé pour \texttt{bash} (l'interpréteur en ligne de commande utilisé par défaut).
+Vous pouvez lancer, une seule fois par compte, la commande suivante qui aura pour objectif de mettre à jour votre fichier \texttt{~/.bashrc} et d'installer \texttt{gitprompt.sh} sur vos comptes.
+\begin{minted}[mathescape=true,escapeinside=||,tabsize=4
+%	,fontsize=\footnotesize,
+]{bash}
+	~wrudamet/public/set_bashrc.sh
+\end{minted}
+
+Pour les curieux, vous pouvez regarder vos fichiers \mintinline{bash}{~/.bashrc}, \mintinline{bash}{~/.bashrc-students} et \mintinline{bash}{~/git-prompt.sh} pour comprendre ce qui a été ajouté.
+
+
+\paragraph{Terminals}
 %\WR{Copier le fichier XXX.aide pour récupèrer quelques commandes. }
-Nous vous proposons de travailler sur plusieurs terminals ouverts simultanément, une disposition possible est indiqué dans la figure~\ref{terminals} mais vous pouvez changer les terminaux à votre confort tout au longue du TP.
-	\begin{figure}[h]
-		\centering
-		{\includegraphics[scale=0.6]{images/terminals.pdf}}
-		\caption{Figure 1: Disposition des terminals proposée.}
-		\label{terminals}
-	\end{figure}
+Nous vous proposons de travailler sur plusieurs terminals ouverts simultanément, une disposition possible est indiqué dans la figure~\ref{terminals} mais vous pouvez les ranger à votre convenance tout au longue du TP.
+\begin{figure}[h]
+	\centering
+	{\includegraphics[scale=0.5]{images/terminals.pdf}}
+	\caption{Figure 1: Disposition des terminals proposée.}
+	\label{terminals}
+\end{figure}
 
 Cette disposition vous permettra d'exécuter vos commandes \texttt{git} dans le terminal \texttt{T1}, tout en vous permettant d'exécuter des commandes de suivi dans les terminaux \texttt{T2} et \texttt{T3}.~\ref{terminals}\\
 
@@ -257,32 +344,131 @@ Ensuite, dans le terminal \texttt{T3} exécutez :
 	watch 'cat .gitconfig'
 \end{minted}
 
+C'est normal que ces commandes affichent des erreurs car nous n'avons pas encore crée le répertoire \texttt{tpgit} ni le fichier \texttt{.gitconfig}.
 
-%\input{markdown.tex}
 
-%\paragraph{Avant de commencer}
-%\begin{itemize}
-%	\item Créer un répertoire TP2 dans votre répertoire de PA et y copier les fichiers \texttt{entiers.txt}, \texttt{annu.txt} et votre \texttt{.c} du TP précédent (renommez ce dernier en \texttt{tp2.c}).
-%	\item Récupérer sur le compte de Walter Rudametkin, les fichiers \texttt{moyenne\_fichier.c} et \texttt{ldc.c} présents à l'adresse : \url{~wrudamet/public/IMA3/TP2/}
-%\end{itemize}
+\subsection{Configuration de votre compte \texttt{git}}
 
-\section{Initialisation de votre compte \texttt{git}}
-
-Il est important de savoir qui a fait quoi. \texttt{git} a besoin d'une configuration pour votre.
-
-Pour identifier vos futurs commits, tapez les commandes suivantes:
+Il est important de savoir qui a fait quoi. \texttt{git} a besoin d'une configuration pour identifier vos futurs commits, et vous pouvez également spécifier certaines comportements.
+Les commandes suivantes vont modifier votre fichier \texttt{.gitconfig}, tapez les en regardent les changements dans le terminal \texttt{T3}:
 
 \begin{minted}[mathescape=true,escapeinside=||,tabsize=4
 %	,fontsize=\footnotesize,
 ]{bash}
 	git config --global user.name "votre nom"
-	git config --global user.email nom.prenom@univ-lille1.fr
+	git config --global user.email nom.prenom@polytech-lille.net
 	git config --global core.editor kate
 	git config --global push.default simple
 \end{minted}
 
+Si vous préférez un autre éditeur, vous pouvez l'utiliser à la place de \texttt{kate}.
+
+\begin{alertinfo}{Attention !}
+La configuration de \texttt{git} et de \texttt{bash} doit se faire une fois pour chaque compte.
+Votre binôme devra réaliser la même configuration sur son compte, et si vous comptez travailler sur un autre PC, il faudra récupérer votre fichier \texttt{.gitconfig} ou relancer les commandes de configuration.
+\end{alertinfo}
 
 \section{Initialisation d'un dépôt \texttt{git}}
+
+Nous allons travailler sur un projet qu'on appellera \texttt{tpgit}. En vous aidant des supports du cours (slide 13), vous devez :
+\begin{itemize}
+\item créer un répertoire \texttt{tpgit}
+\item initialiser dans ce répertoire, un dépôt git vide
+\item regarder les fichiers crées pour ce dépôt, elles seront affichés dans le terminal \texttt{T2}
+\item créer un fichier \texttt{fruits.txt}
+\item réaliser un commit en ajoutant 2 fruits à \texttt{fruits.txt}. Pour rappel, l'enchainement des commandes est : \mintinline{bash}{status, add, status, commit, status, log}.
+Lisez la sortie de chaque commande pour comprendre leur fonctionnement.
+\item réaliser 3 commits de plus en ajoutant à chaque fois des fruits.
+\end{itemize}
+
+\begin{alertinfo3}{Astuce !}
+Utilisez les commandes \texttt{git status}, \texttt{git diff \textit{nom\_fichier}} et \texttt{git log} pour comprendre l'état de votre dépôt. La commande \texttt{git log -}\texttt{-graph -}\texttt{-oneline -}\texttt{-decorate -}\texttt{-all} vous donne une historique détaillé avec toutes les branches, étiquettes et commits.
+Pour quoi ne pas la garder à la vu dans le terminal \texttt{T3} (l'éxécuter avec un \texttt{watch -d -n5 git log \ldots}) ?
+\end{alertinfo3}
+
+
+\section{Branches \texttt{git}}
+
+Branches \texttt{legumes}
+\begin{itemize}
+\item créer une branche \texttt{legumes}
+\item ajouter un fichier \texttt{legumes.txt} sur cette branche
+\item réaliser 3 commits différents en ajoutant des légumes à \texttt{legumes.txt}
+\item vérifier l'historique de vos commits à l'aide de \texttt{git log}.
+\end{itemize}
+
+Branches \texttt{sauces}
+\begin{itemize}
+\item créer une branche \texttt{sauces}
+\item ajouter un fichier \texttt{sauces.txt} sur cette branche
+\item réaliser 2 commits différents
+\item vérifier l'historique de vos commits et l'existence de \textbf{3 branches} (master, legumes, sauces) à l'aide de \texttt{git log}.
+\end{itemize}
+
+\section{Merges \texttt{git}}
+Vous avez décidé que vos commits dans les branches \texttt{legumes} et \texttt{sauces} sont pertinents, maintenant vous devez les intégrer dans \texttt{master}.
+\begin{itemize}
+\item allez sur la branche legumes
+\item vérifier l'état de votre espace de travail (e.g., l'inéxistance du fichier \texttt{sauces.txt})
+\item merger \texttt{master} dans \texttt{legumes}
+\item si tout va bien, mergez \texttt{legumes} dans \texttt{master}
+\item vérifier l'historique de vos commits et l'apparition de \texttt{legumes.txt} sur la branche \texttt{master}\\
+\end{itemize}
+
+Vous pouvez maintenant merger la branche \texttt{sauces} avec \texttt{master}.
+
+\section{Dépôt distant}
+
+Nous allons activer vos comptes sur le serveur GitLab de Polytech et créer un dépôt vide où vous allez pousser votre dépôt existant \texttt{tpgit}.
+GitLab vous permet de gérer votre projet et fourni plusieurs fonctionnalités intéressantes (e.g., issues, graphes, édition de fichiers).\\
+
+Vous devez :
+\begin{itemize}
+\item Vous connectez sur \url{https://archives.plil.fr/}
+\item Créer un projet sur le serveur GitLab de Polytech
+\item Pousser votre dépôt \texttt{tpgit} sur le GitLab
+\item Ajouter votre binôme aux membres de votre projet avec le niveau de droit Developer (il devra se connecter une première fois avant d'apparaitre dans la liste de membres)
+\end{itemize}
+
+\paragraph{Créer un dépôt sur GitLab et poussez \texttt{tpgit}}
+\begin{enumerate}
+\item Cliquer sur \textit{+New Projet} en haut pour créer un nouveau projet
+\item Donner un nom à votre projet et cliquer sur \textit{Create project}
+\item Vous êtes emmenés dans votre projet, qui est vide, avec les instructions des différentes formes d'initialisation.
+Lisez les propositions.
+Vous devez \textbf{impérativement changer l'url de \texttt{SSH} à \texttt{HTTPS}}
+\item Retrouvez les instructions \textit{Push an existing Git repository}. Vous allez copier et exécuter la commande :\\ \texttt{git remote add origin https://archives.plil.fr/<user>/<project.git>} avec le bon url\\ suivi de \texttt{git remote -v}, et \texttt{git push -u origin master}
+\item Rafraichissez la page de votre projet GitLab, votre projet \texttt{tpgit} doit s'y retrouver
+\item Naviguez votre projet pour voir l'historique de commits (\textit{Files, Commits, Network}).
+\end{enumerate}
+
+\begin{alertinfo2}{Attention !}
+Il y a deux protocoles réseau pour intéragir avec GitLab, HTTPS et SSH. Nous vous conseillons de travailler avec HTTPS dans un premier temps.
+Dans le futur vous pouvez choisir SSH mais il faudra configurer vos clés privés et publiques en suivant l'aide \url{https://archives.plil.fr/help/ssh/README}
+\end{alertinfo2}
+
+
+\paragraph{Gestion des membres de votre projet}
+\begin{enumerate}
+\item Aller dans les Settings de votre projet (menu à gauche),
+\item Cliquer sur Members dans le menu Settings (menu à gauche),
+\item Cliquer sur New project member en haut à droite,
+\item Chercher le login de la personne que vous voulez ajouter,
+\item Sélectionner le niveau de droit de cette personne,
+\item Cliquer sur Add users.
+\end{enumerate}
+
+
+
+\pagebreak
+
+\begin{alertinfo}{Attention !}
+\end{alertinfo}
+\begin{alertinfo2}{Attention !}
+\end{alertinfo2}
+\begin{alertinfo3}{Astuce !}
+\end{alertinfo3}
+
 
 
 
