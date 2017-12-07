@@ -25,8 +25,6 @@
 \subtitle{avec \texttt{git}}
 \date{}
 
-%README TODO STUFF
-
 \begin{document}
 
 \begin{frame}
@@ -58,14 +56,15 @@
 \begin{frame}
 	\frametitle{Comment gérez-vous vos fichiers ?}
 	\vspace{-1em}
-	\begin{block}{}<1->
+	\begin{block}{}
 	\begin{itemize}
 		\item Garder l'historique
 		\item Partager
 	\end{itemize}
 	\end{block}
 	\vspace{-2em}
-	\begin{block}{}<2->
+	\PAUSE
+	\begin{block}{}
     \begin{adjustwidth}{-0.5cm}{-0.5cm}{}
 		\begin{center}	
 		{\includegraphics[scale=0.5]{images/file_versions.pdf}}
@@ -90,7 +89,7 @@
 
 
 \begin{frame}
-	\frametitle{Comment collaborer sur plusieurs fichiers ? }
+	\frametitle{Comment collaborer sur \underline{plusieurs} fichiers ? }
 %	\vspace{-4em}
 	\begin{block}{}
     \begin{adjustwidth}{-0.5cm}{-0.5cm}{}
@@ -121,7 +120,7 @@
 		\begin{block}{}
 %			\begin{itemize}
 %				\item
-				La \textbf{gestion de versions} (en anglais \textit{version control} ou \textit{revision control}) consiste à maintenir l'ensemble des versions d'un ou plusieurs fichiers (généralement en texte).
+				La \textbf{gestion de versions} (en anglais \textit{version control} ou \textit{revision control}) consiste à maintenir \textbf{l'ensemble des versions d'un ou plusieurs fichiers} (généralement en texte).
 				Essentiellement utilisée dans le domaine de la création de logiciels, elle concerne surtout \textbf{la gestion des codes source}.
 %			\end{itemize}
 		\end{block}
@@ -181,7 +180,8 @@
 		\end{itemize}
 	\end{adjustwidth}	
 	\end{block}
-	\begin{block}{\color{red} À NE PAS mettre}<2->
+	\PAUSE
+	\begin{block}{\color{red} À NE PAS mettre}
     \begin{adjustwidth}{-0.5cm}{}
 	\begin{itemize}
 		\item Les fichiers générés
@@ -201,11 +201,11 @@
 	\begin{itemize}
 		\item \textit{git - the stupid content tracker}
 		\item Outil professionnel
-		\item Rapide, multi-plateforme, flexible
+		\item Rapide, multi-plateforme, flexible, puissant
 	\end{itemize}
 %	\end{adjustwidth}
 \end{block}
-\begin{block}{\textit{To Share or Not to Share}}
+\begin{block}{\textit{To Share or Not to Share ?}}
 	\begin{itemize}
 		\item Enrichissez vos CV
 		\begin{itemize}
@@ -220,22 +220,31 @@
 \end{block}
 \end{frame}
 
+\newcounter{numSlide}
+
 \begin{frame}
 \frametitle{Concepts et commandes \texttt{git}}
 \begin{adjustwidth}{-0.75cm}{0cm}{}
 \vspace{-1em}
 	\begin{center}
-		\only<1>{{\includegraphics[scale=0.44]{images/workflow1.pdf}}}
-		\only<2>{{\includegraphics[scale=0.44]{images/workflow2.pdf}}}
-		\only<3>{{\includegraphics[scale=0.44]{images/workflow3.pdf}}}
-		\only<4>{{\includegraphics[scale=0.44]{images/workflow4.pdf}}}
-		\only<5>{{\includegraphics[scale=0.44]{images/workflow5.pdf}}}
-		\only<6>{{\includegraphics[scale=0.44]{images/workflow6.pdf}}}
-		\only<7>{{\includegraphics[scale=0.44]{images/workflow7.pdf}}}
-		\only<8>{{\includegraphics[scale=0.44]{images/workflow8.pdf}}}
-%		\only<9>{{\includegraphics[scale=0.44]{images/workflow9.pdf}}}
-%		\only<10>{{\includegraphics[scale=0.44]{images/workflow10.pdf}}}
-		\only<9>{{\includegraphics[scale=0.44]{images/workflow_all.pdf}}}
+		\setcounter{numSlide}{1}
+		\ifANIMATE
+			\only<\value{numSlide}>{{\includegraphics[scale=0.44]{images/workflow1.pdf}}}\stepcounter{numSlide}
+			\only<\value{numSlide}>{{\includegraphics[scale=0.44]{images/workflow2.pdf}}}\stepcounter{numSlide}
+			\only<\value{numSlide}>{{\includegraphics[scale=0.44]{images/workflow3.pdf}}}\stepcounter{numSlide}
+		\fi
+		\only<\value{numSlide}>{{\includegraphics[scale=0.44]{images/workflow4.pdf}}}\stepcounter{numSlide}
+		\ifANIMATE
+			\only<\value{numSlide}>{{\includegraphics[scale=0.44]{images/workflow5.pdf}}}\stepcounter{numSlide}
+			\only<\value{numSlide}>{{\includegraphics[scale=0.44]{images/workflow6.pdf}}}\stepcounter{numSlide}
+			\only<\value{numSlide}>{{\includegraphics[scale=0.44]{images/workflow7.pdf}}}\stepcounter{numSlide}
+			\only<\value{numSlide}>{{\includegraphics[scale=0.44]{images/workflow8.pdf}}}\stepcounter{numSlide}
+			%\only<\value{numSlide}>{{\includegraphics[scale=0.44]{images/workflow9.pdf}}}
+			%\stepcounter{numSlide}
+			%\only<\value{numSlide}>{{\includegraphics[scale=0.44]{images/workflow10.pdf}}}
+			%\stepcounter{numSlide}
+		\fi
+		\only<\value{numSlide}>{{\includegraphics[scale=0.44]{images/workflow_all.pdf}}}
 	\end{center}
 \end{adjustwidth}
 \end{frame}
@@ -244,7 +253,8 @@
 
 %%%%%%%%%% Begin Premier Commit
 \begin{frame}[fragile]
-\frametitle{The Directed Acyclic \textit{Commit}-Graph in Git}
+%\frametitle{The Directed Acyclic \textit{Commit}-Graph in Git}
+\frametitle{Le \textit{Graphe Orienté Acyclique} de \texttt{commits}}
 %	\vspace{-0.5cm}
  	\begin{figure}
 	%\only<2->{
@@ -326,10 +336,15 @@
 \end{frame}
 
 
+%\newcounter{numSlide}
 %%%%%%%%%%% ANIMATION Commit 2
 \begin{frame}[fragile]
-\frametitle{The DAG in Git : Commit 2}
-\only<1-2>{
+%\frametitle{The DAG in Git : Commit 2}
+\frametitle{Le Graphe : Commit 2}
+
+\setcounter{numSlide}{1}
+
+\only<\value{numSlide}>{
 	\begin{figure}
 		\begin{subfigure}[h]{\textwidth}
 			%\centering
@@ -338,10 +353,6 @@
 			\gitDAG[grow right sep = 2em]{
 				27ff4
 			};
-			% Tag reference
-			%	\gittag [v0p1] {v0.1} {above=of A} {A}
-			% Remote branch
-			% Branch
 			\gitbranch
 			{master}     % node name and text 
 			{above=of 27ff4} % node placement
@@ -356,8 +367,8 @@
 		\end{subfigure}
 	\end{figure}
 }
-
-\only<3>{
+\stepcounter{numSlide}
+\only<\value{numSlide}>{
 	\begin{figure}
 		\begin{subfigure}[h]{\textwidth}
 			%\centering
@@ -383,7 +394,7 @@
 
 %\vspace{-0.5cm}
 %\vspace{0.4cm} \begin{center} \noindent\makebox[\linewidth]{\line(2,0){500}} \end{center} \vspace{-0.4cm} 
-\begin{block}{Dans un terminal \ldots}<2->
+\begin{block}{Dans un terminal \ldots}<1->
 %	\vspace{-0.2cm}		
 	\begin{minted}[mathescape=true,escapeinside=||,tabsize=4
 	,fontsize=\footnotesize,
@@ -395,8 +406,8 @@
 	\end{minted}
 \end{block}
 
-\only<2>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=3.4cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
-\only<3>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=1.8cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+\only<1>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=3.4cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+\only<2>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=1.8cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
 
 \end{frame}
 %%%%%%%%%%% End ANIMATION Commit 2
@@ -404,8 +415,8 @@
 
 %%%%%%%%%%% ANIMATION Commit 3
 \begin{frame}[fragile]
-\frametitle{The DAG in Git : Commit 3}
-
+%\frametitle{The DAG in Git : Commit 3}
+\frametitle{Le Graphe : Commit 3}
 	\begin{figure}
 		\begin{subfigure}[h]{\textwidth}
 			%\centering
@@ -433,9 +444,9 @@
 	\end{figure}
 
 %\vspace{-0.5cm}
-\begin{block}{}%Sur le terminal \ldots}
+\begin{block}{Dans un terminal \ldots}
 %	\vspace{-0.2cm}
-	\vspace{0.4cm} \begin{center} \noindent\makebox[\linewidth]{\line(2,0){500}} \end{center} \vspace{-0.4cm} 		
+%	\vspace{0.4cm} \begin{center} \noindent\makebox[\linewidth]{\line(2,0){500}} \end{center} \vspace{-0.4cm} 		
 	\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,linenos,
 	]{c}
 	echo orange |>{}>| fruits.txt
@@ -450,70 +461,98 @@
 
 %%%%%%%%%%% ANIMATION Branch 1
 \begin{frame}[fragile]
-\frametitle{The DAG in Git: Branches 1}
-\only<1-2>{
-	\begin{figure}
-	\begin{subfigure}[h]{\textwidth}
-		%\centering
-		\begin{tikzpicture}
-		% Commit DAG
-		\gitDAG[grow right sep = 2em]{
-			27ff4 -- 31490 -- ab5d1
-		};
-		% Tag reference
-		%	\gittag [v0p1] {v0.1} {above=of A} {A}
-		% Remote branch
-		% Branch
-		\gitbranch
-		{master}     % node name and text 
-		{above=of ab5d1} % node placement
-		{ab5d1}          % target
-		% HEAD reference
-		\gitHEAD
-		%	 			{above=of master} % node placement
-		{right=of master} % node placement
-		{ab5d1}          % target
-		\end{tikzpicture}
-		\subcaption{Avant branche}
-	\end{subfigure}
+\frametitle{Le Graphe: Branches 1}
+
+\setcounter{numSlide}{0}
+
+\ifANIMATE
+	\stepcounter{numSlide}
+	\only<\value{numSlide}>{
+		\begin{figure}
+		\begin{subfigure}[h]{\textwidth}
+			%\centering
+			\begin{tikzpicture}
+			% Commit DAG
+			\gitDAG[grow right sep = 2em]{
+				27ff4 -- 31490 -- ab5d1
+			};
+			% Tag reference
+			%	\gittag [v0p1] {v0.1} {above=of A} {A}
+			% Remote branch
+			% Branch
+			\gitbranch
+			{master}     % node name and text 
+			{above=of ab5d1} % node placement
+			{ab5d1}          % target
+			% HEAD reference
+			\gitHEAD
+			%	 			{above=of master} % node placement
+			{right=of master} % node placement
+			{ab5d1}          % target
+			\end{tikzpicture}
+			\subcaption{Avant branche}
+		\end{subfigure}
+		\end{figure}
+	}
+\fi
+
+\stepcounter{numSlide}
+\only<\value{numSlide}%
+\ifANIMATE
+	-\the\numexpr\value{numSlide}+1
+\fi%
+>{
+		\begin{figure}
+		\begin{subfigure}[h]{\textwidth}
+			%\centering
+			\begin{tikzpicture}
+			% Commit DAG
+			\gitDAG[grow right sep = 2em]{
+				27ff4 -- 31490 -- ab5d1
+			};
+			% Tag reference
+			%	\gittag [v0p1] {v0.1} {above=of A} {A}
+			% Remote branch
+			% Branch
+			\gitbranch
+			{master}     % node name and text 
+			{above=of ab5d1} % node placement
+			{ab5d1}          % target
+			% HEAD reference
+			\gitHEAD
+			%	 			{above=of master} % node placement
+			{right=of master} % node placement
+			{ab5d1}          % target
+			\gitbranch {legumes} {left=of master} {ab5d1}
+	
+			\end{tikzpicture}
+			\subcaption{Après branche}
+%\ifANIMATE
+			\only<\the\numexpr\value{numSlide}>{
+				$\Rightarrow$ une nouvelle \textit{étiquette} (\texttt{legumes}) apparait, elle pointe vers le même \texttt{commit} que \texttt{HEAD}
+				\vspace{-1.65em}
+			}
+%\fi
+\ifANIMATE
+			\stepcounter{numSlide}
+\fi
+		\end{subfigure}
 	\end{figure}
 }
 
-\only<3-4>{
-	\begin{figure}
-	\begin{subfigure}[h]{\textwidth}
-		%\centering
-		\begin{tikzpicture}
-		% Commit DAG
-		\gitDAG[grow right sep = 2em]{
-			27ff4 -- 31490 -- ab5d1
-		};
-		% Tag reference
-		%	\gittag [v0p1] {v0.1} {above=of A} {A}
-		% Remote branch
-		% Branch
-		\gitbranch
-		{master}     % node name and text 
-		{above=of ab5d1} % node placement
-		{ab5d1}          % target
-		% HEAD reference
-		\gitHEAD
-		%	 			{above=of master} % node placement
-		{right=of master} % node placement
-		{ab5d1}          % target
-		\gitbranch {legumes} {left=of master} {ab5d1}
-
-		\end{tikzpicture}
-		\subcaption{Après branche}
-		\only<3>{
-		$\Rightarrow$ une nouvelle \textit{étiquette} apparait, elle pointe vers le même \texttt{commit} que \texttt{HEAD}
-		\vspace{-1.65em}
-		}
-	\end{subfigure}
-\end{figure}
-}
-
-\only<5-6>{
+\stepcounter{numSlide}
+\only<\value{numSlide}
+%%%%%%%%%%%%%%%%%%%% BUG HERE
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%% HAD TO PUT 2 HERE OR ELSE SLIDE WOULDN'T SHOW TWICE
+\ifANIMATE
+	-\the\numexpr\value{numSlide}+2
+\fi
+>{
+\ifANIMATE
+	\stepcounter{numSlide}
+	\stepcounter{numSlide}
+\fi
 	\begin{figure}
 		\begin{subfigure}[h]{\textwidth}
 			%\centering
@@ -523,9 +562,9 @@
 				27ff4 -- 31490 -- ab5d1 -- ffd5c
 			};
 			% Tag reference
-			%	\gittag [v0p1] {v0.1} {above=of A} {A}
-			% Remote branch
-			% Branch
+%			\gittag [v0p1] {v0.1} {above=of 27ff4} {27ff4}
+%			 Remote branch
+%			 Branch
 			\gitbranch
 			{master}     % node name and text 
 			{above=of ab5d1} % node placement
@@ -538,12 +577,26 @@
 			\gitbranch {legumes} {above=of ffd5c} {ffd5c}
 			
 			\end{tikzpicture}
-			\subcaption{Après commit dans branche \texttt{legumes}}
+			\subcaption{Après un premier commit dans la branche \texttt{legumes}}
 		\end{subfigure}
 	\end{figure}
 }
 
-\only<7->{
+\ifANIMATE
+	\stepcounter{numSlide}
+	\stepcounter{numSlide}
+\fi
+
+%\only<\value{numSlide}
+%		\ifANIMATE
+%				-\the\numexpr\value{numSlide}+1
+%		\fi
+%>{
+%\ifANIMATE
+	\stepcounter{numSlide}
+%\fi
+
+\only<\value{numSlide}>{
 	\begin{figure}
 		\begin{subfigure}[h]{\textwidth}
 			%\centering
@@ -567,34 +620,32 @@
 			{8a928}          % target
 			\gitbranch {legumes} {above=of 8a928} {8a928}
 			\end{tikzpicture}
-			\subcaption{Après deuxième commit dans branche \texttt{legumes}}
+			\subcaption{Après un deuxième commit dans la branche \texttt{legumes}}
 		\end{subfigure}
 	\end{figure}
 }
 
-%\vspace{-0.5cm}
-%\only<2-3>{
-%\begin{block}{Sur le terminal \ldots}
+\ifANIMATE
+	\only<1>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=3.5cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+	\only<2-3>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=2.85cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+	\only<4-5>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=1.4cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+	\only<6->{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=0.2cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+\fi
 
-\only<2>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=3.5cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
-\only<3-4>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=2.85cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
-\only<5-6>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=1.4cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
-\only<7->{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=0.2cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
-
-
-	\pause[2]
 	\vspace{0.4cm} \begin{center} \noindent\makebox[\linewidth]{\line(2,0){500}} \end{center} \vspace{-0.4cm}
 	\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{c}
 	git branch legumes ; git checkout legumes
 	\end{minted}
 	
-	\pause[4]
+	\pause
+	\PAUSE
 	\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{c}
 	echo aubergine |>{}>| legumes.txt ; git add legumes.txt
 	git commit -m "Ajout aubergine à legumes"
 	  |$\Rightarrow$| ID = ffd5c
 	\end{minted}
-	\pause[6]
+	\pause
+	\PAUSE
 	\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{c}
 	echo courgette |>{}>| legumes.txt ; git add legumes.txt
 	git commit -m "Ajout courgette à legumes"
@@ -602,18 +653,19 @@
 	\end{minted}
 \end{frame}
 %%%%%%%%%%% End ANIMATION Branch 1
-%echo aubergine |>{}>| legumes.txt
-%echo courgette |>{}>| legumes.txt
-%git add legumes.txt
-%git commit -m "Ajout de legumes"
-%===> ID = ffd5c	
 
 
 
 %%%%%%%%%%% ANIMATION Branch 2
 \begin{frame}[fragile]
-\frametitle{The DAG in Git: Branches 2}
-\only<1>{
+\frametitle{Le Graphe : Branches 2}
+
+\setcounter{numSlide}{0}
+
+\ifANIMATE
+	\stepcounter{numSlide}
+	\only<\value{numSlide}>{
+%	\only<1>{
 	\begin{figure}
 		\begin{subfigure}[h]{\textwidth}
 			%\centering
@@ -641,9 +693,16 @@
 			\subcaption{Travaillons sur \texttt{master}}
 		\end{subfigure}
 	\end{figure}
-}
+	}
+\fi
 
-\only<2-3>{
+\stepcounter{numSlide}
+\only<\value{numSlide}%
+\ifANIMATE
+	-\the\numexpr\value{numSlide}+1
+\fi%
+>{
+%\only<2-3>{
 	\begin{figure}
 		\begin{subfigure}[h]{\textwidth}
 			%\centering
@@ -669,13 +728,24 @@
 			
 			\end{tikzpicture}
 			\subcaption{Travaillons sur \texttt{master}}
-			\only<2>{$\Rightarrow$ \texttt{legumes.txt} n'existe plus dans la Copie de Travail (\textit{Working Directory})}
+			%\only<2>{
+			\only<\the\numexpr\value{numSlide}>{$\Rightarrow$ \texttt{legumes.txt} n'existe plus dans la Copie de Travail (\textit{Working Directory})}
 			\vspace{0.33em}
 		\end{subfigure}
 	\end{figure}
 }
 
-\only<4>{
+\stepcounter{numSlide}
+\ifANIMATE
+	\stepcounter{numSlide}
+\fi
+
+\only<\value{numSlide}
+%\ifANIMATE
+%	-\the\numexpr\value{numSlide}+1
+%\fi
+>{
+%\only<4>{
 	\begin{figure}
 		\begin{subfigure}[h]{\textwidth}
 			%\centering
@@ -706,33 +776,34 @@
 	\end{figure}
 }
 
-%\vspace{-0.5cm}
-%\only<2-3>{
-%\begin{block}{Sur le terminal \ldots}
-%\pause[2]
-%\vspace{-0.2cm}
 \vspace{0.4cm} \begin{center} \noindent\makebox[\linewidth]{\line(2,0){500}} \end{center} \vspace{-0.4cm}
 \begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{c}
 	git checkout master
 \end{minted}
 
-\only<1>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=2.6cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
-\only<2>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=2cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
-\pause[3]
+\ifANIMATE
+	\only<1>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=2.6cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+	\only<2>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=2cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+\fi
+\pause
+\PAUSE
 \begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{c}
 	echo poire |>{}>| fruits.txt ; git add fruits.txt
 	git commit -m "Ajouté poire à fruits.txt"
 		|$\Rightarrow$| ID = 21721
 \end{minted}
-\only<3>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=1.9cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
-\only<4->{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=0.6cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+
+\ifANIMATE
+	\only<3>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=1.9cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+	\only<4->{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=0.6cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+\fi
 \end{frame}
 %%%%%%%%%%% End ANIMATION Branch 2
 
 
 %%%%%%%%%%% ANIMATION Merge 1
 \begin{frame}[fragile]
-\frametitle{The DAG in Git: Merge 1}
+\frametitle{Le Graphe : Merge 1}
 \only<1-2>{
 	\begin{figure}
 		\begin{subfigure}[h]{\textwidth}
@@ -841,7 +912,7 @@
 
 %%%%%%%%%%% ANIMATION Merge 2
 \begin{frame}[fragile]
-\frametitle{The DAG in Git: Merge 2}
+\frametitle{Le Graphe : Merge 2}
 \only<1>{
 	\begin{figure}
 		\begin{subfigure}[h]{\textwidth}

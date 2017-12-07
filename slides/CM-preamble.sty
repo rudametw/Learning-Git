@@ -7,6 +7,18 @@
 % Uncomment this line for pdflatex
 %\usepackage[utf8]{inputenc}
 
+\newif\ifANIMATE
+\ANIMATEtrue
+\ANIMATEfalse
+
+\usepackage{ifthen}
+
+\newcommand{\PAUSE}{{
+\ifANIMATE
+	\pause
+\fi
+}}
+
 \usepackage{textcomp}
 %\PassOptionsToPackage{gray}{xcolor}
 
@@ -294,4 +306,3 @@ Polytech Lille\\
 %		\label{alg:seq}
 %	\end{algorithm}
 %\end{frame}
-
