@@ -287,7 +287,7 @@ pagebackref  = false,     % add page number in bibliography and link to position
 
 \begin{itemize}
 \item Apprendre à se servir d'un Logiciel de Gestion de Version\footnote{\url{https://fr.wikipedia.org/wiki/Logiciel_de_gestion_de_versions}}.
-\item Maitrisez le versionnement d'un projet logiciel.
+\item Maîtrisez le versionnement d'un projet logiciel.
 \item Partager un projet et travailler en équipe.
 \end{itemize}
 
@@ -302,7 +302,7 @@ Il est fortement conseillé de travailler exclusivement sur terminal pour ce TP.
 \subsection{Configuration de \texttt{bash}}
 
 \paragraph{\texttt{.bashrc} et \texttt{gitprompt.sh}}
-Pour commencer ce TP, nous vous fournissons une configuration avancé de \texttt{bash} (l'interpréteur en ligne de commande utilisé par défaut).
+Pour commencer ce TP, nous vous fournissons une configuration avancée de \texttt{bash} (l'interpréteur en ligne de commande utilisé par défaut).
 Vous pouvez lancer, une seule fois par compte, la commande suivante qui aura pour objectif de mettre à jour votre fichier \texttt{~/.bashrc} et d'installer \texttt{gitprompt.sh} sur vos comptes.
 \begin{minted}[mathescape=true,escapeinside=||,tabsize=4
 %	,fontsize=\footnotesize,
@@ -316,7 +316,7 @@ N'hésitez pas à éditer ou supprimer les changements si vous préférez.
 
 \paragraph{Terminals}
 %\WR{Copier le fichier XXX.aide pour récupèrer quelques commandes. }
-Nous vous proposons de travailler sur plusieurs terminals ouverts simultanément, une disposition possible est indiqué dans la figure~\ref{terminals} mais vous pouvez les ranger à votre convenance tout au longue du TP.
+Nous vous proposons de travailler sur plusieurs terminals ouverts simultanément, une disposition possible est indiquée dans la figure~\ref{terminals} mais vous pouvez les ranger à votre convenance tout au longue du TP.
 \begin{figure}[h]
 	\centering
 	{\includegraphics[scale=0.4]{images/terminals.pdf}}
@@ -324,11 +324,11 @@ Nous vous proposons de travailler sur plusieurs terminals ouverts simultanément
 	\label{terminals}
 \end{figure}
 
-Cette disposition vous permettra d'exécuter vos commandes \texttt{git} dans le terminal \texttt{T1}, tout en exécutant des commandes de \textit{suivi} dans les terminaux \texttt{T2} et \texttt{T3}.~\ref{terminals}\\
+Cette disposition vous permettra d'exécuter vos commandes \texttt{git} dans le terminal \texttt{T1}, tout en exécutant des commandes de \textit{suivi} dans les terminaux \texttt{T2} et \texttt{T3}.\\
 
-Dans un premier temps, positionnez \texttt{T1}, \texttt{T2} et \texttt{T3} dans le répertoire où vous allez travailler.\\
+Dans un premier temps, positionnez \texttt{T1}, \texttt{T2} et \texttt{T3} dans le répertoire où vous allez travailler via la commande \texttt{cd}.\\
 
-La commande \texttt{watch}\footnote{\url{https://en.wikipedia.org/wiki/Watch\_(Unix)}} permet de répéter une commande toute les $X$ seconds. Dans le terminal \texttt{T2} exécutez :
+La commande \texttt{watch}\footnote{\url{https://en.wikipedia.org/wiki/Watch\_(Unix)}} permet de répéter une commande toute les $X$ secondes. Dans le terminal \texttt{T2} exécutez :
 \begin{minted}[mathescape=true,escapeinside=||,tabsize=4
 %	,fontsize=\footnotesize,
 ]{bash}
@@ -342,13 +342,13 @@ Et dans le terminal \texttt{T3} exécutez :
 	watch cat ~/.gitconfig
 \end{minted}
 
-C'est normal que ces commandes affichent des erreurs car nous n'avons pas encore crée le répertoire \texttt{tpgit} ni le fichier \texttt{.gitconfig}.
+Il est normal que ces commandes affichent pour le moment des erreurs car nous n'avons pas encore créé le répertoire \texttt{tpgit} ni le fichier \texttt{.gitconfig}.
 
 
 \subsection{Configuration de votre compte \texttt{git}}
 
-Il est important de savoir qui a fait quoi. \texttt{git} a besoin d'une configuration pour identifier vos futurs commits, et vous pouvez également spécifier certaines comportements.
-Les commandes suivantes vont modifier votre fichier \texttt{.gitconfig}, tapez les en regardent les changements dans le terminal \texttt{T3}:
+Dans un projet gérer à plusieurs, il est important de savoir qui a fait quoi. \texttt{git} a donc besoin d'une configuration pour identifier vos futurs \emph{commits}, et vous pouvez également spécifier certains comportements.
+Les commandes suivantes vont modifier votre fichier \texttt{.gitconfig}, tapez les une à une en regardant les changements dans le terminal \texttt{T3}:
 
 \begin{minted}[mathescape=true,escapeinside=||,tabsize=4
 %	,fontsize=\footnotesize,
@@ -364,7 +364,7 @@ Les commandes suivantes vont modifier votre fichier \texttt{.gitconfig}, tapez l
 Si vous préférez un autre éditeur à la place de \texttt{kate}, vous pouvez l'utiliser (e.g., \texttt{nano}, \texttt{vim}, \texttt{emacs}, \texttt{gedit}).
 
 \begin{alertinfo}{Rappel !}
-La configuration de \texttt{git} et de \texttt{bash} doit se faire une fois pour chaque compte.
+Les configurations de \texttt{git} et de \texttt{bash} doivent se faire une fois pour chaque compte.
 Votre binôme devra réaliser la même configuration sur son compte, et si vous comptez travailler sur un autre PC, il faudra récupérer votre fichier \texttt{.gitconfig} ou relancer les commandes de configuration.
 \end{alertinfo}
 
@@ -375,10 +375,10 @@ En vous aidant des supports du cours (slide 13), vous devez :
 \begin{itemize}
 \item créer un répertoire \texttt{tpgit}
 \item initialiser dans ce répertoire un dépôt git vide
-\item regarder les fichiers crées pour ce dépôt, elles seront affichés dans le terminal \texttt{T2}
+\item regarder les fichiers créés pour ce dépôt, ils seront affichés dans le terminal \texttt{T2}
 \item créer un fichier \texttt{fruits.txt}
 \item réaliser un commit en ajoutant 2 fruits à \texttt{fruits.txt}.
-Pour rappel, l'enchainement des commandes est : \mintinline{bash}{status, add, status, commit, status, log}.
+Pour rappel, l'enchaînement des commandes est : \mintinline{bash}{status, add, status, commit, status, log}.
 Lisez la sortie de chaque commande pour comprendre leur fonctionnement.
 \item réaliser 3 commits de plus en ajoutant à chaque fois des fruits.
 \end{itemize}
@@ -411,10 +411,10 @@ Branches \texttt{sauces}
 \section{Merges \texttt{git}}
 Vous avez décidé que vos commits dans les branches \texttt{legumes} et \texttt{sauces} sont pertinents, maintenant vous devez les intégrer dans \texttt{master}.
 \begin{itemize}
-\item allez sur la branche \texttt{legumes}
+\item aller sur la branche \texttt{legumes}
 \item vérifier l'état de votre espace de travail (e.g., l'inexistence du fichier \texttt{sauces.txt})
-\item mergez \texttt{master} dans \texttt{legumes}
-\item si tout c'est bien passé, mergez \texttt{legumes} dans \texttt{master}
+\item merger \texttt{master} dans \texttt{legumes}
+\item si tout c'est bien passé, merger \texttt{legumes} dans \texttt{master}
 \item vérifier l'historique de vos commits et l'apparition de \texttt{legumes.txt} sur la branche \texttt{master}\\
 \end{itemize}
 
@@ -428,10 +428,10 @@ GitLab vous permet de gérer votre projet et fourni plusieurs fonctionnalités i
 
 Vous devez :
 \begin{itemize}
-\item Vous connectez sur \url{https://archives.plil.fr/}
-\item Créer un projet sur le serveur GitLab de Polytech
-\item Pousser votre dépôt \texttt{tpgit} sur le GitLab
-\item Ajouter votre binôme aux membres de votre projet avec le niveau de droit \textit{Developer} (il devra se connecter une première fois avant d'apparaitre dans la liste de membres)
+\item Connectez-vous sur \url{https://archives.plil.fr/}
+\item Créez un projet sur le serveur GitLab de Polytech
+\item Poussez votre dépôt \texttt{tpgit} sur le GitLab
+\item Ajoutez votre binôme aux membres de votre projet avec le niveau de droit \textit{Developer} (il devra se connecter une première fois avant d'apparaître dans la liste des membres)
 \end{itemize}
 
 \paragraph{Créer un dépôt sur GitLab et poussez \texttt{tpgit}}
@@ -442,7 +442,7 @@ Vous devez :
 Lisez les propositions.
 Vous devez \textbf{impérativement changer l'url de \texttt{SSH} à \texttt{HTTPS}}
 \item Retrouvez les instructions \textit{Push an existing Git repository}. Vous allez copier et exécuter la commande :\\ \texttt{git remote add origin https://archives.plil.fr/<user>/<project.git>} avec le bon url\\ suivi de \texttt{git remote -v}, et \texttt{git push -u origin master}
-\item Rafraichissez la page de votre projet GitLab, votre projet \texttt{tpgit} doit s'y retrouver
+\item Rafraîchissez la page de votre projet GitLab, votre projet \texttt{tpgit} doit s'y retrouver
 \item Naviguez votre projet sur Gitlab pour voir l'historique de commits, vos fichiers, vos graphes, etc.
 \end{enumerate}	
 
@@ -476,13 +476,13 @@ Après avoir configuré son compte (section \ref{context}) il devra :
 
 \section{Travail simultané}
 
-Vous allez travaillez en même temps sur votre projet, chacun sur son propre dépôt local, et vous allez synchroniser les changements après.
+Vous allez travailler en même temps sur votre projet, chacun sur son propre dépôt local, et vous allez synchroniser les changements après.
 
 \subsection{Merge sans conflit}
 
 \paragraph{Travail de Binôme1}
 \begin{itemize}
-\item créer une branche \texttt{épices}
+\item créer une branche \texttt{epices}
 \item ajouter un fichier \texttt{epices.txt} sur cette branche
 \item réaliser 2 commits différents
 \item merger vos commits dans \texttt{master}
@@ -492,8 +492,8 @@ Vous allez travaillez en même temps sur votre projet, chacun sur son propre dé
 
 \paragraph{Travail de Binôme2}
 \begin{itemize}
-\item créer une branche \texttt{epices}
-\item ajouter un fichier \texttt{epices.txt} sur cette branche
+\item créer une branche \texttt{herbes}
+\item ajouter un fichier \texttt{herbes.txt} sur cette branche
 \item réaliser 2 commits différents
 \item merger votre branche dans \texttt{master}
 \item récupérer les changements sur le serveur (\texttt{git pull})
@@ -506,7 +506,7 @@ Vous allez travaillez en même temps sur votre projet, chacun sur son propre dé
 \item vérifier l'historique des deux dépôts... est-ce que tous les ID de commits sont les mêmes ? Vous avez trouvé le dernier commit de merge ? Vous voyez les commits de votre binôme ?\\
 \end{itemize}
 
-Un de vous deux a été le premier à pousser, et l'autre a du merger les changements avant de pouvoir pousser son travail.
+Un de vous deux a été le premier à pousser, et l'autre a dû merger les changements avant de pouvoir pousser son travail.
 Parce que vous avez travaillé sur des fichiers différents, le merge a été résolu automatiquement.
 Nous allons maintenant vous obliger à générer des conflits et à les résoudre.
 
@@ -521,26 +521,26 @@ Git peut se souvenir de votre identité pendent un temps déterminé, par exempl
 
 \paragraph{Générer un conflit}
 \begin{itemize}
-\item éditez tous les deux, chacun sur son dépôt, le fichier \texttt{fruits.txt}, de façon à effacer certains fruits et à ajouter des nouveaux (faites des changements différents)
+\item éditez tous les deux, chacun sur son dépôt, le fichier \texttt{fruits.txt}, de façon à \textbf{effacer} certains fruits et à \textbf{ajouter} des nouveaux (faites des changements différents)
 \item commitez vos changements mais ne poussez pas encore
 \item binôme1 pousse ses changements en premier
 \item binôme2 pull les changements de binôme1 et\ldots CONFLIT !
 \item \texttt{git status}, lisez la sortie
 \item à l'aide du cours (slides 26-28), essayez de résoudre ce conflit
-\item une fois résolut, merger vos changements et poussez vers le serveur
+\item une fois résolu, merger vos changements et poussez vers le serveur
 \item binome1, récupérez les changements et vérifiez l'état de \texttt{fruits.txt}
 \end{itemize}
 
 \paragraph{Générer un 2ème conflit, inverser les rôles}
 \begin{itemize}
 \item comme précédemment, générer un conflit dans le fichier \texttt{legumes.txt} mais cette fois inversez les rôles :  binome2 pousse en premier, binome1 résout le conflit.
-\item au moment du conflit, c'est à dire, tout de suite après un \texttt{git pull} ou \texttt{git merge}, vous pouvez annuler le merge avec la commande \texttt{git merge -{}-abort}.
+\item au moment du conflit, c'est-à-dire, tout de suite après un \texttt{git pull} ou \texttt{git merge}, vous pouvez annuler le merge avec la commande \texttt{git merge -{}-abort}.
 Essayez la commande et vérifier que votre dépôt revient dans l'état avant le \texttt{pull} (plus de conflits, vérifier avec \texttt{status}).
 Refaite \texttt{git pull} et vous allez retrouver le conflit, résolvez-le cette fois.
 \end{itemize}
 
 \begin{alertinfo3}{Astuce !}
-Pour minimiser les conflits, il faut s'assurer que tout le monde maintient son dépôt à jour.
+Pour minimiser les conflits, il faut s'assurer que tout le monde maintienne son dépôt à jour.
 Il faut régulièrement merger vers la branche \texttt{master}, faire \texttt{git pull} sur vos branches, et corriger les éventuels petits conflits quand ils sont simples.
 Avant de pousser vos changements avec \texttt{git push}, il faut toujours faire un \texttt{git pull}.
 \end{alertinfo3}
@@ -560,7 +560,7 @@ Vous devez au minimum :
 	\end{itemize}
 %\end{itemize}
 
-Vous pouvez vous inspirer de cette template sur Github :\\
+Vous pouvez vous inspirer de cet exemple sur Github :\\
 \url{https://gist.github.com/PurpleBooth/109311bb0361f32d87a2}\\
 (cliquer sur RAW pour avoir les sources).
 Vérifiez que votre README s'affiche correctement sur GitLab.
@@ -570,8 +570,8 @@ Vérifiez que votre README s'affiche correctement sur GitLab.
 
 \section{Continuer à apprendre}
 
-Si vous voulez maitriser \texttt{git}, n'hésitez pas à faire le tutoriel donné par le laboratoire CRIStAL de Lille.
-Il y a beaucoup de fonctionnalités avancés qui peuvent s'avérer très utiles.
+Si vous voulez maitriser \texttt{git}, n'hésitez pas à faire le tutoriel donné par le laboratoire CRIStAL de l'université de Lille.
+Il y a beaucoup de fonctionnalités avancées qui peuvent s'avérer très utiles.
 \url{http://www.cristal.univ-lille.fr/TPGIT/} .\\
 
 Vous pouvez également consulter les liens suivants :
