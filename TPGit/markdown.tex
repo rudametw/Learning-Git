@@ -1,0 +1,181 @@
+\hypertarget{objectifs}{%
+\section{Objectifs}\label{objectifs}}
+
+\begin{itemize}
+\tightlist
+\item
+  Apprendre à se servir d'un Logiciel de Gestion de Version.
+\item
+  Matrisez le versionnement d'un projet logiciel.
+\item
+  Partager un projet et travailler en équipe.
+\end{itemize}
+
+\hypertarget{help}{%
+\section{Help}\label{help}}
+
+This text is \emph{emphasized with underscores}, and this is
+\emph{emphasized with asterisks}.
+
+This is \textbf{strong emphasis} and \textbf{with underscores}.
+
+This is * not emphasized *, and *neither is this*.
+
+feas\emph{ible}, not feas\emph{able}.
+
+This \sout{is deleted text.}
+
+H\textsubscript{2}O is a liquid. 2\textsuperscript{10} is 1024.
+
+\emph{Italic} \ULforem \emph{Underline} \normalem
+
+What is the difference between \mintinline[]{text}{>>=} and
+\mintinline[]{text}{>>}?
+
+Here is a literal backtick \mintinline[]{text}{`}.\\
+
+This is a backslash followed by an asterisk: \mintinline[]{text}{\*}.\\
+
+\textsc{Small caps}
+
+\textsc{Small caps}
+
+\textsc{Small caps}
+
+\begin{minted}[]{java}
+	if (a > 3) {
+		moveShip(5 * gravity, DOWN);
+	}
+\end{minted}
+
+\begin{minted}[]{haskell}
+qsort []     = []
+qsort (x:xs) = qsort (filter (< x) xs) ++ [x] ++
+qsort (filter (>= x) xs)
+\end{minted}
+
+\leavevmode\hypertarget{special}{}%
+Here is a paragraph.
+
+And another.
+
+\url{http://google.com}
+
+\begin{figure}
+\centering
+\includegraphics{images/information.pdf}
+\caption{This is the caption}
+\end{figure}
+
+\hypertarget{level-two}{%
+\subsection{Level two}\label{level-two}}
+
+\$-- An inline
+\includegraphics[width=0.3125in,height=0.3125in]{images/information.pdf}
+and a reference \includegraphics{images/information.pdf} with
+attributes.\\
+
+\begin{itemize}
+\tightlist
+\item
+  line
+\item
+  line
+\end{itemize}
+
+and a reference \includegraphics{images/information.pdf} with
+attributes.\\
+
+\begin{minted}[]{java}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+			<img src="/img/wip3.jpg" alt="Work in progress"/>
+		</div>
+        <div class="col-md-7">
+			<img src="/img/nslu2.jpg" alt="NSLU2.jpg"/>
+        </div>
+    </div>
+</div>
+\end{minted}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\begin{minted}[]{html}
+<div class="row">
+	<div class="col-md-4">
+		<img src="/img/wip3.jpg" alt="Work in progress"/>
+	</div>
+	<div class="col-md-7">
+		<img src="/img/nslu2.jpg" alt="NSLU2.jpg"/>
+	</div>
+</div>
+\end{minted}
+
+\hypertarget{howdie}{%
+\subsection{Howdie}\label{howdie}}
+
+It's easy to setup additional IP addresses on Debian Linux. This is
+particularly useful for the NSLU which doesn't have a display so you
+need to remotely connect to it.
+
+Having more than one virtual network interface allows us to have both a
+DHCP address and a static IP address, making the NSLU2 accessible
+\texttt{pretty much always}.
+
+\hypertarget{on-the-nslu}{%
+\subsubsection{On the nslu}\label{on-the-nslu}}
+
+I'm supposing you have somekind of IP address already setup. Also, you
+should have a working DNS, although this shouldn't impact any of the
+following.
+
+Once you can ping the gateway machine, the gateway must be added so that
+the nslu knows that he can attain addresses that are beyond his own
+network.
+
+Command is
+
+\begin{minted}[]{bash}
+	route add default gw 192.168.0.100
+\end{minted}
+
+Then the \mintinline[]{text}{/etc/resolv.conf} must be edited to the
+same nameserver as the other box. Note that nslu should be able to ping
+this nameserver once the gateway is setup.
+
+For setting up the gateway we must enable ip forwarding:
+
+\begin{minted}[]{bash}
+echo 1 > /proc/sys/net/ipv4/ip_forward
+\end{minted}
+
+\hypertarget{additional-virtual-network-interface}{%
+\subsubsection{Additional virtual network
+interface}\label{additional-virtual-network-interface}}
+
+If we want to setup alias cards, we can do something along the lines of
+
+\begin{minted}[]{bash}
+ifconfig eth0:N address    netmask
+\end{minted}
+
+However, it's probably easier to just edit the
+\mintinline[]{text}{/etc/network/interfaces} file by adding something
+like this
+
+\{\% highlight bash\%\} iface eth0:0 inet static address 192.168.0.100
+netmask 255.255.255.0 broadcast 192.168.0.255 network 192.168.0.0 pre-up
+echo ``*** Starting eth0:0 alias ***" post-up echo ``*** Alias eth0:0
+started ***" \#post-up route add -net 192.168.0.0 dev eth0 \#post-up
+route add -host 192.168.0.10 dev eth0:1 \{\% endhighlight \%\}
+
+This allows us to have a static IP address in addition to whatever other
+configured addresses we might have. I used it to have both a DHCP
+assigned address and a static local network address, allowing me to
+always get access to the NSLU2, even if it's not getting an address
+through DHCP.
+
+Finally, must set up iptables to the correct rules!!!
+
+I found and change a script to setup the tables to allow
