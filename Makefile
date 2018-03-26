@@ -4,7 +4,7 @@ LATEX_COMPILER = lualatex
 # Default rule
 #all: 1pp 2pp 4pp 6pp TPGit CheatSheets
 #2pp doesn't work well for slides.
-all: 1pp 4pp 6pp TPGit CheatSheets
+all: 1pp 4pp 6pp 8pp TPGit CheatSheets
 
 base = slides/slides.pdf
 base: ${base}
@@ -38,6 +38,7 @@ TPGit-2pp.pdf: TPGit/TPGit.pdf
 4pp: $(patsubst %.pdf,%-handouts-4pp.pdf,${1pp})
 # 6 slides / page
 6pp: $(patsubst %.pdf,%-handouts-6pp.pdf,${1pp})
+8pp: $(patsubst %.pdf,%-handouts-8pp.pdf,${1pp})
 
 # Where to search for PDF files in the following rules
 vpath %.pdf $(wildcard slides*)
@@ -54,6 +55,10 @@ PDFs/%-handouts-4pp.pdf: %.pdf
 PDFs/%-handouts-6pp.pdf: %.pdf
 	cd PDFs; $(LATEX_COMPILER) CM-handouts-6pp.tex "$(shell basename "$<")"
 	mv PDFs/CM-handouts-6pp.pdf "$@"
+
+PDFs/%-handouts-8pp.pdf: %.pdf
+	cd PDFs; $(LATEX_COMPILER) CM-handouts-8pp.tex "$(shell basename "$<")"
+	mv PDFs/CM-handouts-8pp.pdf "$@"
 
 PDFs/%.pdf: %.pdf
 	cp "$<" "$@"
@@ -72,5 +77,5 @@ clean-all-pdfs: clean
 	rm -fv PDFs/*.pdf
 
 # Rules that do not represent a file
-.PHONY: base 1pp 2pp 4pp 6pp clean
+.PHONY: base 1pp 2pp 4pp 6pp 8pp clean
 
