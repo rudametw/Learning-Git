@@ -531,7 +531,7 @@ Nous allons maintenant vous obliger à générer des conflits et à les résoudr
 \begin{alertinfo3}{Astuce !}
 Vous en avez marre de taper votre login et mot de passe à chaque \texttt{pull} et \texttt{push} ?
 Git peut se souvenir de votre identité pendant un temps déterminé, par exemple, pour une heure utilisez la commande :\\
-\texttt{git config -{}-global credential.helper 'cache -{}-timeout=3600'}
+\texttt{git config \texttt{-}{}-global credential.helper 'cache \texttt{-}{}-timeout=3600'}
 \end{alertinfo3}
 
 
@@ -552,7 +552,7 @@ Git peut se souvenir de votre identité pendant un temps déterminé, par exempl
 \paragraph{Générer un 2ème conflit, inverser les rôles}
 \begin{itemize}
 \item comme précédemment, générer un conflit dans le fichier \texttt{legumes.txt} mais cette fois inversez les rôles :  binome2 pousse en premier, binome1 résout le conflit.
-\item au moment du conflit, c'est-à-dire, tout de suite après un \texttt{git pull} ou \texttt{git merge}, vous pouvez annuler le merge avec la commande \texttt{git merge -{}-abort}.
+\item au moment du conflit, c'est-à-dire, tout de suite après un \texttt{git pull} ou \texttt{git merge}, vous pouvez annuler le merge avec la commande \texttt{git merge \texttt{-}{}-abort}.
 Essayez la commande et vérifier que votre dépôt revient dans l'état avant le \texttt{pull} (plus de conflits, vérifier avec \texttt{status}).
 Refaite \texttt{git pull} et vous allez retrouver le conflit, résolvez-le cette fois.
 \end{itemize}

@@ -9,11 +9,23 @@
 \usepackage{CM-preamble}
 \usepackage{gitdags}
 \usepackage{subcaption}
+\usepackage{transparent}
+\usepackage{eso-pic}
+\usepackage{graphicx}
+%\usepackage[framemethod=tikz]{mdframed}
+\usepackage{mdframed}
+\usepackage{lipsum}
+\newmdenv[tikzsetting={draw=black,fill=yellow,opacity=0.2, line width=4pt},backgroundcolor=none,leftmargin=0,rightmargin=40,innertopmargin=4pt]{titleBox2}
+\newmdenv[leftline=false,rightline=false,topline=false,bottomline=false,tikzsetting={draw=white,fill=white,line width=0pt,},settings={\tikzset{every picture/.style={opacity=0.5}}}]{semiTransparentBox}
+\newmdenv[leftline=false,rightline=false,topline=false,bottomline=false,tikzsetting={draw=white,fill=white,line width=0pt,},settings={\tikzset{every picture/.style={opacity=1}}}]{solidBox}
+%\newmdenv[tikzsetting={draw=blue,fill=red,},settings={\tikzset{every picture/.style={opacity=0.2}}}]{semiTransparentBox}
+\newmdenv[tikzsetting={draw=white,fill=white,line width=0pt,},settings={\tikzset{every picture/.style={opacity=0.2}}}]{titleBox}
 
 \definecolor{darkgreen}{rgb}{0,0.6,0}
 \definecolor{red}{rgb}{1,0,0}
 \definecolor{green}{rgb}{0,1,0}
 \definecolor{blue}{rgb}{0,0,1}
+\definecolor{title}{RGB}{51,51,178}
 \definecolor{cyan}{rgb}{0.4,1,1}
 \definecolor{orange}{rgb}{1,0.7,0}
 \definecolor{dkgreen}{rgb}{0,0.6,0}
@@ -25,18 +37,23 @@
 \subtitle{avec \texttt{git}}
 \date{}
 
+\newcommand{\semitransp}[2][35]{\color{fg!#1}#2}
+
+
 \begin{document}
 
 \begin{frame}
 	\titlepage
 \end{frame}
 
+%%%%%%%%%%% DÉCHARGE %%%%%%%%%%%
+\ifANIMATE
 \begin{frame}
 	\frametitle{Moi... \textit{\small (et ma décharge de responsabilité)}}
 	\begin{itemize}
 		\item Je suis étranger (hors UE)…
 		\item J'ai un accent…
-		\item Je me {\color{blue} trompe beaucoup} en français
+		\item Je me {\color{title} trompe beaucoup} en français
 		\begin{itemize}
 			\item et en info, et en math, et \ldots
 			\item n'hésitez pas à me corriger ou à me demander de répéter
@@ -51,7 +68,8 @@
 		\item Je ne suis pas un expert
 	\end{itemize}
 \end{frame}
-
+\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
 	\frametitle{Comment gérez-vous vos fichiers ?}
@@ -113,38 +131,85 @@
 	\end{block}
 \end{frame}
 
-
-
 \begin{frame}
-	\frametitle{Gestion de versions}
-		\begin{block}{}
-%			\begin{itemize}
-%				\item
-				La \textbf{gestion de versions} (en anglais \textit{version control} ou \textit{revision control}) consiste à maintenir \textbf{l'ensemble des versions d'un ou plusieurs fichiers} (généralement en texte).
-				Essentiellement utilisée dans le domaine de la création de logiciels, elle concerne surtout \textbf{la gestion des codes source}.
-%			\end{itemize}
-		\end{block}
-		\begin{block}{}
-		\small \url{https://fr.wikipedia.org/wiki/Gestion\_de\_versions}
-		\end{block}
-\end{frame}
-
-
-\begin{frame}
-	\frametitle{Gestion de versions}
-	\vspace{-2em}
+	\frametitle{Problématique : développement logiciel}
 	\begin{block}{}
-    \begin{adjustwidth}{-5.5cm}{-0.5cm}{}
-		\begin{center}
-		{\includegraphics[scale=0.58]{images/gestion_versions.pdf}}
-		\end{center}
-	\end{adjustwidth}
-	\vspace{-4em}
-    \begin{adjustwidth}{5.0cm}{-1.5cm}{}
-	\tiny Par Revision\_controlled\_project\_visualization.svg: *Subversion\_project\_visualization.svg: Traced by User:Stannered, original by en:User:Sami Keroladerivative work: Moxfyre (talk)derivative work: Echion2 (talk) — Revision\_controlled\_project\_visualization.svg, CC BY-SA 3.0, \url{https://commons.wikimedia.org/w/index.php?curid=9562807}
+    \begin{adjustwidth}{-0.3cm}{-1.4cm}{}
+		\begin{itemize}
+			\item Un \textcolor{title}{projet} de développement logiciel est une activité longue et
+			complexe.
+			\item Concerne plusieurs \textcolor{title}{fichiers} (milliers !)
+			\item De multiples \textcolor{title}{itérations} sont nécessaires.
+			\item A certains moments, on peut identifier des \textcolor{title}{versions} et/ou \textcolor{title}{variantes} du logiciel.
+			\item Les erreurs sont possibles, \textcolor{title}{revenir en arrière} est parfois nécessaire.
+			\item Un projet peut se faire à plusieurs, les développeurs peuvent travailler sur les mêmes fichiers (\textcolor{title}{conflits})
+		\end{itemize}
 	\end{adjustwidth}
 	\end{block}
 \end{frame}
+
+\begin{frame}
+	\frametitle{Définitions}
+		\begin{block}{Simple}
+			\begin{itemize}
+				\item Un \textbf{gestionnaire de versions} est un logiciel qui \textbf{enregistre les évolutions d’un ensemble de fichiers} au cours du temps de manière à ce qu'on puisse rappeler une version antérieure à̀ tout moment.
+			\end{itemize}
+		\end{block}
+		\begin{block}{Définition Wikipedia\footnote{\url{https://fr.wikipedia.org/wiki/Gestion\_de\_versions}}}
+			\begin{itemize}
+				\item La \textbf{gestion de versions} (en anglais \textit{version control} ou \textit{revision control}) consiste à maintenir \textbf{l'ensemble des versions d'un ou plusieurs fichiers} (généralement en texte).
+				Essentiellement utilisée dans le domaine de la création de logiciels, elle concerne surtout \textbf{la gestion des codes source}.
+			\end{itemize}
+		\end{block}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Gestion de versions}
+	\vspace{-2.7em}
+	\begin{block}{}
+%    \begin{adjustwidth}{-5.5cm}{-0.5cm}{}
+		\small Le développement logiciel est un processus sinueux à notion de \textcolor{title}{branche} (chaque noeud représente un \textcolor{title}{ensemble de fichiers} à un temps $t$) :
+		\vspace{-1em}
+		\begin{center}
+		{\includegraphics[scale=0.48]{images/git_flow.png}}
+		\end{center}
+%	\end{adjustwidth}
+	\vspace{-4em}
+%    \begin{adjustwidth}{5.0cm}{-1.5cm}{}
+%	\tiny Par Revision\_controlled\_project\_visualization.svg: *Subversion\_project\_visualization.svg: Traced by User:Stannered, original by en:User:Sami Keroladerivative work: Moxfyre (talk)derivative work: Echion2 (talk) — Revision\_controlled\_project\_visualization.svg, CC BY-SA 3.0, \url{https://commons.wikimedia.org/w/index.php?curid=9562807}
+%	\end{adjustwidth}
+	\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BEGIN OLD GESTION VERSIONS
+%\begin{frame}
+%	\frametitle{Gestion de versions}
+%	\vspace{-2em}
+%	\begin{block}{}
+%    \begin{adjustwidth}{-5.5cm}{-0.5cm}{}
+%		\begin{center}
+%		{\includegraphics[scale=0.58]{images/gestion_versions.pdf}}
+%		\end{center}
+%	\end{adjustwidth}
+%	\vspace{-4em}
+%    \begin{adjustwidth}{5.0cm}{-1.5cm}{}
+%	\tiny Par Revision\_controlled\_project\_visualization.svg: *Subversion\_project\_visualization.svg: Traced by User:Stannered, original by en:User:Sami Keroladerivative work: Moxfyre (talk)derivative work: Echion2 (talk) — Revision\_controlled\_project\_visualization.svg, CC BY-SA 3.0, \url{https://commons.wikimedia.org/w/index.php?curid=9562807}
+%	\end{adjustwidth}
+%	\end{block}
+%\end{frame}
+%
+%\begin{frame}
+%	\frametitle{Gestion de versions}
+%		\begin{block}{}
+%				La \textbf{gestion de versions} (en anglais \textit{version control} ou \textit{revision control}) consiste à maintenir \textbf{l'ensemble des versions d'un ou plusieurs fichiers} (généralement en texte).
+%				Essentiellement utilisée dans le domaine de la création de logiciels, elle concerne surtout \textbf{la gestion des codes source}.
+%		\end{block}
+%		\begin{block}{}
+%		\small \url{https://fr.wikipedia.org/wiki/Gestion\_de\_versions}
+%		\end{block}
+%\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% END OLD GESTION VERSIONS
 
 \begin{frame}
 	\frametitle{Avantages de la gestion de versions}
@@ -181,7 +246,7 @@
 	\end{adjustwidth}	
 	\end{block}
 	\PAUSE
-	\begin{block}{\color{red} À NE PAS METTRE}
+	\begin{block}{\color{red} \underline{\textbf{À NE PAS METTRE}}}
     \begin{adjustwidth}{-0.5cm}{}
 	\begin{itemize}
 		\item Les fichiers générés
@@ -195,13 +260,13 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Why the \texttt{git} ?}
+\frametitle{Why \textit{the \texttt{git}} ?}
 \begin{block}{C'est \textit{Ze Standard}}
 	%    \begin{adjustwidth}{-0.9cm}{}
 	\begin{itemize}
 		\item \textit{git - the stupid content tracker}
-		\item Outil professionnel
-		\item Rapide, multi-plateforme, flexible, puissant
+		\item Linus Torvalds (2005)
+		\item Outil professionnel, rapide, multi-plateforme, flexible, puissant, complètement distribué
 	\end{itemize}
 %	\end{adjustwidth}
 \end{block}
@@ -209,7 +274,7 @@
 	\begin{itemize}
 		\item Enrichissez vos CV
 		\begin{itemize}
-			\item \url{https://github.com/}
+			\item Faites un compte sur \url{https://github.com/}
 		\end{itemize}
 		\item Choisir sa licence
 		\begin{itemize}
@@ -281,13 +346,15 @@
 		{27ff4}          % target
 		\end{tikzpicture}
 		\end{subfigure}
-	}	
+	}
 	\subcaption{\only<1>{Dépôt vide}\only<2->{Premier \textit{commit}}}
 	\end{figure}
 
-%	\vspace{-0.5cm}
 	\begin{block}{Dans un terminal \ldots}
-	\vspace{-0.2cm}		
+	\begin{overprint}
+	\onslide<1>
+	\vspace{-0.3cm}
+	\begin{semiTransparentBox}
 	\begin{minted}[mathescape=true,escapeinside=||,tabsize=4
 	,fontsize=\footnotesize,
 	]{c}
@@ -298,8 +365,31 @@
 	git commit -m "Pomme ajouté à la liste de fruits"
 	  |$\Rightarrow$| ID = 27ff4
 	\end{minted}
+	\end{semiTransparentBox}
+
+%	\onslide<1>{
+%	\begin{semiTransparentBox}
+	\onslide<2>
+	\vspace{-0.3cm}
+	\begin{solidBox}
+	\begin{minted}[mathescape=true,escapeinside=||,tabsize=4
+	,fontsize=\footnotesize,
+	]{c}
+	mkdir mon_depot ; cd mon_depot
+	git init .
+	echo "pomme" |>{}>| fruits.txt
+	git add fruits.txt
+	git commit -m "Pomme ajouté à la liste de fruits"
+	  |$\Rightarrow$| ID = 27ff4
+	\end{minted}
+	\end{solidBox}
+	\end{overprint}
+%	\end{semiTransparentBox}
+%	}
 	\end{block}
-	Faire \texttt{git status} et \texttt{git log} \underline{après chaque commande}!!!
+	
+
+	Faire \textbf{\texttt{ git status}} et \textbf{\texttt{ git log}} \underline{après toute commande}!
 \end{frame}
 %%%%%%%%%% End Premier Commit
 
@@ -1059,7 +1149,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile]
 %\frametitle{Git distribué : Gestion Centralisée}
-\frametitle{Dépôt Centralisée : initialisation}
+\frametitle{Dépôt Centralisée : \textit{initialisation}}
 \begin{adjustwidth}{-2em}{0cm}{}
 \color{darkgreen}%\rule{\linewidth}{4pt}
 \noindent
@@ -1113,7 +1203,7 @@ git push -u origin master
 		]{bash}
 git clone https://github.com/rudametw/Learning-Git-Test-Repo.git
 cd Learning-Git-Test-Repo/
-git remote -v //permet de vérifier les addresses
+git remote -v #permet de vérifier les addresses
 		\end{minted}
 		\end{adjustwidth}
 	\end{adjustwidth}
@@ -1125,7 +1215,7 @@ git remote -v //permet de vérifier les addresses
 
 \begin{frame}[fragile]
 %\frametitle{Git distribué : Gestion Centralisée}
-\frametitle{Dépôt Centralisée : travail}
+\frametitle{Dépôt Centralisée :\textit{ méthode de travail}}
 \begin{adjustwidth}{-1em}{0cm}{}
 \vspace{-2.3em}
 \color{darkgreen}%\rule{\linewidth}{4pt}
@@ -1140,17 +1230,17 @@ git branch fonctionalitéX
 git checkout fonctionalitéX
 \end{minted}
 
-\texttt{while (je travaille = vrai) $\{$}
+\textit{\texttt{while (je travaille = vrai) $\{$}}
 \begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,breaklines,numbersep=5pt,]{c}
 	git status ; git diff ;
-	git add XXX
-	git commit XXX}
+	git add <fichiers>
+	git commit -m "message}
 \end{minted}
-\texttt{$\}$}
+\textit{\texttt{$\}$}}
 \begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,breaklines,
 numbersep=5pt,
 ]{c}
-git pull --all
+git pull *-{}-*all
 git merge master
 //gérér conflits s'il y en a
 \end{minted}
@@ -1187,26 +1277,27 @@ git pull ; git push
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%% CREATION BRANCHE CONFLICTUELLE
 \begin{frame}[fragile]
 \frametitle{Provoquer un conflit dans \texttt{fruits.txt}}
-\begin{adjustwidth}{-0.3cm}{-0.3cm}{}
 \vspace{-0.2em}
+\begin{adjustwidth}{-0.6cm}{-0.6cm}{}
 \begin{columns}[T] % align columns
-	\begin{column}{.52\textwidth}
+	\begin{column}{.55\textwidth}
 %		\vspace{0.5em}
 		\color{darkgreen}
 %		{\rule{\linewidth}{3pt}}
 		Branche \texttt{ananas}
 %		\vspace{+0.4em}
 		\color{black}
-\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,breaklines]{bash}
+		\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,breaklines]{bash}
 git checkout master
 git branch ananas
 git checkout ananas
 awk 'NR==3\{print "ananas"\}1' fruits.txt > fruits.txt
 git add fruits.txt
 git commit -m "+ananas"
-\end{minted}
+		\end{minted}
 	\end{column}%
 	\hfill%
 	\begin{column}{.52\textwidth}
@@ -1216,7 +1307,7 @@ git commit -m "+ananas"
 		Branche \texttt{kaki}
 		\color{black}
 		\vspace{-0.3em}
-\begin{minted}[tabsize=4,fontsize=\footnotesize,linenos,breaklines, numbersep=30pt,]{bash}
+\begin{minted}[tabsize=4,fontsize=\footnotesize,linenos,breaklines, numbersep=15pt,]{bash}
 git checkout master
 git branch kaki
 git checkout kaki
@@ -1234,72 +1325,152 @@ git commit -m "+kaki -orange"
 
 \PAUSE
 
+
+%\begin{adjustwidth}{-0.6cm}{-0.6cm}{}
+\begin{columns}[T] % align columns
+	\begin{column}{.45\textwidth}
+%		\vspace{0.5em}
+		\color{darkgreen}
+%		{\rule{\linewidth}{3pt}}
+		Branche \texttt{ananas}
+		\texttt{fruits.txt :}
+%		\vspace{+0.4em}
+		\color{black}
+		\begin{minted}[tabsize=4,fontsize=\footnotesize,linenos,breaklines]{bash}
+pomme
+banane
+ananas
+orange
+poire
+		\end{minted}
+	\end{column}%
+%	\hfill%
+	\begin{column}{.45\textwidth}
+%		\vspace{-0.2em}
+		\color{blue}%\rule{\linewidth}{4pt}
+%		+ \texttt{kaki} et - \texttt{orange}
+		Branche \texttt{kaki}
+		\texttt{fruits.txt :}		
+		\color{black}
+%		\vspace{-0.3em}
+\begin{minted}[tabsize=4,fontsize=\footnotesize,linenos,breaklines]{bash}
+pomme
+banane
+kaki
+poire
+\end{minted}
+\end{column}%
+\end{columns}
+%\end{adjustwidth}
+\end{frame}
+%%%%%%%%%%%%%%% END CREATION BRANCHE CONFLICTUELLE
+
+
+%%%%%%%%%%%%%%% MERGE CONFLICTUELLE
+\begin{frame}[fragile]
+\frametitle{Merger un conflit dans \texttt{fruits.txt}}
+\vspace{-0.2em}
+%\begin{columns}{-0.6cm}{-0.6cm}{}
+\begin{columns}[T] % align columns
+	\begin{column}{.45\textwidth}
+%		\vspace{0.5em}
+		\color{darkgreen}
+%		{\rule{\linewidth}{3pt}}
+		Branche \texttt{ananas}
+		\texttt{fruits.txt :}
+%		\vspace{+0.4em}
+		\color{black}
+		\begin{minted}[tabsize=4,fontsize=\footnotesize,linenos,breaklines]{bash}
+pomme
+banane
+ananas
+orange
+poire
+		\end{minted}
+	\end{column}%
+%	\hfill%
+	\begin{column}{.45\textwidth}
+%		\vspace{-0.2em}
+		\color{blue}%\rule{\linewidth}{4pt}
+%		+ \texttt{kaki} et - \texttt{orange}
+		Branche \texttt{kaki}
+		\texttt{fruits.txt :}		
+		\color{black}
+%		\vspace{-0.3em}
+\begin{minted}[tabsize=4,fontsize=\footnotesize,linenos,breaklines]{bash}
+pomme
+banane
+kaki
+poire
+\end{minted}
+\end{column}%
+\end{columns}
+
+\color{gray}\rule{\linewidth}{3pt}
+\color{black}
+\vspace{-0.82em}
+
+\PAUSE
+
 \begin{adjustwidth}{0.4cm}{-1cm}{}
 	\vspace{-0.48em}
 	\begin{columns}[T] % align columns
 		\begin{column}{.45\textwidth}
-\color{darkgreen}%\rule{\linewidth}{4pt}
-Les merges
-\color{black}
-\begin{minted}[tabsize=4,fontsize=\footnotesize,linenos,breaklines,
+			\color{darkgreen}%\rule{\linewidth}{4pt}
+			Les merges
+			\color{black}
+			\begin{minted}[tabsize=4,fontsize=\footnotesize,linenos,breaklines,
 numbersep=5pt,
 ]{c}
 git checkout master
 git merge ananas
-\end{minted}
-\end{column}%
-\hfill%
-\begin{column}{.6\textwidth}
-
-\color{darkgreen}%\rule{\linewidth}{4pt}
-Sorties console
-\color{black}
-\vspace{-1em}
-\begin{minted}[tabsize=4,fontsize=\footnotesize,breaklines,
+			\end{minted}
+		\end{column}%
+		\hfill%
+		\begin{column}{.6\textwidth}
+			\color{darkgreen}%\rule{\linewidth}{4pt}
+			Sorties console
+			\color{black}
+			\vspace{-1em}
+			\begin{minted}[tabsize=4,fontsize=\footnotesize,breaklines,
 bgcolor=mintedbackground,
 ]{c}
 Updating 760cf0e..1711864
 Fast-forward
 fruits.txt | 1 +
 1 file changed, 1 insertion(+)
-\end{minted}
-\end{column}%
-\end{columns}
+			\end{minted}
+		\end{column}%
+	\end{columns}
 
 %\vspace{-em}
 %	\hspace{0.6cm}
-\begin{columns}[T] % align columns
-	\hspace{0.3cm}
-	\begin{column}{.3\textwidth}
-		\color{darkgreen}%\rule{\linewidth}{4pt}
-%		Deuxième merge
-		\color{black}
-		\begin{minted}[tabsize=4,fontsize=\footnotesize,linenos,breaklines,firstnumber=3,
-		numbersep=5pt,
-		]{text}
+	\begin{columns}[T] % align columns
+		\hspace{0.3cm}
+		\begin{column}{.3\textwidth}
+			\color{darkgreen}%\rule{\linewidth}{4pt}
+	%		Deuxième merge
+			\color{black}
+			\begin{minted}[tabsize=4,fontsize=\footnotesize,linenos,breaklines,firstnumber=3,numbersep=5pt,]{text}
 git merge kaki
-		\end{minted}
-		
-	\end{column}%
-%	\hfill%
-	\hspace{-0.4cm}
-	\begin{column}{.9\textwidth}
-		
-	\color{darkgreen}%\rule{\linewidth}{4pt}
-%		\textit{Sortie console des merges}
-	\color{black}
-	\vspace{-0.2em}
-	\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,breaklines,
-	bgcolor=mintedbackground,
-	]{c}
+			\end{minted}
+		\end{column}%
+	%	\hfill%
+		\hspace{-0.4cm}
+		\begin{column}{.9\textwidth}
+			\color{darkgreen}%\rule{\linewidth}{4pt}
+			\color{black}
+			\vspace{-0.2em}
+			\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,breaklines,bgcolor=mintedbackground,]{c}
 Auto-merging fruits.txt
 CONFLICT (content): Merge conflict in fruits.txt
 Automatic merge failed; fix conflicts and then commit the result.
-		\end{minted}
-	\end{column}%
-\end{columns}
+			\end{minted}
+		\end{column}%
+	\end{columns}
 \end{adjustwidth}
 \end{frame}
+%%%%%%%%%%%%%%% END MERGE CONFLICTUELLE
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1367,11 +1538,11 @@ poire
 
 \color{gray}\rule{\linewidth}{3pt}
 \color{darkgreen}%\rule{\linewidth}{4pt}
-Résolution du conflit
+Résolution du conflit \\ \small(sur terminal)
 \color{black}
 %\vspace{-1.2em}			
 			\begin{minted}[tabsize=4,fontsize=\footnotesize,breaklines,linenos,
-%			bgcolor=mintedbackground,
+			bgcolor=mintedbackground,
 			]{c}
 git add fruits.txt
 git status
@@ -1395,9 +1566,11 @@ git push
 	\small Centralized
 \end{figure}
 
+\PAUSE
 \vspace{-1em}
 \color{gray}\rule{\linewidth}{2pt}
-\PAUSE
+\vspace{-0.5em}
+
 \begin{adjustwidth}{-2cm}{-1cm}{}
 	\begin{columns}[T] % align columns
 		\begin{column}{.5\textwidth}
@@ -1409,7 +1582,7 @@ git push
 		\end{column}%
 %		\hfill%
 		\begin{column}{.6\textwidth}
-			\vspace{-0.35em}
+			\vspace{-0.8em}
 			\begin{figure}
 				\hfill%
 				\includegraphics[scale=0.23]{images/benevolent-dictator-trim.png}
@@ -1423,17 +1596,167 @@ git push
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+%\frametitle{Git distribué : Gestion Centralisée}
+\frametitle{Premiers pas : \textit{configuration de \texttt{git}}}
+\begin{adjustwidth}{1em}{0cm}{}
+\begin{minted}[mathescape=true,escapeinside=||,tabsize=4
+	,fontsize=\footnotesize,breaklines
+]{bash}
+git config |-{}-|global user.name "votre nom"
+git config |-{}-|global user.email nom.prenom@polytech-lille.net
+git config |-{}-|global core.editor kate
+git config |-{}-|global push.default simple
+git config |-{}-|global color.decorate full
+git config |-{}-|global merge.conflictstyle diff3
+\end{minted}
+\end{adjustwidth}
+\vspace{-1em}
+\begin{block}{}
+\begin{itemize}
+\item A faire une seule fois: informations stockées dans \texttt{\textasciitilde/.gitconfig}
+\item Choix de l’éditeur : \texttt{kate}, \texttt{gedit}, \texttt{emacs}, \texttt{vim}, \ldots
+\item Disposez d’un prompt adapté :
+\begin{minted}[mathescape=true,escapeinside=||,tabsize=4
+	,fontsize=\footnotesize,
+]{bash}
+source |{}~|wrudamet/public/bashrc-students
+\end{minted}
+\small à ajouter dans votre \texttt{\textasciitilde/.bashrc}
+\end{itemize}
+\end{block}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+%\frametitle{Git distribué : Gestion Centralisée}
+\frametitle{Quelques astuces (1/2)}
+\vspace{-1em}
+\begin{block}{}
+\begin{itemize}
+\item Joli log avec graphe
+\begin{adjustwidth}{0em}{0cm}
+%\begin{columns}
+%\column{\dimexpr\linewidth+24pt}
+\begin{minted}[mathescape=true,escapeinside=||,tabsize=4
+	,fontsize=\footnotesize,breaklines,
+]{bash}
+git log |-{}-|graph |-{}-|oneline |-{}-|decorate |-{}-|all
+\end{minted}
+%\end{columns}
+\end{adjustwidth}
+\item Annuler un \texttt{merge} en cas de conflit
+\begin{adjustwidth}{0em}{0cm}
+%\begin{columns}
+%\column{\dimexpr\linewidth+24pt}
+\begin{minted}[mathescape=true,escapeinside=||,tabsize=4
+	,fontsize=\footnotesize,breaklines
+]{bash}
+git merge |-{}-|abort
+\end{minted}
+\end{adjustwidth}
+\item Sauvegarder votre mot de passe (accès \texttt{https}, 1h)
+\begin{adjustwidth}{-3em}{0cm}
+%\begin{columns}
+%\column{\dimexpr\linewidth+24pt}
+\begin{minted}[mathescape=true,escapeinside=||,tabsize=4
+	,fontsize=\footnotesize,breaklines
+]{bash}
+git config |-{}-|global credential.helper ’cache |-{}-|timeout=3600’
+\end{minted}
+\end{adjustwidth}
+\item Corriger \texttt{origin} ou faire du multi-dépôt
+\begin{adjustwidth}{-3.9em}{0cm}
+\begin{columns}
+\column{\dimexpr\linewidth+24pt}
+\begin{minted}[mathescape=true,escapeinside=||,tabsize=4
+	,fontsize=\footnotesize,breaklines
+]{bash}
+#Après un
+git clone git@archives.plil.fr:jdequidt/ima3_projet_pa_2018.git
+#on peut ajouter, renommer ou effacer les remotes
+git remote rename origin sujet-dequidt
+git remote add origin https://archives.plil.fr/rudametw/ima3_projet_pa_2018.git
+git remote add depot-ssh git@github.com:rudametw/projet_ima3.git
+git remote -v #listes toutes les remotes
+\end{minted}
+\end{columns}
+\end{adjustwidth}
+\end{itemize}
+\end{block}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+%\frametitle{Git distribué : Gestion Centralisée}
+\frametitle{Quelques astuces (2/2)}
+\vspace{-1em}
+\begin{block}{}
+\begin{itemize}
+\item Pour ne pas commiter des fichiers générés, créez le fichier \texttt{.gitignore} à la racine du projet
+\begin{adjustwidth}{0em}{0cm}
+%\begin{columns}
+%\column{\dimexpr\linewidth+24pt}
+\begin{minted}[mathescape=true,escapeinside=||,tabsize=4
+	,fontsize=\footnotesize,breaklines,bgcolor=mintedbackground,
+]{bash}
+#Exemple de .gitignore
+*~
+*.o
+a.out
+build/
+bin/
+\end{minted}
+%\end{columns}
+\end{adjustwidth}
+\item Écrire la documentation en Markdown
+\begin{itemize}
+\item Syntaxe simple, propre, comme Wikipédia
+\item \texttt{README.md} automatiquement converti en HTML
+\item Permet de créer tous types de document, très puissant si combiné avec \texttt{pandoc}
+\item Inspirez vous de \url{https://gist.github.com/PurpleBooth/109311bb0361f32d87a2}
+\end{itemize}
+\end{itemize}
+\end{block}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+%\frametitle{Git distribué : Gestion Centralisée}
+\frametitle{Conclusion}
+\begin{block}{}
+\begin{itemize}
+\item Ce cours est une \textcolor{title}{introduction} de \texttt{git}
+\item Gestionnaire de versions, élément \textcolor{title}{incontournable} du développeur ou
+équipe de développeurs
+\item \texttt{git} : outil performant et \textcolor{title}{massivement utilisé}
+\item \texttt{git} : spécialisé pour le texte et la ligne de commande mais de nombreuses extensions et outils graphiques
+\begin{itemize}
+\item \texttt{gitk}, \texttt{smartgit}, tortoise (windows), EGit pour environnement Eclipse, \ldots
+\end{itemize}
+\end{itemize}
+\end{block}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
 \frametitle{Liens, aides et outils (1/2)}
 \begin{itemize}
 	\item Références bibliographiques
 	\begin{itemize}
-		\item Livre ”Pro-Git” De Scott Chacon and Ben Straub\\
+		\item Livre ``Pro-Git'' De Scott Chacon and Ben Straub\\
 		\url{https://git-scm.com/book/fr/v2}
 		\item Git Magic (Stanford)\\
 		\url{https://crypto.stanford.edu/~blynn/gitmagic/intl/fr/book.pdf}
-		\item Présentation GIT ”Les bases de GIT”
+		\item Présentation ``Les bases de GIT''
 		\url{https://fr.slideshare.net/PierreSudron/diapo-git}
 
 	\end{itemize}
