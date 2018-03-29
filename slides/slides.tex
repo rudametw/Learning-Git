@@ -343,7 +343,7 @@
 		\gitHEAD
 		%	 			{above=of master} % node placement
 		{right=of master} % node placement
-		{27ff4}          % target
+		{master}          % target
 		\end{tikzpicture}
 		\end{subfigure}
 	}
@@ -451,7 +451,7 @@
 			\gitHEAD
 			%	 			{above=of master} % node placement
 			{right=of master} % node placement
-			{27ff4}          % target
+			{master}          % target
 			\end{tikzpicture}
 			\subcaption{État avant deuxième \texttt{commit}}
 		\end{subfigure}
@@ -475,7 +475,7 @@
 			\gitHEAD
 			%	 			{above=of master} % node placement
 			{right=of master} % node placement
-			{31490}          % target
+			{master}          % target
 			\end{tikzpicture}
 			\subcaption{Deuxième \textit{commit}}
 		\end{subfigure}
@@ -496,8 +496,8 @@
 	\end{minted}
 \end{block}
 
-\only<1>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=3.4cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
-\only<2>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=1.8cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+\only<1>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1.3cm,yshift=3.4cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+\only<2>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1.3cm,yshift=1.8cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
 
 \end{frame}
 %%%%%%%%%%% End ANIMATION Commit 2
@@ -527,7 +527,7 @@
 			\gitHEAD
 			%	 			{above=of master} % node placement
 			{right=of master} % node placement
-			{ab5d1}          % target
+			{master}          % target
 			\end{tikzpicture}
 			\subcaption{Troisième \textit{commit}}
 		\end{subfigure}
@@ -578,7 +578,7 @@
 			\gitHEAD
 			%	 			{above=of master} % node placement
 			{right=of master} % node placement
-			{ab5d1}          % target
+			{master}          % target
 			\end{tikzpicture}
 			\subcaption{Avant branche}
 		\end{subfigure}
@@ -608,12 +608,11 @@
 			{master}     % node name and text 
 			{above=of ab5d1} % node placement
 			{ab5d1}          % target
-			% HEAD reference
+			\gitbranch {legumes} {right=of master} {ab5d1}
 			\gitHEAD
 			%	 			{above=of master} % node placement
-			{right=of master} % node placement
-			{ab5d1}          % target
-			\gitbranch {legumes} {left=of master} {ab5d1}
+			{right=of legumes} % node placement
+			{legumes}          % target
 	
 			\end{tikzpicture}
 			\subcaption{Après branche}
@@ -659,12 +658,13 @@
 			{master}     % node name and text 
 			{above=of ab5d1} % node placement
 			{ab5d1}          % target
+			\gitbranch {legumes} {above=of ffd5c} {ffd5c}
 			% HEAD reference
 			\gitHEAD
- 			{below=of ffd5c} % node placement
+ 			{right=of legumes} % node placement
 %			{right=of legumes} % node placement
-			{ffd5c}          % target
-			\gitbranch {legumes} {above=of ffd5c} {ffd5c}
+%			{ffd5c}          % target
+			{legumes}          % target
 			
 			\end{tikzpicture}
 			\subcaption{Après un premier commit dans la branche \texttt{legumes}}
@@ -703,12 +703,18 @@
 			{master}     % node name and text 
 			{above=of ab5d1} % node placement
 			{ab5d1}          % target
+%			% HEAD reference
+%			\gitHEAD
+%			{below=of 8a928} % node placement
+%			%			{right=of legumes} % node placement
+%			{8a928}          % target
+			\gitbranch {legumes} {above=of 8a928} {8a928}
 			% HEAD reference
 			\gitHEAD
-			{below=of 8a928} % node placement
+			{right=of legumes} % node placement
 			%			{right=of legumes} % node placement
-			{8a928}          % target
-			\gitbranch {legumes} {above=of 8a928} {8a928}
+			{legumes}          % target
+
 			\end{tikzpicture}
 			\subcaption{Après un deuxième commit dans la branche \texttt{legumes}}
 		\end{subfigure}
@@ -716,10 +722,10 @@
 }
 
 \ifANIMATE
-	\only<1>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=3.5cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
-	\only<2-3>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=2.85cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
-	\only<4-5>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=1.4cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
-	\only<6->{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=0.2cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+	\only<1>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1.3cm,yshift=3.5cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+	\only<2-3>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1.3cm,yshift=2.85cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+	\only<4-5>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1.3cm,yshift=1.4cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+	\only<6->{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1.3cm,yshift=0.2cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
 \fi
 
 	\vspace{0.4cm} \begin{center} \noindent\makebox[\linewidth]{\line(2,0){500}} \end{center} \vspace{-0.4cm}
@@ -774,9 +780,9 @@
 			{ab5d1}          % target
 			% HEAD reference
 			\gitHEAD
-			{below=of 8a928} % node placement
+			{right=of master} % node placement
 			%			{right=of legumes} % node placement
-			{8a928}          % target
+			{master}          % target
 			\gitbranch {legumes} {above=of 8a928} {8a928}
 			
 			\end{tikzpicture}
@@ -811,9 +817,9 @@
 			{ab5d1}          % target
 			% HEAD reference
 			\gitHEAD
-			{below=of ab5d1} % node placement
+			{right=of master} % node placement
 			%			{right=of legumes} % node placement
-			{ab5d1}          % target
+			{master}          % target
 			\gitbranch {legumes} {above=of 8a928} {8a928}
 			
 			\end{tikzpicture}
@@ -856,7 +862,7 @@
 			\gitHEAD
 			{right=of master} % node placement
 			%			{right=of legumes} % node placement
-			{21721}          % target
+			{master}          % target
 			\gitbranch {legumes} {above=of 8a928} {8a928}
 			
 			\end{tikzpicture}
@@ -872,8 +878,8 @@
 \end{minted}
 
 \ifANIMATE
-	\only<1>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=2.6cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
-	\only<2>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=2cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+	\only<1>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1.3cm,yshift=2.7cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+	\only<2>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1.3cm,yshift=2.1cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
 \fi
 \pause
 \PAUSE
@@ -884,8 +890,8 @@
 \end{minted}
 
 \ifANIMATE
-	\only<3>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=1.9cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
-	\only<4->{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=0.6cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+	\only<3>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1.3cm,yshift=2.1cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+	\only<4->{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1.3cm,yshift=0.6cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
 \fi
 \end{frame}
 %%%%%%%%%%% End ANIMATION Branch 2
@@ -911,12 +917,11 @@
 			{master}     % node name and text 
 			{below=of 21721} % node placement
 			{21721}          % target
-			% HEAD reference
+			\gitbranch {legumes} {above=of 8a928} {8a928}
 			\gitHEAD
 			{right=of legumes} % node placement
-			%			{right=of legumes} % node placement
-			{8a928}          % target
-			\gitbranch {legumes} {above=of 8a928} {8a928}
+			{legumes}          % target
+
 			
 			\end{tikzpicture}
 			\subcaption{Allons sur \texttt{légumes}, regardons les différences}
@@ -942,12 +947,11 @@
 			{master}     % node name and text 
 			{below=of 21721} % node placement
 			{21721}          % target
-			% HEAD reference
+			\gitbranch {legumes} {above=of 760cf} {760cf}
 			\gitHEAD
-			{above=of 760cf} % node placement
+			{left=of legumes} % node placement
 			%			{right=of legumes} % node placement
-			{760cf}          % target
-			\gitbranch {legumes} {left=of gitHEAD} {760cf}
+			{legumes}          % target
 			
 			\end{tikzpicture}
 			\subcaption{Merger \texttt{master} dans \texttt{légumes} : produit un \underline{nouveau commit}}
@@ -966,20 +970,23 @@
 	git checkout legumes
 \end{minted}
 
-%\only<1>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=1.7cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+%\only<1>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1.3cm,yshift=1.7cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
 %\pause
 
 \begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{c}
 	git diff master
 \end{minted}
-
-\only<1>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=1.1cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
-
-\pause
 \begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{c}
 	git merge master
 \end{minted}
-\only<2>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=0.5cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+
+\only<1>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1.3cm,yshift=1.3cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+
+\pause
+%\begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{c}
+%	git merge master
+%\end{minted}
+\only<2>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1.3cm,yshift=0.7cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
 \end{frame}
 %%%%%%%%%%% End ANIMATION Merge 1
 
@@ -1023,7 +1030,7 @@
 			\gitHEAD
 			{right=of master} % node placement
 			%			{right=of legumes} % node placement
-			{21721}          % target
+			{master}          % target
 			\gitbranch {legumes} {above=of 760cf} {760cf}
 			
 			\end{tikzpicture}
@@ -1051,12 +1058,11 @@
 			{below=of 760cf} % node placement
 			{760cf}          % target
 			% HEAD reference
-			\gitHEAD
-			{left=of legumes} % node placement
-			%			{right=of legumes} % node placement
-			{760cf}          % target
 			\gitbranch {legumes} {above=of 760cf} {760cf}
-			
+			\gitHEAD
+			{left=of master} % node placement
+			%			{right=of legumes} % node placement
+			{master}          % target			
 			\end{tikzpicture}
 			\subcaption{Merger \texttt{légumes} dans \texttt{master} : \underline{pas de nouveau commit}}
 			%\only<2>{$\Longrightarrow$ \texttt{legumes.txt} n'existe plus dans \textit{Working Directory})}
@@ -1079,13 +1085,13 @@
 			% Branch
 			\gitbranch
 			{master}     % node name and text 
-			{below=of 760cf} % node placement
+			{above=of 760cf} % node placement
 			{760cf}          % target
 			% HEAD reference
 			\gitHEAD
-			{above=of 760cf} % node placement
+			{left=of master} % node placement
 			%			{right=of legumes} % node placement
-			{760cf}          % target
+			{master}          % target
 %			\gitbranch {legumes} {above=of 760cf} {760cf}
 			
 			\end{tikzpicture}
@@ -1100,20 +1106,20 @@
 \begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{c}
 	git checkout master
 \end{minted}
-
-\only<1>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=1.8cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
-
-\pause[2]
 \begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{c}
 	git diff legumes
 	git merge legumes
 \end{minted}
-\only<2>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=1.3cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
-\pause
 \begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{c}
 	git branch -d legumes
 \end{minted}
-\only<3->{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1cm,yshift=0.7cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+
+\only<1>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1.3cm,yshift=1.95cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+
+\pause[2]
+\only<2>{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1.3cm,yshift=1.3cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
+\pause
+\only<3->{\begin{tikzpicture}[remember picture,overlay]\node[xshift=1.3cm,yshift=0.7cm] at (current page.south west) {$\hookrightarrow$};\end{tikzpicture}}
 \end{frame}
 %%%%%%%%%%% End ANIMATION Merge 2
 
@@ -1615,9 +1621,9 @@ git config |-{}-|global merge.conflictstyle diff3
 \vspace{-1em}
 \begin{block}{}
 \begin{itemize}
-\item A faire une seule fois: informations stockées dans \texttt{\textasciitilde/.gitconfig}
-\item Choix de l’éditeur : \texttt{kate}, \texttt{gedit}, \texttt{emacs}, \texttt{vim}, \ldots
-\item Disposez d’un prompt adapté :
+\item À faire une seule fois: informations stockées dans \texttt{\textasciitilde/.gitconfig}
+\item Choix de l'éditeur : \texttt{kate}, \texttt{gedit}, \texttt{emacs}, \texttt{vim}, \ldots
+\item Disposez d'un prompt adapté :
 \begin{minted}[mathescape=true,escapeinside=||,tabsize=4
 	,fontsize=\footnotesize,
 ]{bash}
@@ -1675,9 +1681,9 @@ git config |-{}-|global credential.helper ’cache |-{}-|timeout=3600’
 \begin{minted}[mathescape=true,escapeinside=||,tabsize=4
 	,fontsize=\footnotesize,breaklines
 ]{bash}
-#Après un
+# Après un clone ...
 git clone git@archives.plil.fr:jdequidt/ima3_projet_pa_2018.git
-#on peut ajouter, renommer ou effacer les remotes
+# ... on peut ajouter, renommer ou effacer les remotes
 git remote rename origin sujet-dequidt
 git remote add origin https://archives.plil.fr/rudametw/ima3_projet_pa_2018.git
 git remote add depot-ssh git@github.com:rudametw/projet_ima3.git
