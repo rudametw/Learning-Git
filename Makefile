@@ -4,12 +4,12 @@ LATEX_COMPILER = lualatex
 # Default rule
 #all: 1pp 2pp 4pp 6pp TPGit CheatSheets
 #2pp doesn't work well for slides.
-all: 1pp 4pp 6pp 8pp TPGit CheatSheets
+all: 1pp 4pp 6pp 8pp TPGit PDFs/git_bash_markdown-2pp.pdf slides/slides.pdf
 
 base = slides/slides.pdf
 base: ${base}
 
-slides/slides.pdf: images
+slides/slides.pdf: slides/slides.tex images slides/CM-preamble.sty
 	cd slides; $(LATEX_COMPILER) -shell-escape -interaction=nonstopmode slides.tex
 
 # IMAGES
@@ -18,18 +18,19 @@ images: $(patsubst images/%.svg,images/%.pdf,$(wildcard images/*.svg))
 images/%.pdf: images/%.svg
 	inkscape -A "$@" "$<"
 
-CheatSheets:
+#CheatSheets: PDFs/git_bash_markdown.pdf
+PDFs/git_bash_markdown-2pp.pdf: PDFs/git_bash_markdown.pdf
 	cd PDFs; $(LATEX_COMPILER) CM-handouts-2pp.tex git_bash_markdown.pdf
 	mv PDFs/CM-handouts-2pp.pdf PDFs/git_bash_markdown-2pp.pdf
 
-TPGit: TPGit/TPGit.pdf TPGit-2pp.pdf
-TPGit/TPGit.pdf: images
+TPGit: TPGit/TPGit.pdf PDFs/TPGit-2pp.pdf
+TPGit/TPGit.pdf: TPGit/TPGit.tex images
 	cd TPGit; $(LATEX_COMPILER) -shell-escape -interaction=nonstopmode TPGit.tex
-TPGit-2pp.pdf: TPGit/TPGit.pdf
+PDFs/TPGit-2pp.pdf: TPGit/TPGit.pdf
 	cd PDFs; cp ../TPGit/TPGit.pdf . ; $(LATEX_COMPILER) CM-handouts-2pp.tex TPGit.pdf
 	mv PDFs/CM-handouts-2pp.pdf PDFs/TPGit-2pp.pdf
 
-# PDFs 
+# PDFs
 # 1 slide / page
 1pp = $(addprefix PDFs/,$(filter %.pdf,$(subst /, ,${base})))
 1pp: ${1pp}
