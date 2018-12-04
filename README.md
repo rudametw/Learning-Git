@@ -1,5 +1,5 @@
 # Why
-This is an introduction to using git, in French, given at Polytech Lille, part of the University of Lille.
+This is an introduction to git, in French, given at Polytech Lille, part of the University of Lille.
 
 # Dependencies
 
@@ -19,6 +19,6 @@ inkscape
 
 ## `pdflatex` vs `lualatex`
 
-The makefile uses `lualatex` but the document does compile with `pdflatex` also.
+The makefile uses `lualatex` but the document does compile with `pdflatex`.
 
 If you need to use pdflatex, you should uncomment the line `%\usepackage[utf8]{inputenc}` in `CM-preamble.sty` which fixes issues with utf-8 characters.
