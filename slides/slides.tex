@@ -1654,13 +1654,14 @@ git push
 \begin{frame}[fragile]
 %\frametitle{Git distribué : Gestion Centralisée}
 \frametitle{Premiers pas : \textit{configuration de \texttt{git}}}
-\begin{adjustwidth}{1em}{0cm}{}
+\begin{adjustwidth}{0em}{0cm}{}
 \begin{minted}[mathescape=true,escapeinside=||,tabsize=4
-	,fontsize=\footnotesize,breaklines
+	,fontsize=\footnotesize,
+	%breaklines
 ]{bash}
 git config |-{}-|global user.name "votre nom"
 git config |-{}-|global user.email nom.prenom@polytech-lille.net
-git config |-{}-|global core.editor kate
+git config |-{}-|global core.editor 'kate -b &>/dev/null'
 git config |-{}-|global push.default simple
 git config |-{}-|global color.decorate full
 git config |-{}-|global merge.conflictstyle diff3
@@ -1669,13 +1670,13 @@ git config |-{}-|global merge.conflictstyle diff3
 \vspace{-1em}
 \begin{block}{}
 \begin{itemize}
-\item À faire une seule fois: informations stockées dans \texttt{\textasciitilde/.gitconfig}
+\item À faire une seule fois: informations stockées dans \texttt{\textasciitilde/.gitconfig}
 \item Choix de l'éditeur : \texttt{kate}, \texttt{gedit}, \texttt{emacs}, \texttt{vim}, \ldots
 \item Disposez d'un prompt adapté :
 \begin{minted}[mathescape=true,escapeinside=||,tabsize=4
 	,fontsize=\footnotesize,
 ]{bash}
-source |{}~|wrudamet/public/bashrc-students
+	source |{}~|wrudamet/public/bashrc-students
 \end{minted}
 \small à ajouter dans votre \texttt{\textasciitilde/.bashrc}
 \end{itemize}

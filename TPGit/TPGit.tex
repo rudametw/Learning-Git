@@ -372,7 +372,7 @@ Les commandes suivantes vont modifier votre fichier \texttt{.gitconfig}, tapez l
 ]{bash}
 	git config |-{}-|global user.name "votre nom"
 	git config |-{}-|global user.email nom.prenom@polytech-lille.net
-	git config |-{}-|global core.editor kate
+	git config |-{}-|global core.editor 'kate -b &>/dev/null'	
 	git config |-{}-|global push.default simple
 	git config |-{}-|global color.decorate full
 	git config |-{}-|global merge.conflictstyle diff3
@@ -544,8 +544,8 @@ Git peut se souvenir de votre identité pendant un temps déterminé, par exempl
 \item binôme1 pousse ses changements en premier
 \item binôme2 pull les changements de binôme1 et\ldots CONFLIT !
 \item \texttt{git status}, lisez la sortie
-\item à l'aide du cours (slides 26-28), essayez de résoudre ce conflit
-\item une fois résolu, merger vos changements et poussez vers le serveur
+\item à l'aide du cours (slides 26-29), essayez de résoudre ce conflit
+\item une fois résolu, mergez vos changements et poussez vers le serveur
 \item binome1, récupérez les changements et vérifiez l'état de \texttt{fruits.txt}
 \end{itemize}
 
@@ -625,6 +625,7 @@ Vous pouvez également consulter les liens suivants :
 	\item Où stocker vos projets
 	\begin{itemize}
 		\item \url{https://archives.plil.fr/}
+		\item \url{https://about.gitlab.com/}
 		\item \url{https://github.com/}
 		\item \url{https://bitbucket.org/}
 		\item Votre serveur perso (e.g., installer GitLab chez vous)
