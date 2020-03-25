@@ -67,7 +67,7 @@
 			et surtout des recommandations
 			\item n'hésitez pas à poser des questions
 		\end{itemize}
-		\item Je ne suis pas un expert
+		\item Je ne suis pas un expert de Git
 	\end{itemize}
 \end{frame}
 \fi
@@ -138,8 +138,8 @@
 	\begin{block}{}
     \begin{adjustwidth}{-0.3cm}{-1.4cm}{}
 		\begin{itemize}
-			\item Un \textcolor{title}{projet} de développement logiciel est une activité longue et
-			complexe.
+			\item Un \textcolor{title}{projet} de développement logiciel est une activité\\
+			longue et complexe.
 			\item Concerne plusieurs \textcolor{title}{fichiers} (milliers !)
 			\item De multiples \textcolor{title}{itérations} sont nécessaires.
 			\item A certains moments, on peut identifier des \textcolor{title}{versions} et/ou \textcolor{title}{variantes} du logiciel.
@@ -1661,11 +1661,13 @@ git push
 ]{bash}
 git config |-{}-|global user.name "votre nom"
 git config |-{}-|global user.email nom.prenom@polytech-lille.net
-git config |-{}-|global core.editor 'kate -b &>/dev/null'
+git config |-{}-|global core.editor 'kate -b'
 git config |-{}-|global push.default simple
 git config |-{}-|global color.decorate full
 git config |-{}-|global merge.conflictstyle diff3
 \end{minted}
+%git config |-{}-|global core.editor 'kate -b &>/dev/null'
+
 \end{adjustwidth}
 \vspace{-1em}
 \begin{block}{}
@@ -1819,7 +1821,8 @@ équipe de développeurs
 
 	\item Où stocker vos projets
 	\begin{itemize}
-		\item \url{https://archives.plil.fr/}
+		\item \url{https://gitlab.univ-lille.fr/}
+		\item \url{https://archives.plil.fr/} $\Leftarrow$ Polytech
 		\item \url{https://github.com/}
 		\item \url{https://bitbucket.org/}
 		\item Votre serveur perso

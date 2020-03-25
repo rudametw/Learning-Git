@@ -340,12 +340,10 @@ Nous vous proposons de travailler sur plusieurs terminaux ouverts simultanément
 	\label{terminals}
 \end{figure}
 
-Cette disposition vous permettra d'exécuter vos commandes \texttt{git} dans le terminal \texttt{T1}, tout en exécutant des commandes de \textit{suivi} dans les terminaux \texttt{T2} et \texttt{T3}.\\
-
+Cette disposition vous permettra d'exécuter vos commandes \texttt{git} dans le terminal \texttt{T1}, tout en exécutant des commandes de \textit{suivi} dans les terminaux \texttt{T2} et \texttt{T3}.
 Dans un premier temps, positionnez \texttt{T1}, \texttt{T2} et \texttt{T3} dans le répertoire où vous allez travailler via la commande \texttt{cd}.\\
-Lancez le script \texttt{config\_git} dans le terminal \texttt{T1}.\\
 
-La commande \texttt{watch}\footnote{\url{https://en.wikipedia.org/wiki/Watch\_(Unix)}} permet de répéter une commande toute les $X$ secondes. Dans le terminal \texttt{T2} exécutez :
+La commande \texttt{watch}\footnote{\url{https://en.wikipedia.org/wiki/Watch\_(Unix)}} permet de répéter une commande toute les $X$ secondes et la commande \texttt{tree} permet de visualiser toute l'arborescence de dossiers fichiers. Dans le terminal \texttt{T2} exécutez :
 \begin{minted}[mathescape=true,escapeinside=||,tabsize=4
 %	,fontsize=\footnotesize,
 ]{bash}
@@ -359,7 +357,7 @@ Et dans le terminal \texttt{T3} exécutez :
 	watch cat ~/.gitconfig
 \end{minted}
 
-Il est normal que ces commandes affichent pour le moment des erreurs car nous n'avons pas encore créé le répertoire \texttt{tpgit} ni le fichier \texttt{.gitconfig}.
+Il est normal que ces commandes affichent pour le moment des erreurs car nous n'avons pas encore créé le répertoire \texttt{tpgit} ni le fichier \texttt{.gitconfig}. N'hésitez pas à réduire la taille de police des terminaux pour mieux afficher les informations plus tard.
 
 
 \subsection{Configuration de votre compte \texttt{git}}
@@ -372,13 +370,13 @@ Les commandes suivantes vont modifier votre fichier \texttt{.gitconfig}, tapez l
 ]{bash}
 	git config |-{}-|global user.name "votre nom"
 	git config |-{}-|global user.email nom.prenom@polytech-lille.net
-	git config |-{}-|global core.editor 'kate -b &>/dev/null'	
 	git config |-{}-|global push.default simple
 	git config |-{}-|global color.decorate full
 	git config |-{}-|global merge.conflictstyle diff3
+	git config |-{}-|global core.editor 'nano'
 \end{minted}
 
-Si vous préférez un autre éditeur à la place de \texttt{kate}, vous pouvez l'utiliser (e.g., \texttt{nano}, \texttt{vim}, \texttt{emacs}, \texttt{gedit}).
+Si vous préférez un autre éditeur à la place de \texttt{nano}, vous pouvez l'utiliser (e.g., \texttt{kate -b}, \texttt{vim}, \texttt{emacs}, \texttt{gedit}).
 
 \begin{alertinfo}{Rappel !}
 Les configurations de \texttt{git} et de \texttt{bash} doivent se faire une fois pour chaque compte.
@@ -388,7 +386,7 @@ Votre binôme devra réaliser la même configuration sur son compte, et si vous 
 \section{Initialisation d'un dépôt \texttt{git}}
 
 Nous allons travailler sur un projet qu'on appellera \texttt{tpgit}.
-En vous aidant des supports du cours (slide 13), vous devez :
+En vous aidant des supports du cours (slide 13), vous devez~:
 \begin{itemize}
 \item créer un répertoire \texttt{tpgit}
 \item initialiser dans ce répertoire un dépôt git vide
@@ -405,7 +403,7 @@ Utilisez les commandes \texttt{git status}, \texttt{git diff \textit{nom\_fichie
 
 \end{alertinfo3}
 
-Dans le terminal \texttt{T3}, arrêter le processus et exécuter la commande suivante dans le répertoire \texttt{tpgit} pour visualiser l'historique du dépôt~: \verb+watch -d -n5 git log --graph --oneline --decorate --all+ 
+Dans le terminal \texttt{T3}, arrêter le processus (\texttt{ctrl+c}) et exécuter la commande suivante dans le répertoire \texttt{tpgit} pour visualiser l'historique du dépôt~: \verb+watch -d -n5 git log --graph --oneline --decorate --all+ 
 \section{Branches \texttt{git}}
 
 Branches \texttt{legumes}
@@ -440,15 +438,16 @@ Vérifiez que tous les branches sont à jour.
 
 \section{Dépôt distant}
 
-Nous allons activer vos comptes sur le serveur GitLab de Polytech et créer un dépôt vide où vous allez pousser votre dépôt existant \texttt{tpgit}.
+Nous allons activer vos comptes sur le serveur GitLab de l'Université de Lille (\url{https://gitlab.univ-lille.fr}) et créer un dépôt vide où vous allez pousser votre dépôt existant \texttt{tpgit}. (Vous êtes également libre d'utiliser le serveur GitLab de Poltech \url{https://archives.plil.fr/}.)
+
 GitLab vous permet de gérer votre projet et fourni plusieurs fonctionnalités intéressantes (e.g., issues, graphes, édition de fichiers, recherche de contributeurs, dashboard).\\
 
 Vous allez devoir (procédure plus précise décrite après):
 \begin{itemize}
-\item se connecter sur \url{https://archives.plil.fr/}
-\item créer un projet sur le serveur GitLab de Polytech
+\item se connecter sur \url{https://gitlab.univ-lille.fr}
+\item créer un projet sur le GitLab
 \item pousser votre dépôt \texttt{tpgit} sur le GitLab
-\item ajouter votre binôme aux membres de votre projet avec le niveau de droit \textit{Developer} (il devra se connecter une première fois avant d'apparaître dans la liste des membres)
+\item ajouter votre binôme aux membres de votre projet avec, au minimum, le niveau de droit \textit{Developer} (il devra se connecter une première fois avant d'apparaître dans la liste des membres)
 \end{itemize}
 
 \paragraph{Créer un dépôt sur GitLab et poussez \texttt{tpgit}}
@@ -458,14 +457,14 @@ Vous allez devoir (procédure plus précise décrite après):
 \item Vous êtes emmenés dans votre projet, qui est vide, avec les instructions des différentes formes d'initialisation.
 Lisez les propositions.
 Vous devez \textbf{impérativement changer l'url de \texttt{SSH} à \texttt{HTTPS}}
-\item Retrouvez les instructions \textit{Push an existing Git repository}. Vous allez copier et exécuter la commande :\\ \texttt{git remote add origin https://archives.plil.fr/<user>/<project.git>} avec le bon url\\ suivi de \texttt{git remote -v}, et \texttt{git push -u origin master}
+\item Retrouvez les instructions \textit{Push an existing Git repository}. Vous allez copier et exécuter la commande :\\ \texttt{git remote add origin https://gitlab.univ-lille.fr/<user>/<project.git>} avec le bon url\\ suivi de \texttt{git remote -v}, et \texttt{git push -u origin master}
 \item Rafraîchissez la page de votre projet GitLab, votre projet \texttt{tpgit} doit s'y retrouver
 \item Naviguez votre projet sur Gitlab pour voir l'historique de commits, vos fichiers, vos graphes, etc.
 \end{enumerate}	
 
 \begin{alertinfo2}{Attention !}
 Il y a deux protocoles réseau pour échanger avec GitLab, HTTPS et SSH. Nous vous conseillons de travailler avec HTTPS dans un premier temps.
-Dans le futur vous pouvez choisir SSH, qui est plus puissant et flexible, mais il faudra configurer vos clés privés et publiques en suivant l'aide \url{https://archives.plil.fr/help/ssh/README}
+Dans le futur vous pouvez choisir SSH, qui est plus puissant et flexible, mais il faudra configurer vos clés privés et publiques en suivant l'aide \url{https://gitlab.univ-lille.fr/help/ssh/README} ou \url{https://archives.plil.fr/help/ssh/README}
 \end{alertinfo2}
 
 
@@ -486,7 +485,7 @@ Dans le futur vous pouvez choisir SSH, qui est plus puissant et flexible, mais i
 Votre binôme devra se mettre à travailler avec vous.
 Après avoir configuré son compte (section \ref{context}) il devra :
 \begin{itemize}
-\item Se connecter sur votre projet dans GitLab \url{https://archives.plil.fr/<login>/<projet.git>}
+\item Se connecter sur votre projet dans GitLab \url{https://gitlab.univ-lille.fr/<login>/<projet.git>}
 \item Cliquer sur HTTPS
 \item Cloner le projet à l'aide de la commande \texttt{git clone <url>}
 \item Regardez l'historique du projet.
@@ -598,9 +597,9 @@ Voici un rapide tutoriel sur quelques commandes de base de cette extension.
 	\item Créez un fichier \texttt{index.html} dans votre projet.
 	\item {\bf Réalisez l'équivalent de \texttt{"git add ... ; git commit"}}~:\\
 	Sélectionnez le projet et, avec le clic droit de la souris, sélectionnez "Team/Commit...". Une vue "Git Staging" est alors disponible. Déplacez le fichier \texttt{index.html} de la sous-fenêtre "Unstaged Changes" vers la sous-fenêtre "Staged Changes" (équivalent de \texttt{git add}), donnez un titre à votre futur commit dans la sous-fenêtre "Commit Message" puis cliquez sur "Commit" (équivalent de \texttt{git commit}).
-	\item Connectez-vous sur \url{https://archives.plil.fr} et créez un projet \texttt{"demoPHP"}, mémorisez l'adresse du projet~: \url{https://archives.plil.fr/<votre_login>/demoPHP.git}
+	\item Connectez-vous sur \url{https://gitlab.univ-lille.fr} et créez un projet \texttt{"demoPHP"}, mémorisez l'adresse du projet~: \url{https://gitlab.univ-lille.fr/<votre_login>/demoPHP.git}
 	\item {\bf Réalisez l'équivalent de \texttt{"git add ... ; git commit ; git push"}}~:\\
-	c'est la même procédure que le point 4 mais il faut cliquer sur "Commit and Push" à la fin. Pour ce premier "push", une fenêtre de dialogue vous demande l'URI, saisissez \url{https://archives.plil.fr/<votre_login>/demoPHP.git}, cliquez sur \texttt{"Next>"}, saisissez vos login/password puis cliquez sur \texttt{"OK"} et \texttt{"Finish"}.
+	c'est la même procédure que le point 4 mais il faut cliquer sur "Commit and Push" à la fin. Pour ce premier "push", une fenêtre de dialogue vous demande l'URI, saisissez \url{https://gitlab.univ-lille.fr/<votre_login>/demoPHP.git}, cliquez sur \texttt{"Next>"}, saisissez vos login/password puis cliquez sur \texttt{"OK"} et \texttt{"Finish"}.
 	\item {\bf Réalisez l'équivalent de \texttt{"git pull"}}~:\\
 	Il suffit de sélectionnez "Team/Pull" et suivre les instructions.
 \end{enumerate}
@@ -624,6 +623,7 @@ Vous pouvez également consulter les liens suivants :
 \begin{itemize}
 	\item Où stocker vos projets
 	\begin{itemize}
+		\item \url{https://gitlab.univ-lille.fr/}	
 		\item \url{https://archives.plil.fr/}
 		\item \url{https://about.gitlab.com/}
 		\item \url{https://github.com/}
