@@ -260,13 +260,20 @@ pagebackref  = false,     % add page number in bibliography and link to position
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
   
 %\title{GBIAAL 4$^{\mbox{\`eme}}$ année \\ Devoir Surveillé --- Base de données \\ 13 janvier 2016  \\ 1 heure}
-\title{GIS 3$^{\mbox{\`eme}}$ année
+%\title{GIS 3$^{\mbox{\`eme}}$ année
 	%\\TP1 Structures, Listes contiguës, Redirections}
-}
-\author{\huge \textbf{Introduction à} \\  \Huge\textbf{\texttt{git}}}
+%}
+%\author{\huge \textbf{Introduction à} \\  \Huge\textbf{\texttt{git}}}
 \setlength{\parindent}{0pt}
 %\pagestyle{empty}
-\date{\Large \url{https://rudametw.github.io/teaching/} \\ Polytech Lille}
+\title{Spécialités GIS / IMA 3$^{\mbox{\`eme}}$ année\\
+\huge \textbf{Introduction outil \texttt{GIT}
+}}
+\setlength{\parindent}{0pt}
+%\pagestyle{empty}
+\author{\copyright{} W. Rudametkin -- Polytech Lille\\
+	Adaptation~: M.E. Kessaci, O. Caron}
+\date{\Large \url{https://rudametw.github.io/teaching/}}% \\ Polytech Lille}
 
 %\author{Walter Rudametkin}
 %\institute[Polytech Lille]{
@@ -283,10 +290,11 @@ pagebackref  = false,     % add page number in bibliography and link to position
 \maketitle
 %\thispagestyle{empty}
 
+\vspace{-1.2cm}
 \section{Objectifs}\label{objectifs}
 
 \begin{itemize}
-\item Apprendre à se servir d'un Logiciel de Gestion de Version\footnote{\url{https://fr.wikipedia.org/wiki/Logiciel_de_gestion_de_versions}}.
+\item Apprendre à se servir d'un Logiciel de Gestion de Versions\footnote{\url{https://fr.wikipedia.org/wiki/Logiciel_de_gestion_de_versions}}.
 \item Maîtrisez le versionnement d'un projet logiciel.
 \item Partager un projet et travailler en équipe.
 \end{itemize}
@@ -299,36 +307,43 @@ Il est fortement conseillé de travailler exclusivement sur terminal pour ce TP.
 \section{Contexte et préparation}
 \label{context} 
 
-\subsection{Configuration de \texttt{bash}}
+\subsection{Configuration de votre environnement}
 
 \paragraph{\texttt{.bashrc} et \texttt{gitprompt.sh}}
-Pour commencer ce TP, nous vous fournissons une configuration avancée de \texttt{bash} (l'interpréteur en ligne de commande utilisé par défaut).
-Vous pouvez lancer, une seule fois par compte, la commande suivante qui aura pour objectif de mettre à jour votre fichier \texttt{~/.bashrc} et d'installer \texttt{gitprompt.sh} sur vos comptes.
+Nous vous fournissons une configuration avancée de \texttt{bash} (l'interpréteur en ligne de commande utilisé par défaut) avec une aide GIT intégré.
+Utiliser un prompt spécial GIT est très pratique pour visualiser rapidement où vous en êtes (connaître la branche sur laquelle vous travaillez par exemple). La commande suivante exécute un script shell qui modifie votre prompt. Ce prompt ne sera actif que dans les répertoires de vos projets GIT~: 
 \begin{minted}[mathescape=true,escapeinside=||,tabsize=4
 %	,fontsize=\footnotesize,
 ]{bash}
-	~wrudamet/public/set_bashrc.sh
+	source ~wrudamet/public/bashrc-students
 \end{minted}
+%source ~ocaron/public/git/config_git
 
-Pour les curieux, vous pouvez regarder vos fichiers \mintinline{bash}{~/.bashrc}, \mintinline{bash}{~/.bashrc-students} et \mintinline{bash}{~/git-prompt.sh} pour comprendre ce qui a été ajouté.
-N'hésitez pas à éditer ou supprimer les changements si vous préférez.
+Pour ne pas devoir lancer cette commande à chaque connexion, vous pouvez l'insérer dans votre fichier \texttt{\~{}/.bashrc}.
 
+%\begin{minted}[mathescape=true,escapeinside=||,tabsize=4
+%%	,fontsize=\footnotesize,
+%]{bash}
+%	~wrudamet/public/set_bashrc.sh
+%\end{minted}
+%
+%Pour les curieux, vous pouvez regarder vos fichiers \mintinline{bash}{~/.bashrc}, \mintinline{bash}{~/.bashrc-students} et \mintinline{bash}{~/git-prompt.sh} pour comprendre ce qui a été ajouté.
+%N'hésitez pas à éditer ou supprimer les changements si vous préférez.
 
-\paragraph{Terminals}
+\paragraph{Terminaux}
 %\WR{Copier le fichier XXX.aide pour récupèrer quelques commandes. }
-Nous vous proposons de travailler sur plusieurs terminals ouverts simultanément, une disposition possible est indiquée dans la figure~\ref{terminals} mais vous pouvez les ranger à votre convenance tout au longue du TP.
+Nous vous proposons de travailler sur plusieurs terminaux ouverts simultanément, une disposition possible est indiquée dans la figure~\ref{terminals} mais vous pouvez les ranger à votre convenance tout au long du TP.
 \begin{figure}[h]
 	\centering
-	{\includegraphics[scale=0.4]{images/terminals.pdf}}
-	\caption{Figure 1: Disposition des terminals proposée.}
+	{\includegraphics[scale=0.45]{images/terminals.pdf}}
+	\caption{Figure 1: Disposition proposée des terminaux}
 	\label{terminals}
 \end{figure}
 
-Cette disposition vous permettra d'exécuter vos commandes \texttt{git} dans le terminal \texttt{T1}, tout en exécutant des commandes de \textit{suivi} dans les terminaux \texttt{T2} et \texttt{T3}.\\
-
+Cette disposition vous permettra d'exécuter vos commandes \texttt{git} dans le terminal \texttt{T1}, tout en exécutant des commandes de \textit{suivi} dans les terminaux \texttt{T2} et \texttt{T3}.
 Dans un premier temps, positionnez \texttt{T1}, \texttt{T2} et \texttt{T3} dans le répertoire où vous allez travailler via la commande \texttt{cd}.\\
 
-La commande \texttt{watch}\footnote{\url{https://en.wikipedia.org/wiki/Watch\_(Unix)}} permet de répéter une commande toute les $X$ secondes. Dans le terminal \texttt{T2} exécutez :
+La commande \texttt{watch}\footnote{\url{https://en.wikipedia.org/wiki/Watch\_(Unix)}} permet de répéter une commande toute les $X$ secondes et la commande \texttt{tree} permet de visualiser toute l'arborescence de dossiers fichiers. Dans le terminal \texttt{T2} exécutez :
 \begin{minted}[mathescape=true,escapeinside=||,tabsize=4
 %	,fontsize=\footnotesize,
 ]{bash}
@@ -342,12 +357,12 @@ Et dans le terminal \texttt{T3} exécutez :
 	watch cat ~/.gitconfig
 \end{minted}
 
-Il est normal que ces commandes affichent pour le moment des erreurs car nous n'avons pas encore créé le répertoire \texttt{tpgit} ni le fichier \texttt{.gitconfig}.
+Il est normal que ces commandes affichent pour le moment des erreurs car nous n'avons pas encore créé le répertoire \texttt{tpgit} ni le fichier \texttt{.gitconfig}. N'hésitez pas à réduire la taille de police des terminaux pour mieux afficher les informations plus tard.
 
 
 \subsection{Configuration de votre compte \texttt{git}}
 
-Dans un projet gérer à plusieurs, il est important de savoir qui a fait quoi. \texttt{git} a donc besoin d'une configuration pour identifier vos futurs \emph{commits}, et vous pouvez également spécifier certains comportements.
+Dans un projet géré par plusieurs, il est important de savoir qui a fait quoi. \texttt{git} a donc besoin d'une configuration pour identifier vos futurs \textit{commits}, et vous pouvez également spécifier certains comportements.
 Les commandes suivantes vont modifier votre fichier \texttt{.gitconfig}, tapez les une à une en regardant les changements dans le terminal \texttt{T3}:
 
 \begin{minted}[mathescape=true,escapeinside=||,tabsize=4
@@ -355,13 +370,13 @@ Les commandes suivantes vont modifier votre fichier \texttt{.gitconfig}, tapez l
 ]{bash}
 	git config |-{}-|global user.name "votre nom"
 	git config |-{}-|global user.email nom.prenom@polytech-lille.net
-	git config |-{}-|global core.editor kate
 	git config |-{}-|global push.default simple
 	git config |-{}-|global color.decorate full
 	git config |-{}-|global merge.conflictstyle diff3
+	git config |-{}-|global core.editor 'nano'
 \end{minted}
 
-Si vous préférez un autre éditeur à la place de \texttt{kate}, vous pouvez l'utiliser (e.g., \texttt{nano}, \texttt{vim}, \texttt{emacs}, \texttt{gedit}).
+Si vous préférez un autre éditeur à la place de \texttt{nano}, vous pouvez l'utiliser (e.g., \texttt{kate -b}, \texttt{vim}, \texttt{emacs}, \texttt{gedit}).
 
 \begin{alertinfo}{Rappel !}
 Les configurations de \texttt{git} et de \texttt{bash} doivent se faire une fois pour chaque compte.
@@ -371,7 +386,7 @@ Votre binôme devra réaliser la même configuration sur son compte, et si vous 
 \section{Initialisation d'un dépôt \texttt{git}}
 
 Nous allons travailler sur un projet qu'on appellera \texttt{tpgit}.
-En vous aidant des supports du cours (slide 13), vous devez :
+En vous aidant des supports du cours (slide 13), vous devez~:
 \begin{itemize}
 \item créer un répertoire \texttt{tpgit}
 \item initialiser dans ce répertoire un dépôt git vide
@@ -385,15 +400,15 @@ Lisez la sortie de chaque commande pour comprendre leur fonctionnement.
 
 \begin{alertinfo3}{Astuce !}
 Utilisez les commandes \texttt{git status}, \texttt{git diff \textit{nom\_fichier}} et \texttt{git log} pour comprendre l'état de votre dépôt. La commande \texttt{git log -}\texttt{-graph -}\texttt{-oneline -}\texttt{-decorate -}\texttt{-all} vous donne une historique détaillé avec toutes les branches, étiquettes et commits.
-Pour quoi ne pas la garder à la vu dans le terminal \texttt{T3} (l'éxécuter avec un \texttt{watch -d -n5 git log \ldots}) ?
+
 \end{alertinfo3}
 
-
+Dans le terminal \texttt{T3}, arrêter le processus (\texttt{ctrl+c}) et exécuter la commande suivante dans le répertoire \texttt{tpgit} pour visualiser l'historique du dépôt~: \verb+watch -d -n5 git log --graph --oneline --decorate --all+ 
 \section{Branches \texttt{git}}
 
 Branches \texttt{legumes}
 \begin{itemize}
-\item créer une branche \texttt{legumes}
+\item créer une branche \texttt{legumes}, se placer dans cette branche (vérifier avec le prompt)
 \item ajouter un fichier \texttt{legumes.txt} sur cette branche
 \item réaliser 3 commits différents en ajoutant des légumes à \texttt{legumes.txt}
 \item vérifier l'historique de vos commits à l'aide de \texttt{git log}.
@@ -423,15 +438,16 @@ Vérifiez que tous les branches sont à jour.
 
 \section{Dépôt distant}
 
-Nous allons activer vos comptes sur le serveur GitLab de Polytech et créer un dépôt vide où vous allez pousser votre dépôt existant \texttt{tpgit}.
+Nous allons activer vos comptes sur le serveur GitLab de l'Université de Lille (\url{https://gitlab.univ-lille.fr}) et créer un dépôt vide où vous allez pousser votre dépôt existant \texttt{tpgit}. (Vous êtes également libre d'utiliser le serveur GitLab de Poltech \url{https://archives.plil.fr/}.)
+
 GitLab vous permet de gérer votre projet et fourni plusieurs fonctionnalités intéressantes (e.g., issues, graphes, édition de fichiers, recherche de contributeurs, dashboard).\\
 
-Vous devez :
+Vous allez devoir (procédure plus précise décrite après):
 \begin{itemize}
-\item Connectez-vous sur \url{https://archives.plil.fr/}
-\item Créez un projet sur le serveur GitLab de Polytech
-\item Poussez votre dépôt \texttt{tpgit} sur le GitLab
-\item Ajoutez votre binôme aux membres de votre projet avec le niveau de droit \textit{Developer} (il devra se connecter une première fois avant d'apparaître dans la liste des membres)
+\item se connecter sur \url{https://gitlab.univ-lille.fr}
+\item créer un projet sur le GitLab
+\item pousser votre dépôt \texttt{tpgit} sur le GitLab
+\item ajouter votre binôme aux membres de votre projet avec, au minimum, le niveau de droit \textit{Developer} (il devra se connecter une première fois avant d'apparaître dans la liste des membres)
 \end{itemize}
 
 \paragraph{Créer un dépôt sur GitLab et poussez \texttt{tpgit}}
@@ -441,25 +457,26 @@ Vous devez :
 \item Vous êtes emmenés dans votre projet, qui est vide, avec les instructions des différentes formes d'initialisation.
 Lisez les propositions.
 Vous devez \textbf{impérativement changer l'url de \texttt{SSH} à \texttt{HTTPS}}
-\item Retrouvez les instructions \textit{Push an existing Git repository}. Vous allez copier et exécuter la commande :\\ \texttt{git remote add origin https://archives.plil.fr/<user>/<project.git>} avec le bon url\\ suivi de \texttt{git remote -v}, et \texttt{git push -u origin master}
+\item Retrouvez les instructions \textit{Push an existing Git repository}. Vous allez copier et exécuter la commande :\\ \texttt{git remote add origin https://gitlab.univ-lille.fr/<user>/<project.git>} avec le bon url\\ suivi de \texttt{git remote -v}, et \texttt{git push -u origin master}
 \item Rafraîchissez la page de votre projet GitLab, votre projet \texttt{tpgit} doit s'y retrouver
 \item Naviguez votre projet sur Gitlab pour voir l'historique de commits, vos fichiers, vos graphes, etc.
 \end{enumerate}	
 
 \begin{alertinfo2}{Attention !}
 Il y a deux protocoles réseau pour échanger avec GitLab, HTTPS et SSH. Nous vous conseillons de travailler avec HTTPS dans un premier temps.
-Dans le futur vous pouvez choisir SSH, qui est plus puissant et flexible, mais il faudra configurer vos clés privés et publiques en suivant l'aide \url{https://archives.plil.fr/help/ssh/README}
+Dans le futur vous pouvez choisir SSH, qui est plus puissant et flexible, mais il faudra configurer vos clés privés et publiques en suivant l'aide \url{https://gitlab.univ-lille.fr/help/ssh/README} ou \url{https://archives.plil.fr/help/ssh/README}
 \end{alertinfo2}
 
 
 \paragraph{Gestion des membres de votre projet}
 \begin{enumerate}
-\item Aller dans les \textit{Settings} de votre projet (menu à gauche),
-\item Cliquer sur \textit{Members} dans le menu \textit{Settings} (menu à gauche),
-\item Cliquer sur \textit{New project member} en haut à droite,
+\item Aller dans les \textit{Settings} de votre projet (menu de gauche),
+\item Cliquer sur \textit{Members} dans le menu \textit{Settings} (menu de gauche),
+\item Cliquer sur \textit{New project member} en haut à droite,
 \item Chercher le login de la personne que vous voulez ajouter (votre binôme),
 \item Sélectionner le niveau de droit de cette personne (\textit{Developer}),
 \item Cliquer sur \textit{Add users}.
+\item Cliquer sur \textit{Protected branches} dans le menu \textit{Settings} (menu de gauche), puis cliquer la case à cocher \textit{Developers can push} pour la branche "master" du projet (bas de l'écran principal).
 \end{enumerate}
 
 
@@ -508,14 +525,14 @@ Vous allez travailler en même temps sur ce projet commun, chacun sur son propre
 \item vérifier l'historique des deux dépôts... est-ce que tous les ID de commits sont les mêmes ? Vous avez trouvé le dernier commit de merge ? Vous voyez les commits de votre binôme ?\\
 \end{itemize}
 
-Un de vous deux a été le premier à pousser, et l'autre a dû merger les changements avant de pouvoir pousser son travail.
-Parce que vous avez travaillé sur des fichiers différents, le merge a été résolu automatiquement.
+Un de vous deux a été le premier à pousser, et l'autre a dû fusionner les changements avant de pouvoir pousser son travail.
+Parce que vous avez travaillé sur des fichiers différents, le \texttt{merge} a été résolu automatiquement.
 Nous allons maintenant vous obliger à générer des conflits et à les résoudre.
 
 \begin{alertinfo3}{Astuce !}
 Vous en avez marre de taper votre login et mot de passe à chaque \texttt{pull} et \texttt{push} ?
-Git peut se souvenir de votre identité pendent un temps déterminé, par exemple, pour une heure utilisez la commande :\\
-\texttt{git config -{}-global credential.helper 'cache -{}-timeout=3600'}
+Git peut se souvenir de votre identité pendant un temps déterminé, par exemple, pour une heure utilisez la commande :\\
+\texttt{git config \texttt{-}{}-global credential.helper 'cache \texttt{-}{}-timeout=3600'}
 \end{alertinfo3}
 
 
@@ -528,15 +545,15 @@ Git peut se souvenir de votre identité pendent un temps déterminé, par exempl
 \item binôme1 pousse ses changements en premier
 \item binôme2 pull les changements de binôme1 et\ldots CONFLIT !
 \item \texttt{git status}, lisez la sortie
-\item à l'aide du cours (slides 26-28), essayez de résoudre ce conflit
-\item une fois résolu, merger vos changements et poussez vers le serveur
+\item à l'aide du cours (slides 26-29), essayez de résoudre ce conflit
+\item une fois résolu, fusionnez vos changements et poussez vers le serveur
 \item binome1, récupérez les changements et vérifiez l'état de \texttt{fruits.txt}
 \end{itemize}
 
 \paragraph{Générer un 2ème conflit, inverser les rôles}
 \begin{itemize}
 \item comme précédemment, générer un conflit dans le fichier \texttt{legumes.txt} mais cette fois inversez les rôles :  binome2 pousse en premier, binome1 résout le conflit.
-\item au moment du conflit, c'est-à-dire, tout de suite après un \texttt{git pull} ou \texttt{git merge}, vous pouvez annuler le merge avec la commande \texttt{git merge -{}-abort}.
+\item au moment du conflit, c'est-à-dire, tout de suite après un \texttt{git pull} ou \texttt{git merge}, vous pouvez annuler le merge avec la commande \texttt{git merge \texttt{-}{}-abort}.
 Essayez la commande et vérifier que votre dépôt revient dans l'état avant le \texttt{pull} (plus de conflits, vérifier avec \texttt{status}).
 Refaite \texttt{git pull} et vous allez retrouver le conflit, résolvez-le cette fois.
 \end{itemize}
@@ -570,9 +587,36 @@ Vérifiez que votre README s'affiche correctement sur GitLab.
 
 
 
+\section{Eclipse et GIT}
+
+Sous Eclipse, il existe une extension GIT qui présente quelques avantages. La première est de développer et gérer les versions sans quitter Eclipse. La seconde permet de s'abstraire de la syntaxe des commandes en ligne. Des outils graphiques viennent également simplifier la gestion des conflits.
+
+Voici un rapide tutoriel sur quelques commandes de base de cette extension.
+\begin{enumerate}
+	\item Sous Eclipse (\texttt{/usr/local/eclipseNeon/eclipse \&}, créer un projet PHP de nom \texttt{"demoPHP"}.
+	\item {\bf Réalisez l'équivalent de \texttt{"git init"}}~:\\
+	Sélectionnez le projet et, avec le clic droit de la souris, sélectionnez "Team/Share Project\ldots", sélectionnez "Git" puis cliquez sur \texttt{"Next>"}, cliquez sur "Create\ldots" (en haut à droite), sélectionnez un répertoire de nom "git\_demoPHP", cliquez sur \texttt{"Finish"}, cochez le projet \texttt{"demoPHP"} puis cliquez sur \texttt{"Finish"}.
+	\item Créez un fichier \texttt{index.html} dans votre projet.
+	\item {\bf Réalisez l'équivalent de \texttt{"git add ... ; git commit"}}~:\\
+	Sélectionnez le projet et, avec le clic droit de la souris, sélectionnez "Team/Commit...". Une vue "Git Staging" est alors disponible. Déplacez le fichier \texttt{index.html} de la sous-fenêtre "Unstaged Changes" vers la sous-fenêtre "Staged Changes" (équivalent de \texttt{git add}), donnez un titre à votre futur commit dans la sous-fenêtre "Commit Message" puis cliquez sur "Commit" (équivalent de \texttt{git commit}).
+	\item Connectez-vous sur \url{https://gitlab.univ-lille.fr} et créez un projet \texttt{"demoPHP"}, mémorisez l'adresse du projet~: \url{https://gitlab.univ-lille.fr/<votre_login>/demoPHP.git}
+	\item {\bf Réalisez l'équivalent de \texttt{"git add ... ; git commit ; git push"}}~:\\
+	c'est la même procédure que le point 4 mais il faut cliquer sur "Commit and Push" à la fin. Pour ce premier "push", une fenêtre de dialogue vous demande l'URI, saisissez \url{https://gitlab.univ-lille.fr/<votre_login>/demoPHP.git}, cliquez sur \texttt{"Next>"}, saisissez vos login/password puis cliquez sur \texttt{"OK"} et \texttt{"Finish"}.
+	\item {\bf Réalisez l'équivalent de \texttt{"git pull"}}~:\\
+	Il suffit de sélectionnez "Team/Pull" et suivre les instructions.
+\end{enumerate}
+
+A partir du menu "Team", vous disposez de l'équivalent de toutes les commandes \texttt{git}.
+
+Pour créez un projet Eclipse à partir d'un projet déjà stocké dans le repository local ou distant, il faut sélectionnez dans le menu Eclipse "File/Import.../Git/Projects from Git" et suivre les inscriptions.
+
+%Pour comprendre comment fonctionne l'extension \texttt{EGit} d'Eclipse, suivez ce tutoriel~:\\ \url{https://openclassrooms.com/courses/egit-quand-git-s-invite-dans-eclipse}
+%
+%{\bf Attention~:} vous devez passer la partie d'installation de \texttt{EGit}, cette extension est déjà installée.
+
 \section{Continuer à apprendre}
 
-Si vous voulez maitriser \texttt{git}, n'hésitez pas à faire le tutoriel donné par le laboratoire CRIStAL de l'université de Lille.
+Si vous voulez maîtriser \texttt{git}, n'hésitez pas à faire le tutoriel donné par le laboratoire CRIStAL de l'université de Lille.
 Il y a beaucoup de fonctionnalités avancées qui peuvent s'avérer très utiles.
 \url{http://www.cristal.univ-lille.fr/TPGIT/} .\\
 
@@ -581,7 +625,9 @@ Vous pouvez également consulter les liens suivants :
 \begin{itemize}
 	\item Où stocker vos projets
 	\begin{itemize}
+		\item \url{https://gitlab.univ-lille.fr/}	
 		\item \url{https://archives.plil.fr/}
+		\item \url{https://about.gitlab.com/}
 		\item \url{https://github.com/}
 		\item \url{https://bitbucket.org/}
 		\item Votre serveur perso (e.g., installer GitLab chez vous)
