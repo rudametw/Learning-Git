@@ -918,9 +918,10 @@
 	\end{figure}
 }
 
-\vspace{0.4cm}
-\begin{center} \noindent\makebox[\linewidth]{\line(2,0){500}} \end{center} \vspace{-0.4cm}
+\vspace{0.6cm}
+\begin{center} \noindent\makebox[\linewidth]{\line(2,0){500}} \end{center} \vspace{-0.5cm}
 \begin{minted}[mathescape=true,escapeinside=||,tabsize=4,fontsize=\footnotesize,]{c}
+    |$\ldots$|
 	git checkout master
 \end{minted}
 
@@ -1207,12 +1208,12 @@
 \begin{adjustwidth}{-2em}{0cm}{}
 \color{darkgreen}%\rule{\linewidth}{4pt}
 \noindent
-Premier commit \\ \small(dépôt central doit être créé et vide)
+Créer le dépôt \\ \small(\textit{le dépôt distant doit exister (ici c'est chez Github)})
 \color{black}
 \end{adjustwidth}
 \begin{adjustwidth}{-1em}{0cm}{}
 \begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,linenos,breaklines,
-numbersep=5pt,
+numbersep=5pt,bgcolor=mintedbackground,
 ]{bash}
 git init .
 git add .
@@ -1237,7 +1238,7 @@ git push -u origin master
 			\begin{adjustwidth}{-0cm}{-3cm}{}
 				\begin{figure}
 					\hfill
-					\includegraphics[scale=0.22]{images/centralized_workflow.png}
+					\includegraphics[scale=0.18]{images/centralized_workflow.png}
 				\end{figure}
 			\end{adjustwidth}
 		\end{column}%
@@ -1248,12 +1249,12 @@ git push -u origin master
 %	\begin{columns}[T] % align columns
 %	\begin{column}{.5\textwidth}
 	
-	\begin{adjustwidth}{-0.5cm}{-3cm}{}
+	\begin{adjustwidth}{-0.5cm}{-0cm}{}
 		\color{darkgreen}%\rule{\linewidth}{4pt}
 		Chaque développeur \texttt{clone} une seule fois
 		\color{black}
 		\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,linenos,
-		numbersep=5pt,
+		numbersep=5pt,bgcolor=mintedbackground,
 		]{bash}
 git clone https://github.com/rudametw/Learning-Git-Test-Repo.git
 cd Learning-Git-Test-Repo/
@@ -1266,61 +1267,184 @@ git remote -v #permet de vérifier les addresses
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %continue previous slide, broken into two
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%START DOUBLE SLIDE
+%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile]
 %\frametitle{Git distribué : Gestion Centralisée}
-\frametitle{Dépôt Centralisée :\textit{ méthode de travail}}
+\frametitle{Dépôt Centralisée :\textit{ méthode de travail \textbf{idéal}}}
 \begin{adjustwidth}{-1em}{0cm}{}
-\vspace{-2.3em}
+\vspace{-3.5em}
 \color{darkgreen}%\rule{\linewidth}{4pt}
-Chacun travaille sur une branche \texttt{fonctX}. Une fois la fonctionnalité fini, on merge \texttt{foncX} dans \texttt{master}.\\
+Chacun et chaque fonctionalité sur sa branche. \\ Une fois la fonctionnalité fini, on merge dans \texttt{master}.\\
 \color{black}
-\vspace{-1em}
+\vspace{-1.5em}
 \begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,breaklines,
-numbersep=5pt,
+numbersep=5pt,bgcolor=mintedbackground,
 ]{c}
-git pull ; git status //update & check work
+git pull  //update & check work
 git branch fonctionalitéX
 git checkout fonctionalitéX
 \end{minted}
 
-\textit{\texttt{while (je travaille = vrai) $\{$}}
-\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,breaklines,numbersep=5pt,]{c}
-	git status ; git diff ;
+\vspace{-0.5em}
+\textit{\texttt{while (je travaille = vrai) }} %$\{$}}
+\vspace{-1em}
+\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,breaklines,numbersep=5pt,bgcolor=mintedbackground,]{c}
+	git diff
 	git add <fichiers>
-	git commit -m "message}
+	git commit -m "message"
 \end{minted}
-\textit{\texttt{$\}$}}
+%\vspace{-2.5em}
+%\textit{\texttt{$\}$}}
+\vspace{-2.5em}
 \begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,breaklines,
-numbersep=5pt,
+numbersep=5pt,bgcolor=mintedbackground
 ]{c}
 git pull *-{}-*all
-git merge master
-//gérér conflits s'il y en a
-\end{minted}
-\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,breaklines,
-numbersep=5pt,
-]{c}
-//tester que tout marche
-git checkout master
-git merge fonctionalitéX
-git pull ; git push
+git merge master //gérér conflits et TESTER !
+
+//intégrer votre travail
+git checkout master                  
+git merge fonctionalitéX             
+git pull ; git push                  
 \end{minted}
 \end{adjustwidth}
+
+
+%\end{minted}
+%\vspace{-3em}
+%\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,breaklines,
+%numbersep=5pt,bgcolor=mintedbackground
+%]{c}
+
 
 \vspace{-12em}
 
 \begin{adjustwidth}{-0cm}{-1cm}{}
 	\begin{figure}
 		\hfill
-		\includegraphics[scale=0.22]{images/centralized_workflow.png}
+		\includegraphics[scale=0.18]{images/centralized_workflow.png}
 	\end{figure}
 \end{adjustwidth}
 
 
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% second part
+
+\begin{frame}[fragile]
+%\frametitle{Git distribué : Gestion Centralisée}
+\frametitle{Dépôt Centralisée :\textit{ méthode de travail \textbf{idéal}}}
+\begin{adjustwidth}{-1em}{0cm}{}
+\vspace{-3.5em}
+\color{darkgreen}%\rule{\linewidth}{4pt}
+En pratique, vérifier l'état de votre dépôt coooonstaaaaament !!! \\
+\color{black}
+\vspace{-1.5em}
+\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,breaklines,
+numbersep=5pt,bgcolor=mintedbackground,
+]{c}
+git status ; git pull ; git status //update & check work
+git branch fonctionalitéX
+git checkout fonctionalitéX
+\end{minted}
+
+\vspace{-0.5em}
+\textit{\texttt{while (je travaille = vrai) }} %$\{$}}
+\vspace{-1em}
+\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,breaklines,numbersep=5pt,bgcolor=mintedbackground,]{c}
+	git diff                ; git status
+	git add <fichiers>      ; git status
+	git commit -m "message" ; git status
+\end{minted}
+%\vspace{-2.5em}
+%\textit{\texttt{$\}$}}
+\vspace{-2.5em}
+\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,breaklines,
+numbersep=5pt,bgcolor=mintedbackground
+]{c}
+git pull *-{}-*all       ; git status
+git merge master //gérér conflits et TESTER !
+git status
+//intégrer votre travail
+git checkout master      ; git status
+git merge fonctionalitéX ; git status
+git pull ; git push      ; git status
+\end{minted}
+\end{adjustwidth}
+%\end{minted}
+%\vspace{-3em}
+%\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,breaklines,
+%numbersep=5pt,bgcolor=mintedbackground
+%]{c}
+\vspace{-12em}
+\begin{adjustwidth}{-0cm}{-1cm}{}
+	\begin{figure}
+		\hfill
+		\includegraphics[scale=0.18]{images/centralized_workflow.png}
+	\end{figure}
+\end{adjustwidth}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%END DOUBLE SLIDE
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Version SIMPLE
+
+\begin{frame}[fragile]
+%\frametitle{Git distribué : Gestion Centralisée}
+\frametitle{Dépôt Centralisée :\textit{ méthode de travail \textbf{simple}}}
+\begin{adjustwidth}{-1em}{0cm}{}
+\vspace{-3.5em}
+\color{darkgreen}%\rule{\linewidth}{4pt}
+Sans branches. Commitez souvent.\\
+\color{black}
+%\vspace{-1.5em}
+%\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,breaklines,
+%numbersep=5pt,bgcolor=mintedbackground,
+%]{c}
+%git status
+%git pull   //update & check work
+%git status 
+%\end{minted}
+
+\vspace{-0.5em}
+%\textit{\texttt{while (je travaille = vrai) }} %$\{$}}
+\vspace{-1em}
+\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\small,breaklines,numbersep=5pt,bgcolor=mintedbackground,]{c}
+	git status
+	git pull  //mise à jour du dépôt local
+	git add <fichiers>      
+	git commit -m "message"
+	git pull *-{}-*all
+	git status
+	git push   //mise à jour du dépôt distant
+	git status
+\end{minted}
+%\vspace{-2.5em}
+%\textit{\texttt{$\}$}}
+\vspace{-2.5em}
+\end{adjustwidth}
+%\end{minted}
+%\vspace{-3em}
+%\begin{minted}[mathescape=true,escapeinside=**,tabsize=4,fontsize=\footnotesize,breaklines,
+%numbersep=5pt,bgcolor=mintedbackground
+%]{c}
+\vspace{-16em}
+\begin{adjustwidth}{-0cm}{-1cm}{}
+	\begin{figure}
+		\hfill
+		\includegraphics[scale=0.18]{images/centralized_workflow.png}
+	\end{figure}
+\end{adjustwidth}
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Résolution de conflits}
 \begin{block}{Des conflits vont se produire \ldots}
