@@ -4,7 +4,7 @@ LATEX_COMPILER = lualatex
 # Default rule
 #all: 1pp 2pp 4pp 6pp TPGit CheatSheets
 #2pp doesn't work well for slides.
-all: 1pp 4pp 6pp 8pp TPGit PDFs/git_bash_markdown-2pp.pdf slides/slides.pdf
+all: 1pp 4pp 6pp 8pp TPGit slides/slides.pdf #PDFs/git_bash_markdown-2pp.pdf
 
 base = slides/slides.pdf
 base: ${base}
@@ -18,10 +18,11 @@ images: $(patsubst images/%.svg,images/%.pdf,$(wildcard images/*.svg))
 images/%.pdf: images/%.svg
 	inkscape --export-type=pdf "$@" "$<"
 
-#CheatSheets: PDFs/git_bash_markdown.pdf
-PDFs/git_bash_markdown-2pp.pdf: PDFs/git_bash_markdown.pdf
-	cd PDFs; $(LATEX_COMPILER) CM-handouts-2pp.tex git_bash_markdown.pdf
-	mv PDFs/CM-handouts-2pp.pdf PDFs/git_bash_markdown-2pp.pdf
+###Commented out 2021.1.13###
+##CheatSheets: PDFs/git_bash_markdown.pdf
+#PDFs/git_bash_markdown-2pp.pdf: PDFs/git_bash_markdown.pdf
+#	cd PDFs; $(LATEX_COMPILER) CM-handouts-2pp.tex git_bash_markdown.pdf
+#	mv PDFs/CM-handouts-2pp.pdf PDFs/git_bash_markdown-2pp.pdf
 
 TPGit: TPGit/TPGit.pdf PDFs/TPGit-2pp.pdf
 TPGit/TPGit.pdf: TPGit/TPGit.tex images
