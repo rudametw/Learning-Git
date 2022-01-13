@@ -16,7 +16,7 @@ slides/slides.pdf: slides/slides.tex images slides/CM-preamble.sty
 images: $(patsubst images/%.svg,images/%.pdf,$(wildcard images/*.svg))
 
 images/%.pdf: images/%.svg
-	inkscape -A "$@" "$<"
+	inkscape --export-type=pdf "$@" "$<"
 
 #CheatSheets: PDFs/git_bash_markdown.pdf
 PDFs/git_bash_markdown-2pp.pdf: PDFs/git_bash_markdown.pdf
