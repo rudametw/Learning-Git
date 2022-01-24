@@ -266,7 +266,7 @@ pagebackref  = false,     % add page number in bibliography and link to position
 %\author{\huge \textbf{Introduction à} \\  \Huge\textbf{\texttt{git}}}
 \setlength{\parindent}{0pt}
 %\pagestyle{empty}
-\title{Spécialités GIS / IMA 3$^{\mbox{\`eme}}$ année\\
+\title{Spécialités SE et IS 3$^{\mbox{\`eme}}$ année\\
 \huge \textbf{Introduction outil \texttt{GIT}
 }}
 \setlength{\parindent}{0pt}
@@ -284,13 +284,13 @@ pagebackref  = false,     % add page number in bibliography and link to position
 
 \begin{document}
 %\vspace{-15cm}
-\vspace{-5cm}
+%\vspace{-6cm}
 \posttitle{\par\end{center}}
-\setlength{\droptitle}{-45pt}
+\setlength{\droptitle}{-55pt}
 \maketitle
 %\thispagestyle{empty}
 
-\vspace{-1.2cm}
+\vspace{-1.5cm}
 \section{Objectifs}\label{objectifs}
 
 \begin{itemize}
@@ -302,8 +302,10 @@ pagebackref  = false,     % add page number in bibliography and link to position
 \begin{alertinfo}{IMPORTANT !}
 Lisez attentivement la sortie de \textbf{\textit{chaque}} commande \texttt{git}.
 Il est fortement conseillé de travailler exclusivement sur terminal pour ce TP.
+Si vous ne connaissez pas une commande, \underline{consultez la documentation}.
 \end{alertinfo}
 
+%\vspace{-1cm}
 \section{Contexte et préparation}
 \label{context} 
 
@@ -319,7 +321,7 @@ Utiliser un prompt spécial GIT est très pratique pour visualiser rapidement o�
 \end{minted}
 %source ~ocaron/public/git/config_git
 
-Pour ne pas devoir lancer cette commande à chaque connexion, vous pouvez l'insérer au début de votre fichier \texttt{\~{}/.bashrc}.
+Pour ne pas devoir lancer cette commande à chaque connexion, vous pouvez l'insérer au début de votre fichier \texttt{\~{}/.bashrc} qui sert à configurer l'interpreteur de commandes \textit{bash}.
 
 \begin{alertinfo3}{Astuce si vous êtes sur votre ordinateur personnel !}
 Optionnellement, à l'aide de \texttt{scp}, \texttt{rsync} ou un outil graphique qui supporte le protocole \texttt{sftp}, vous pouvez copier le fichier \mintinline{bash}{~wrudamet/public/bashrc-students} pour adapter votre \mintinline{bash}{fichier ~/.bashrc} local et télécharger \mintinline{bash}{git-prompt.sh}, en suivant la documentation, pour intégrer le support de git manuellement.
@@ -345,9 +347,9 @@ Nous vous proposons de travailler sur plusieurs terminaux ouverts simultanément
 \end{figure}
 
 Cette disposition vous permettra d'exécuter vos commandes \texttt{git} dans le terminal \texttt{T1}, tout en exécutant des commandes de \textit{suivi} dans les terminaux \texttt{T2} et \texttt{T3}.
-Dans un premier temps, positionnez \texttt{T1}, \texttt{T2} et \texttt{T3} dans le répertoire où vous allez travailler via la commande \texttt{cd}.\\
+Dans un premier temps, positionnez \texttt{T1}, \texttt{T2} et \texttt{T3} dans le répertoire où vous allez travailler via la commande \texttt{cd} et adaptez la taille de police.\\
 
-La commande \texttt{watch}\footnote{\url{https://en.wikipedia.org/wiki/Watch\_(Unix)}} permet de répéter une commande toute les $X$ secondes et la commande \texttt{tree} permet de visualiser toute l'arborescence de dossiers fichiers. Dans le terminal \texttt{T2} nous allons surveiller le répertoire \texttt{tpgit}, alors exécutez :
+La commande \texttt{watch}\footnote{\url{https://en.wikipedia.org/wiki/Watch\_(Unix)}} permet de répéter une commande toutes les $X$ secondes et la commande \texttt{tree} permet de visualiser toute l'arborescence de dossiers et fichiers. Dans le terminal \texttt{T2} nous allons surveiller le répertoire \texttt{tpgit} (qui n'existe pas encore), alors exécutez :
 \begin{minted}[mathescape=true,escapeinside=||,tabsize=4
 %	,fontsize=\footnotesize,
 ]{bash}
@@ -374,11 +376,18 @@ Les commandes suivantes vont modifier votre fichier \texttt{.gitconfig}, tapez l
 ]{bash}
 	git config |-{}-|global user.name "votre nom"
 	git config |-{}-|global user.email nom.prenom@polytech-lille.net
-	git config |-{}-|global push.default simple
-	git config |-{}-|global color.decorate full
-	git config |-{}-|global merge.conflictstyle diff3
 	git config |-{}-|global core.editor 'nano'
+	git config |-{}-|global merge.conflictstyle diff3
 \end{minted}
+%Already defaults :
+%	git config |-{}-|global push.default simple #default already
+%Unsure about this one ?
+%	git config |-{}-|global log.decorate full #auto is default
+%	git config |-{}-|global color.ui always #auto is default
+% This one is useful :
+%	git config |-{}-|global init.defaultBranch master
+
+
 
 Si vous préférez un autre éditeur à la place de \texttt{nano}, vous pouvez l'utiliser (\textit{e.g.,} \texttt{kate -b}, \texttt{vim}, \texttt{emacs}, \texttt{gedit}).
 
@@ -443,13 +452,14 @@ Vérifiez que tous les branches sont à jour.
 \section{Dépôt distant}
 
 %%%Gitlab.com
-%Nous allons créer vos comptes sur le serveur GitLab de \url{https://gitlab.com}.
-%Connecter-vous sur \url{https://gitlab.com/users/sign_in} et créer votre compte en utilisant votre email de Polytech\footnote{Pour information, vous pouvez également activer votre compte sur le serveur gitlab de l'Université de Lille \url{https://gitlab.univ-lille.fr} ou le serveur gitlab de Polytech \url{https://archives.plil.fr}.}.
-%Nous vous recommandons d'utiliser votre login Polytech comme \texttt{username} pour faciliter les opérations de \texttt{push} et \texttt{pull} plus tard.
-
-Nous allons activer vos comptes sur le serveur GitLab de l'Université de Lille (\url{https://gitlab.univ-lille.fr}) et créer un dépôt vide où vous allez pousser votre dépôt existant \texttt{tpgit}. (Vous êtes également libre d'utiliser Github, GitLab.com, ou le serveur GitLab de Polytech \url{https://archives.plil.fr/}.)
-
-GitLab vous permet de gérer votre projet et fourni plusieurs fonctionnalités intéressantes (\textit{e.g.,} issues, graphes, édition de fichiers, recherche de contributeurs, dashboard).\\
+Nous allons créer vos comptes sur le serveur GitLab de \url{https://gitlab.com}.
+Connecter-vous sur \url{https://gitlab.com/users/sign_in} et créer votre compte en utilisant \textbf{votre email de Polytech}\footnote{Pour information, vous pouvez également activer votre compte sur le serveur gitlab de l'Université de Lille \url{https://gitlab.univ-lille.fr}}. % ou le serveur gitlab de Polytech \url{https://archives.plil.fr}.}.
+Nous vous recommandons d'utiliser votre login Polytech comme \texttt{username} pour faciliter les opérations de \texttt{push} et \texttt{pull} plus tard.
+%
+%%%Gitlab Univ-lille
+%Nous allons activer vos comptes sur le serveur GitLab de l'Université de Lille (\url{https://gitlab.univ-lille.fr}) et créer un dépôt vide où vous allez pousser votre dépôt existant \texttt{tpgit}. (Vous êtes également libre d'utiliser Github, GitLab.com, ou le serveur GitLab de Polytech \url{https://archives.plil.fr/}.)
+%
+GitLab vous permet de gérer votre projet et fourni plusieurs fonctionnalités intéressantes (\textit{e.g.,} issues, graphes, édition de fichiers, recherche de contributeurs, dashboard).
 
 
 %Vous allez devoir (procédure plus précise décrite après):
@@ -585,8 +595,8 @@ Refaite \texttt{git pull} et vous allez retrouver le conflit, résolvez-le cette
 
 \begin{alertinfo3}{Astuce !}
 Pour minimiser les conflits, il faut s'assurer que tout le monde maintienne son dépôt à jour.
-Il faut régulièrement merger vers la branche \texttt{master}, faire \texttt{git pull} sur vos branches, et corriger les éventuels petits conflits quand ils sont simples.
-Avant de pousser vos changements avec \texttt{git push}, il faut toujours faire un \texttt{git pull}.
+Il faut régulièrement faire \texttt{git pull} sur vos branches et les merger, et corriger les éventuels petits conflits quand ils sont simples.
+%Avant de pousser vos changements avec \texttt{git push}, il faut toujours faire un \texttt{git pull}.
 \end{alertinfo3}
 
 \section{Documenter votre projet à l'aide de Markdown}
@@ -610,6 +620,16 @@ Vous pouvez vous inspirer de cet exemple sur Github :\\
 Vérifiez que votre README s'affiche correctement sur GitLab.
 %\url{https://gist.githubusercontent.com/PurpleBooth/109311bb0361f32d87a2/raw/824da51d0763e6855c338cc8107b2ff890e7dd43/README-Template.md}
 
+\section{Profitez de la puissance des alias}
+
+N'oubliez pas, Git supporte des alias pour faciliter l'utilisation de commandes complexes.
+Créer un alias pour \texttt{git log}, par exemple, avec la commande suivante :
+\begin{minted}[mathescape=true,escapeinside=||,tabsize=4
+%	,fontsize=\footnotesize,
+]{bash}
+	git config |-{}-|global alias.l 'log ----graph ----oneline ----decorate ----all'
+\end{minted}
+vous pouvez maintenant exécuter \textbf{\texttt{git l}} dans votre dépôt pour avoir un log joli.
 
 
 \section{Eclipse et GIT (Optionnel)}
